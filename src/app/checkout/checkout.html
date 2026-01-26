@@ -1,0 +1,215 @@
+<div class="bg-background-light dark:bg-background-dark text-[#1d1a0c] dark:text-white min-h-screen">
+  <main class="flex-1 max-w-[1200px] mx-auto w-full px-6 py-8">
+    <div class="flex items-center gap-2 mb-8 text-sm">
+      <a class="text-[#a19345] hover:underline" routerLink="/cart">Panier</a>
+      <span class="material-symbols-outlined text-xs">chevron_right</span>
+      <span class="font-semibold">Checkout</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-7">
+        <h1 class="text-4xl font-black tracking-tight mb-6">Checkout</h1>
+
+        <form [formGroup]="form" class="space-y-8">
+          <!-- A. Personal Information -->
+          <section class="bg-white dark:bg-[#1a180b] rounded-2xl border border-[#eae5cd] dark:border-[#3d3824] p-6">
+            <h2 class="text-xl font-bold mb-4">Informations personnelles</h2>
+            <div formGroupName="personal" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="md:col-span-2">
+                <label class="text-sm font-semibold">Nom complet *</label>
+                <input
+                  class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3"
+                  type="text"
+                  formControlName="fullName"
+                />
+                <p *ngIf="form.controls.personal.controls.fullName.touched && form.controls.personal.controls.fullName.invalid" class="text-xs text-red-500 mt-1">
+                  Champ requis.
+                </p>
+              </div>
+              <div>
+                <label class="text-sm font-semibold">Email *</label>
+                <input
+                  class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3"
+                  type="email"
+                  formControlName="email"
+                />
+                <p *ngIf="form.controls.personal.controls.email.touched && form.controls.personal.controls.email.invalid" class="text-xs text-red-500 mt-1">
+                  Email invalide.
+                </p>
+              </div>
+              <div>
+                <label class="text-sm font-semibold">Téléphone *</label>
+                <input
+                  class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3"
+                  type="tel"
+                  formControlName="phone"
+                />
+                <p *ngIf="form.controls.personal.controls.phone.touched && form.controls.personal.controls.phone.invalid" class="text-xs text-red-500 mt-1">
+                  Champ requis.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- B. Delivery Information -->
+          <section class="bg-white dark:bg-[#1a180b] rounded-2xl border border-[#eae5cd] dark:border-[#3d3824] p-6">
+            <h2 class="text-xl font-bold mb-4">Livraison</h2>
+            <div formGroupName="delivery" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-semibold">Ville *</label>
+                <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" formControlName="city" />
+                <p *ngIf="form.controls.delivery.controls.city.touched && form.controls.delivery.controls.city.invalid" class="text-xs text-red-500 mt-1">
+                  Champ requis.
+                </p>
+              </div>
+              <div>
+                <label class="text-sm font-semibold">Méthode *</label>
+                <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" formControlName="deliveryMethod" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="text-sm font-semibold">Adresse *</label>
+                <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" formControlName="address" />
+                <p *ngIf="form.controls.delivery.controls.address.touched && form.controls.delivery.controls.address.invalid" class="text-xs text-red-500 mt-1">
+                  Champ requis.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- C. Payment Information (Dynamic) -->
+          <section class="bg-white dark:bg-[#1a180b] rounded-2xl border border-[#eae5cd] dark:border-[#3d3824] p-6">
+            <h2 class="text-xl font-bold mb-2">Paiement</h2>
+            <p class="text-sm text-[#a19345] mb-4">Le moyen de paiement est sélectionné dans le panier.</p>
+
+            <div *ngIf="paymentMethod$ | async as method; else noPayment">
+              <ng-container [ngSwitch]="method">
+                <!-- Credit card / Visa / Mastercard -->
+                <div *ngSwitchCase="'credit-card'" formGroupName="payment" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="md:col-span-2">
+                    <label class="text-sm font-semibold">Nom du titulaire *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" formControlName="cardholderName" />
+                  </div>
+                  <div class="md:col-span-2">
+                    <label class="text-sm font-semibold">Numéro de carte *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" inputmode="numeric" formControlName="cardNumber" />
+                    <p *ngIf="form.controls.payment.controls.cardNumber.touched && form.controls.payment.controls.cardNumber.invalid" class="text-xs text-red-500 mt-1">
+                      Longueur invalide.
+                    </p>
+                  </div>
+                  <div>
+                    <label class="text-sm font-semibold">Expiration *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" placeholder="MM/AA" formControlName="expiry" />
+                  </div>
+                  <div>
+                    <label class="text-sm font-semibold">CVV *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="password" inputmode="numeric" formControlName="cvv" />
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'visa-mastercard'" formGroupName="payment" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="md:col-span-2">
+                    <label class="text-sm font-semibold">Nom du titulaire *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" formControlName="cardholderName" />
+                  </div>
+                  <div class="md:col-span-2">
+                    <label class="text-sm font-semibold">Numéro de carte *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" inputmode="numeric" formControlName="cardNumber" />
+                    <p *ngIf="form.controls.payment.controls.cardNumber.touched && form.controls.payment.controls.cardNumber.invalid" class="text-xs text-red-500 mt-1">
+                      Longueur invalide.
+                    </p>
+                  </div>
+                  <div>
+                    <label class="text-sm font-semibold">Expiration *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="text" placeholder="MM/AA" formControlName="expiry" />
+                  </div>
+                  <div>
+                    <label class="text-sm font-semibold">CVV *</label>
+                    <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="password" inputmode="numeric" formControlName="cvv" />
+                  </div>
+                </div>
+
+                <!-- PayPal -->
+                <div *ngSwitchCase="'paypal'" formGroupName="payment">
+                  <label class="text-sm font-semibold">Email PayPal *</label>
+                  <input class="mt-1 w-full rounded-xl border border-[#eae5cd] bg-transparent px-4 py-3" type="email" formControlName="paypalEmail" />
+                  <p *ngIf="form.controls.payment.controls.paypalEmail.touched && form.controls.payment.controls.paypalEmail.invalid" class="text-xs text-red-500 mt-1">
+                    Email invalide.
+                  </p>
+                </div>
+
+                <!-- Google Pay -->
+                <div *ngSwitchCase="'google-pay'" class="text-sm text-[#a19345]">
+                  Google Pay sera disponible prochainement. Aucun détail supplémentaire n'est requis pour le moment.
+                </div>
+
+                <!-- Bank transfer / cash -->
+                <div *ngSwitchCase="'bank-transfer'" class="text-sm text-[#a19345]">
+                  Vous pourrez finaliser le paiement par virement bancaire ou en espèces après confirmation.
+                </div>
+              </ng-container>
+            </div>
+
+            <ng-template #noPayment>
+              <p class="text-sm text-red-500">Aucun moyen de paiement sélectionné. Retournez au panier.</p>
+            </ng-template>
+          </section>
+        </form>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="lg:col-span-5">
+        <div class="bg-white dark:bg-[#1a180b] rounded-2xl border border-[#eae5cd] dark:border-[#3d3824] p-8 shadow-sm sticky top-8">
+          <h2 class="text-2xl font-bold mb-6">Résumé de la commande</h2>
+
+          <div *ngIf="cartItems$ | async as items">
+            <div class="space-y-3 mb-6">
+              <div *ngFor="let item of items; trackBy: trackByProductId" class="flex justify-between gap-4">
+                <div class="min-w-0">
+                  <p class="font-semibold truncate">{{ item.product.name }}</p>
+                  <p class="text-xs text-[#a19345]">{{ item.product.brand }} • x{{ item.quantity }}</p>
+                </div>
+                <div class="font-semibold whitespace-nowrap">
+                  {{ (item.product.price * item.quantity) | currency:'MAD':'symbol':'1.0-0' }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ng-container *ngIf="totals$ | async as totals">
+            <div class="space-y-3 mb-6 border-b border-[#eae5cd] dark:border-[#3d3824] pb-6">
+              <div class="flex justify-between items-center">
+                <span class="text-[#a19345]">Sous-total</span>
+                <span class="font-semibold">{{ totals.subtotal | currency:'MAD':'symbol':'1.0-0' }}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[#a19345]">Livraison (Maroc)</span>
+                <span class="font-semibold text-green-600">Offert</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[#a19345]">Frais d'authentification</span>
+                <span class="font-semibold">{{ authenticationFee | currency:'MAD':'symbol':'1.0-0' }}</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center mb-6">
+              <span class="text-xl font-bold">Total TTC</span>
+              <span class="text-2xl font-black">{{ totals.total | currency:'MAD':'symbol':'1.0-0' }}</span>
+            </div>
+          </ng-container>
+
+          <div *ngIf="message" class="mb-4 text-sm text-red-500">
+            {{ message }}
+          </div>
+
+          <button
+            class="w-full bg-primary text-[#1d1a0c] py-4 rounded-xl font-extrabold text-lg flex items-center justify-center gap-2 hover:brightness-95 transition-all shadow-lg shadow-primary/20"
+            (click)="placeOrder()"
+          >
+            <span class="material-symbols-outlined">done</span>
+            Place Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
