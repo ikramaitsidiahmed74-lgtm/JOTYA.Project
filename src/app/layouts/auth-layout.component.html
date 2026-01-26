@@ -1,0 +1,61 @@
+<div class="min-h-screen flex">
+
+  <!-- ================= IMAGE LEFT ================= -->
+  <div class="hidden md:block w-1/2 bg-black relative">
+    <img
+      [src]="image"
+      class="w-full h-full object-cover opacity-80"
+      alt="Auth image"
+    />
+
+    <div class="absolute bottom-8 left-8 text-[#FFED00] text-sm tracking-widest">
+      {{ imageLabel }}
+    </div>
+  </div>
+
+  <!-- ================= FORM RIGHT ================= -->
+  <div class="w-full md:w-1/2 bg-white flex items-center justify-center px-8">
+    <div class="w-full max-w-md">
+
+      <!-- HEADER -->
+      <div class="flex justify-between items-center mb-8">
+
+        <!-- LOGO -->
+        <div class="flex items-center">
+          <img
+            src="assets/logo.png"
+            alt="JOTYA Logo"
+            class="h-20 w-auto object-contain"
+          />
+        </div>
+
+        <!-- SWITCH CLIENT / VENDEUR -->
+        <div class="flex bg-gray-100 rounded-full p-1 text-xs">
+          <a
+            routerLink="/auth/client-login"
+            class="px-4 py-1 rounded-full transition duration-300"
+            [ngClass]="!isVendeurRoute
+              ? 'bg-[#FFED00] text-black shadow hover:bg-black hover:text-white'
+              : 'text-gray-400 hover:text-black'"
+          >
+            CLIENT
+          </a>
+
+          <a
+            routerLink="/auth/vendeur-login"
+            class="px-4 py-1 rounded-full transition duration-300"
+            [ngClass]="isVendeurRoute
+              ? 'bg-[#FFED00] text-black shadow hover:bg-black hover:text-white'
+              : 'text-gray-400 hover:text-black'"
+          >
+            VENDEUR
+          </a>
+        </div>
+      </div>
+
+      <!-- ================= ROUTER OUTLET FOR AUTH COMPONENTS ================= -->
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   AUTO SCROLL – ROW 1 (LEFT)
+===================================================== */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+/* =====================================================
+   AUTO SCROLL – ROW 2 (RIGHT)
+===================================================== */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-reverse {
+  display: flex;
+  width: max-content;
+  animation: scroll-right 35s linear infinite;
+}
+
+/* =====================================================
+   PAUSE ON HOVER
+===================================================== */
+.pause {
+  animation-play-state: paused;
+}
+
+/* =====================================================
+   CARD STYLE
+===================================================== */
+.card {
+  min-width: 320px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   CARD INFO
+===================================================== */
+.card .info {
+  padding: 16px;
+  text-align: center;
+}
+
+.card p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card span {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* =====================================================
+   HIDE SCROLLBAR (SAFETY)
+===================================================== */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 1024px) {
+  .animate-scroll {
+    animation-duration: 25s;
+  }
+
+  .animate-scroll-reverse {
+    animation-duration: 30s;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-width: 250px;
+  }
+
+  .card img {
+    height: 300px;
+  }
+
+  .animate-scroll {
+    animation-duration: 22s;
+  }
+
+  .animate-scroll-reverse {
+    animation-duration: 26s;
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    min-width: 200px;
+  }
+
+  .card img {
+    height: 250px;
+  }
+
+  .animate-scroll {
+    animation-duration: 20s;
+  }
+
+  .animate-scroll-reverse {
+    animation-duration: 24s;
+  }
+} 
