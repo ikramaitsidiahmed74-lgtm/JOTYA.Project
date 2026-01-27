@@ -21,8 +21,8 @@ export class AuthLayoutComponent {
 
   get image(): string {
     return this.isVendeurRoute
-      ? 'assets/images/auth-vendeur.jpg'
-      : 'assets/images/auth-client.jpg';
+      ? 'assets/V16.PNG'
+      : 'assets/v17.PNG';
   }
 
   get imageLabel(): string {

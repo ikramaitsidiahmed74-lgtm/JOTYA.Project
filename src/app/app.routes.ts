@@ -11,18 +11,21 @@ import { VendeurProfilComponent } from './auth/vendeur-profil/vendeur-profil';
 import { VendeurBoutiqueComponent } from './auth/vendeur-boutique/vendeur-boutique';
 import { VendeurCertificationComponent } from './auth/vendeur-certification/vendeur-certification';
 
+import { Guide } from './guide/guide';
+
 export const routes: Routes = [
   { path: '', component: Home },
+
+  // ✅ GUIDE PAGE
+  { path: 'guide', component: Guide },
 
   {
     path: 'auth',
     component: AuthLayoutComponent,
     children: [
-      // client
       { path: 'login', component: ClientLoginComponent },
       { path: 'register', component: ClientRegisterComponent },
 
-      // vendeur
       { path: 'vendeur-login', component: VendeurLoginComponent },
       { path: 'vendeur-register', component: VendeurRegisterComponent },
       { path: 'vendeur-profil', component: VendeurProfilComponent },
