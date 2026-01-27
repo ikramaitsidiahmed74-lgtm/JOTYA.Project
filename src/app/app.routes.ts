@@ -37,4 +37,24 @@ export const routes: Routes = [
   },
 
   { path: '**', redirectTo: '' },
-];
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
+
+  {
+    path: 'home',
+    pathMatch: 'full',
+    loadComponent: () => import('./home/home').then((m) => m.Home),
+  },
+
+  {
+    path: 'cart',
+    loadComponent: () => import('./panier/panier').then((m) => m.Panier),
+  },
+  {
+    path: 'aide',
+    loadComponent: () => import('./aide/aide').then((m) => m.Aide),
+  },
+  {
+    path: 'checkout',
+    loadComponent: () => import('./checkout/checkout').then((m) => m.CheckoutComponent),
+  },
+  { path: '**', redirectTo: 'home' }];

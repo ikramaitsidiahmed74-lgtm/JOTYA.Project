@@ -164,3 +164,4 @@ export class Home {
     this.router.navigate(['/product', product.id]);
   }
 }
+
