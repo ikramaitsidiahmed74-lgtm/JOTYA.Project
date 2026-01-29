@@ -1,56 +1,8 @@
 <!-- Section promotion -->
-<div class="bg-[#ffed00] py-4 overflow-hidden">
-  <div class="relative w-full">
-    
-    <div  class="flex gap-10 whitespace-nowrap animate-scroll text-black text-sm font-medium">
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
 
-      <!-- Duplication pour un défilement continu -->
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-      <span>EL HEMZA</span>
-      <span>EL HOUTA</span>
-    </div>
-  </div>
-</div>
 
 <!-- HERO VIDEO -->
-<section class="relative w-full h-screen overflow-hidden bg-black">
+<section class="relative w-full h-screen overflow-hidden bg-background-light dark:bg-background-dark">
   <!-- VIDEO -->
   <video
     autoplay
@@ -67,80 +19,73 @@
   <div class="absolute inset-0 bg-white/10"></div>
 
   <!-- CONTENT OVER VIDEO (اختياري) -->
-  <div
-    class="relative z-10 flex h-full flex-col items-center justify-center text-center text-white"
-  >
-    
+  <div class="relative z-10 flex h-full flex-col items-center justify-end text-center text-white pb-5">
+  <p class="text-black text-lg md:text-2xl tracking-wide font-bold">
+    L’EL HEMZA, une signature d’exception par JOTYA
+  </p>
+</div>
 
-    <p class="mt-120 md:mt-120 text-black text-lg md:text-2xl tracking-wide font-bold text-center">
-  L’EL HEMZA, une signature d’exception par JOTYA
-</p>
-
-
-  </div>
 </section>
 
 <!-- باقي الهوم -->
 
-<section class="bg-gradient-to-b from-[#ffed00] via-[#ffee33] to-white py-24">
+<section class="bg-background-light dark:bg-background-dark py-20">
   <div class="max-w-7xl mx-auto px-6">
-
     <div class="grid md:grid-cols-2 gap-12">
 
-      <!-- Card 1 -->
-      <div class="relative h-90 rounded-3xl overflow-hidden">
-        
+      <!-- CARD -->
+      <div class="group relative h-[320px] rounded-2xl overflow-hidden shadow-2xl">
+
         <!-- Image -->
         <img
           src="/assets/V16.PNG"
           alt="Pièces uniques"
-          class="absolute inset-0 w-full h-full object-cover"
+          class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
         />
 
-        <!-- Soft dark overlay -->
-        <div class="absolute inset-0"></div>
+        <!-- Soft dark gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
 
         <!-- Content -->
-        <div class="relative z-10 h-full flex flex-col justify-center pl-10">
-          <h3 class="text-white text-3xl font-semibold mb-4">
+        <div class="relative z-10 h-full flex flex-col justify-end p-10">
+          <h3 class="text-white text-2xl font-semibold mb-4">
             Pièces uniques
           </h3>
 
           <button
-            class="w-fit bg-[#ffed00] text-black text-2xs font-semibold px-10 py-3 rounded-lg hover:bg-[#ffee00bc] transition">
+            class="w-fit bg-[#ffed00] text-black text-xs font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
             DÉCOUVRIR
           </button>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="relative h-90 rounded-3xl overflow-hidden">
-        
+      <!-- CARD -->
+      <div class="group relative h-[320px] rounded-2xl overflow-hidden shadow-2xl">
+
         <!-- Image -->
         <img
           src="/assets/v17.PNG"
           alt="Marques rares"
-          class="absolute inset-0 w-full h-full object-cover"
+          class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
         />
 
-        <!-- Warm overlay -->
-        
+        <!-- Soft overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
 
         <!-- Content -->
-        <div class="relative z-10 h-full flex flex-col justify-center pl-10">
-          <h3 class="text-white text-3xl font-semibold mb-4">
+        <div class="relative z-10 h-full flex flex-col justify-end p-10">
+          <h3 class="text-white text-2xl font-semibold mb-4">
             Marques rares
           </h3>
 
           <button
-            class="w-fit bg-[#ffed00] text-black text-2xs font-semibold px-10 py-3 rounded-lg hover:bg-[#ffee00bc] transition">
+            class="w-fit bg-[#ffed00] text-black text-xs font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
             EXPLORER
           </button>
         </div>
       </div>
 
     </div>
-
   </div>
 </section>
 
@@ -148,7 +93,8 @@
 
 
 
-<section class="max-w-7xl mx-auto px-6 py-16 space-y-24 bg-white">
+
+<section class="max-w-7xl mx-auto px-6 py-16 space-y-24 bg-background-light dark:bg-background-dark">
 
   <!-- ================= ROW 1 ================= -->
   <div>
@@ -344,11 +290,11 @@
 
 
 
-<section class="bg-[#fffff1] py-24">
+<section class="bg-background-light dark:bg-background-dark py-24">
   <div class="max-w-7xl mx-auto px-6 text-center">
 
     <!-- Subtitle -->
-    <p class="text-xs tracking-[0.3em] text-yellow-400 font-semibold uppercase mb-4">
+    <p class="text-xs tracking-[0.3em] text-[#ffed00] font-semibold uppercase mb-4">
       Notre engagement
     </p>
 
@@ -358,7 +304,7 @@
     </h2>
 
     <!-- Divider -->
-    <div class="w-12 h-1 bg-yellow-400 mx-auto mb-16"></div>
+    <div class="w-12 h-1 bg-[#ffed00] mx-auto mb-16"></div>
 
     <!-- Cards -->
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -440,6 +386,25 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+
+<section class="bg-black text-white py-28 overflow-hidden">
+  <h2 class="text-center text-3xl tracking-widest mb-20">
+    POURQUOI NOUS CHOISIR
+  </h2>
+
+  <div class="relative w-full h-[420px] flex items-center justify-center perspective">
+
+    <div
+      *ngFor="let card of expertiseCards; let i = index"
+      class="cover-card"
+      [ngClass]="'pos-' + i"
+    >
+      {{ card }}
+    </div>
+
   </div>
 </section>
 

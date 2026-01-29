@@ -1,4 +1,5 @@
-<header class="w-full border-b border-gray-200 bg-white">
+<header  [ngClass]="fixed ? 'fixed top-0 left-0 w-full z-50' : 'relative'"
+         class="w-full border-b border-gray-200 bg-white">
   <!-- TOP HEADER -->
   <div class="flex items-center justify-between px-6 py-4">
     <!-- LEFT: MENU + LOGO -->
@@ -17,11 +18,19 @@
       </button>
 
       <!-- Logo image -->
-      <img
-        src="/assets/logo.png"
-        alt="JOTYA Logo"
-        class="h-10 w-auto object-contain cursor-pointer"
-      />
+   <img
+  src="/assets/logo.png"
+  alt="JOTYA Logo"
+  routerLink="/home"
+  class="h-14 w-auto object-contain cursor-pointer
+         transition-all duration-300 ease-out
+         hover:scale-105 hover:-translate-y-0.5
+         hover:drop-shadow-[0_6px_12px_rgba(0,0,0,0.15)]"
+/>
+
+
+
+
     </div>
 
     <!-- CENTER: SEARCH -->
@@ -76,9 +85,13 @@
       </button>
 
       <!-- User -->
-      <button class="group">
+      <button
+        class="group"
+        routerLink="/auth"
+        aria-label="User account and authentication"
+      >
         <svg
-          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-black"
+          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-[#9a9a93]"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
@@ -99,7 +112,7 @@
         aria-label="View shopping cart"
       >
         <svg
-          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-black"
+          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-[#9a9a93]"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
@@ -123,6 +136,51 @@
         </ng-template>
       </button>
     </div>
+
+
+    <!-- POSTEZ VOTRE ANNONCE Button -->
+      <button 
+  routerLink="/auth/vendeur-register"
+  class="flex items-center gap-2
+         px-3 md:px-4 py-1.5 md:py-2
+         bg-[#ffed00] hover:bg-[#ffed00]
+         text-black font-semibold uppercase
+         text-xs md:text-sm
+         shadow-md hover:shadow-lg hover:shadow-[#fff700]/20
+         hover:-translate-y-0.5
+         active:scale-95
+         transition-all duration-200
+         whitespace-nowrap ml-4"
+>
+  <!-- Plus icon in black circle -->
+  <span
+    class="flex items-center justify-center
+           w-4 h-4
+           bg-black rounded-full
+           shrink-0
+           transition-transform duration-200
+           group-hover:rotate-90"
+  >
+    <svg
+      class="w-2.5 h-2.5 text-white"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 4v16m8-8H4"
+      />
+    </svg>
+  </span>
+
+  <span class="leading-tight tracking-wide">
+    POSTEZ VOTRE ANNONCE
+  </span>
+</button>
+
   </div>
 
   <!-- BOTTOM NAV -->
