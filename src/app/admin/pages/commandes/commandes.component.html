@@ -1,0 +1,164 @@
+<div class="space-y-6">
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center">
+    <div>
+      <h1 class="text-2xl font-semibold">Transactions</h1>
+      <p class="text-sm text-gray-500">
+        Liste exhaustive de toutes les transactions de la plateforme.
+      </p>
+    </div>
+
+    <button
+      class="px-4 py-2 bg-yellow-400 rounded-lg text-sm font-medium hover:bg-yellow-500 transition"
+    >
+      Exporter
+    </button>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="bg-white p-4 rounded-xl shadow-sm grid grid-cols-1 md:grid-cols-4 gap-4">
+    <input
+      type="date"
+      class="px-3 py-2 border rounded-lg text-sm"
+      placeholder="Période"
+    />
+
+    <input
+      type="number"
+      placeholder="Montant min (MAD)"
+      class="px-3 py-2 border rounded-lg text-sm"
+    />
+
+    <select class="px-3 py-2 border rounded-lg text-sm">
+      <option>Tous les statuts</option>
+      <option>Livré</option>
+      <option>Expédié</option>
+      <option>En préparation</option>
+      <option>Conflit</option>
+    </select>
+
+    <button
+      class="bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition"
+    >
+      Filtrer
+    </button>
+  </div>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+    <div class="bg-white p-4 rounded-xl shadow-sm">
+      <p class="text-xs text-gray-400">TOTAL COMMANDES</p>
+      <p class="text-xl font-semibold">1.842</p>
+      <span class="text-xs text-green-500">+12%</span>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm">
+      <p class="text-xs text-gray-400">VOLUME TOTAL (MAD)</p>
+      <p class="text-xl font-semibold">942.500</p>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm">
+      <p class="text-xs text-gray-400">COMMISSION JOTYA (10%)</p>
+      <p class="text-xl font-semibold text-yellow-500">94.250</p>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm">
+      <p class="text-xs text-gray-400">LIVRAISONS EN COURS</p>
+      <p class="text-xl font-semibold">28</p>
+    </div>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="bg-white p-5 rounded-xl shadow-sm overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="border-b text-gray-400">
+        <tr>
+          <th class="text-left py-2">ID</th>
+          <th class="text-left py-2">Client</th>
+          <th class="text-left py-2">Vendeur</th>
+          <th class="text-left py-2">Montant</th>
+          <th class="text-left py-2">Commission</th>
+          <th class="text-left py-2">Livraison</th>
+          <th class="text-left py-2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr class="border-b hover:bg-gray-50">
+          <td class="py-3 font-medium">#JT-8829</td>
+          <td>Ahmed Mansouri</td>
+          <td>Luxury Boutique</td>
+          <td>9.500 MAD</td>
+          <td class="text-yellow-500">950 MAD</td>
+          <td>
+            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">
+              Livré
+            </span>
+          </td>
+          <td>👁️</td>
+        </tr>
+
+        <tr class="border-b hover:bg-gray-50">
+          <td class="py-3 font-medium">#JT-8827</td>
+          <td>Omar Benani</td>
+          <td>TechStore</td>
+          <td>8.200 MAD</td>
+          <td class="text-yellow-500">820 MAD</td>
+          <td>
+            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">
+              Expédié
+            </span>
+          </td>
+          <td>👁️</td>
+        </tr>
+
+        <tr class="border-b hover:bg-gray-50">
+          <td class="py-3 font-medium">#JT-8830</td>
+          <td>Meryem Louali</td>
+          <td>Vendeur Particulier</td>
+          <td>1.250 MAD</td>
+          <td class="text-yellow-500">125 MAD</td>
+          <td>
+            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 rounded text-xs">
+              En préparation
+            </span>
+          </td>
+          <td>👁️</td>
+        </tr>
+
+        <tr class="hover:bg-red-50">
+          <td class="py-3 font-medium text-red-500">#JT-8825</td>
+          <td>Youssef Kasmi</td>
+          <td>DesignHub</td>
+          <td class="text-red-500">3.400 MAD</td>
+          <td class="text-red-500">340 MAD</td>
+          <td>
+            <span class="px-2 py-1 bg-red-100 text-red-600 rounded text-xs">
+              Conflit
+            </span>
+          </td>
+          <td>❗</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <!-- PAGINATION -->
+    <div class="flex justify-between items-center mt-4 text-sm">
+      <span class="text-gray-400">
+        Affichage de 1–5 sur 1.842 commandes
+      </span>
+
+      <div class="flex gap-2">
+        <button class="w-8 h-8 border rounded">1</button>
+        <button class="w-8 h-8 border rounded bg-yellow-400">2</button>
+        <button class="w-8 h-8 border rounded">3</button>
+      </div>
+    </div>
+  </div>
+
+</div>

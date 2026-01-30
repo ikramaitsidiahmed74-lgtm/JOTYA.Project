@@ -1,0 +1,149 @@
+<div class="space-y-8">
+
+  <!-- HEADER -->
+  <div>
+    <h1 class="text-2xl font-semibold">Configuration Globale</h1>
+    <p class="text-sm text-gray-500">
+      Gérez les règles métier, les accès et la maintenance de la plateforme Jotya.
+    </p>
+  </div>
+
+  <!-- COMMISSION -->
+  <div class="bg-white rounded-xl shadow-sm">
+    <div class="p-5 border-b flex items-center gap-2">
+      <span class="text-yellow-500">⚙️</span>
+      <h2 class="font-semibold">Paramètres de Commission</h2>
+    </div>
+
+    <div class="p-5 space-y-3 max-w-md">
+      <label class="text-xs text-gray-500">
+        TAUX DE COMMISSION PLATEFORME (%)
+      </label>
+
+      <div class="flex gap-3">
+        <input
+          type="number"
+          value="10"
+          class="w-28 px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-yellow-400 outline-none"
+        />
+        <button
+          class="px-4 py-2 bg-yellow-400 rounded-lg text-sm font-medium hover:bg-yellow-500 transition"
+        >
+          Mettre à jour
+        </button>
+      </div>
+
+      <p class="text-xs text-gray-400">
+        Ce taux est appliqué sur chaque vente réussie d’un produit d’occasion.
+      </p>
+    </div>
+  </div>
+
+  <!-- ROLES & PERMISSIONS -->
+  <div class="bg-white rounded-xl shadow-sm">
+    <div class="p-5 border-b flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-500">🔐</span>
+        <h2 class="font-semibold">Gestion des Rôles & Permissions</h2>
+      </div>
+
+      <button
+        class="px-3 py-2 bg-yellow-400 rounded-lg text-sm font-medium"
+      >
+        + Nouveau Rôle
+      </button>
+    </div>
+
+    <div class="p-5 overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="text-gray-400 border-b">
+          <tr>
+            <th class="text-left py-2">Rôle</th>
+            <th class="text-center py-2">Accès Utilisateurs</th>
+            <th class="text-center py-2">Validation Produits</th>
+            <th class="text-center py-2">Paiements</th>
+            <th class="text-center py-2">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="border-b">
+            <td class="py-3 font-medium">Super Admin</td>
+            <td class="text-center">✅</td>
+            <td class="text-center">✅</td>
+            <td class="text-center">✅</td>
+            <td class="text-center">✏️</td>
+          </tr>
+
+          <tr class="border-b">
+            <td class="py-3 font-medium">Modérateur</td>
+            <td class="text-center">✅</td>
+            <td class="text-center">✅</td>
+            <td class="text-center text-gray-300">—</td>
+            <td class="text-center">✏️</td>
+          </tr>
+
+          <tr>
+            <td class="py-3 font-medium">Agent Support</td>
+            <td class="text-center">✅</td>
+            <td class="text-center text-gray-300">—</td>
+            <td class="text-center text-gray-300">—</td>
+            <td class="text-center">✏️</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BOTTOM GRID -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- PAYMENT -->
+    <div class="bg-white rounded-xl shadow-sm p-5 space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-500">💳</span>
+        <h2 class="font-semibold">Passerelles de Paiement</h2>
+      </div>
+
+      <div class="flex justify-between items-center border rounded-lg p-4">
+        <div>
+          <p class="font-medium text-sm">Carte Bancaire (CMI)</p>
+          <span class="text-xs text-gray-400">Actif au Maroc</span>
+        </div>
+
+        <span class="w-10 h-6 bg-yellow-400 rounded-full relative">
+          <span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- MAINTENANCE -->
+    <div class="bg-white rounded-xl shadow-sm p-5 space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-500">🛠️</span>
+        <h2 class="font-semibold">Maintenance du Site</h2>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-medium text-sm">Mode Maintenance</p>
+          <span class="text-xs text-gray-400">
+            Désactive l’accès public à la boutique.
+          </span>
+        </div>
+
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" class="sr-only peer" />
+          <div
+            class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-yellow-400
+            after:content-[''] after:absolute after:top-0.5 after:left-0.5
+            after:w-5 after:h-5 after:bg-white after:rounded-full
+            after:transition-all peer-checked:after:translate-x-full"
+          ></div>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="flex min-h-screen bg-gray-100">
+
+  <app-sidebar-admin class="w-64 shrink-0"></app-sidebar-admin>
+
+  <div class="flex-1 flex flex-col">
+
+    <header class="bg-white px-6 py-4 border-b flex justify-between items-center">
+      <input
+        type="text"
+        placeholder="Rechercher..."
+        class="w-72 px-4 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-yellow-400 outline-none"
+      />
+
+      <div class="flex gap-3">
+        <button class="px-4 py-2 border rounded-lg text-sm">
+          30 derniers jours
+        </button>
+        <button class="px-4 py-2 bg-yellow-400 rounded-lg font-medium text-sm">
+          Exporter
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-1 p-6 overflow-y-auto">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div>
