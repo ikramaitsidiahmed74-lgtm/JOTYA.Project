@@ -7,7 +7,6 @@ export const routes: Routes = [
   // Home route with lazy loading
   {
     path: 'home',
-    pathMatch: 'full',
     loadComponent: () => import('./home/home').then((m) => m.Home),
   },
 
@@ -33,6 +32,37 @@ export const routes: Routes = [
   {
     path: 'checkout',
     loadComponent: () => import('./checkout/checkout').then((m) => m.CheckoutComponent),
+  },
+
+  // Dashboard/Fournisseur pages routes
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./pages/dashboard/dashboard').then((m) => m.Dashboard),
+  },
+
+  {
+    path: 'products',
+    loadComponent: () => import('./pages/products/products').then((m) => m.Products),
+  },
+
+  {
+    path: 'sales',
+    loadComponent: () => import('./pages/sales/sales').then((m) => m.Sales),
+  },
+
+  {
+    path: 'orders',
+    loadComponent: () => import('./pages/orders/orders').then((m) => m.Orders),
+  },
+
+  {
+    path: 'messages',
+    loadComponent: () => import('./pages/messages/messages').then((m) => m.Messages),
+  },
+
+  {
+    path: 'settings',
+    loadComponent: () => import('./pages/settings/settings').then((m) => m.Settings),
   },
 
   // Auth routes with lazy loading
@@ -73,5 +103,5 @@ export const routes: Routes = [
   },
 
   // Wildcard route - redirect unknown routes to home
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: '/home' },
 ];

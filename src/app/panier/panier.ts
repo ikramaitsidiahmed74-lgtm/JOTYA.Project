@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { CartItem } from '../models/cart-item.model';
 import { PaymentMethod } from '../models/payment-method.model';
@@ -11,7 +12,7 @@ import { CheckoutService } from '../services/checkout.service';
 @Component({
   selector: 'app-panier',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './panier.html',
   styleUrls: ['./panier.css'],
 })

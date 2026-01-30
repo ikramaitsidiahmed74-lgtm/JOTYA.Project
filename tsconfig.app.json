@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src",          // ✅ ZID HADI
+    "rootDir": "./src",
     "outDir": "./out-tsc/app",
     "types": []
   },

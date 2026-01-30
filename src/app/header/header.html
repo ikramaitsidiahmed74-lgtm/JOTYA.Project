@@ -1,36 +1,52 @@
-<header  [ngClass]="fixed ? 'fixed top-0 left-0 w-full z-50' : 'relative'"
-         class="w-full border-b border-gray-200 bg-white">
-  <!-- TOP HEADER -->
+<header
+  [ngClass]="fixed ? 'fixed top-0 left-0 w-full z-50' : 'relative'"
+  class="w-full border-b border-gray-200 bg-white"
+>
+  <!-- ================= TOP HEADER ================= -->
   <div class="flex items-center justify-between px-6 py-4">
+
     <!-- LEFT: MENU + LOGO -->
     <div class="flex items-center gap-4">
       <!-- Menu icon -->
-      <button class="group">
-        <svg
-          class="w-7 h-7 text-gray-800 transition-transform duration-300 group-hover:scale-110"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <button
+  class="group flex items-center gap-2
+         text-gray-800 font-medium tracking-wide
+         transition-all duration-200
+         hover:text-black"
+  (click)="toggleMenu()"
+>
+  <!-- Icon -->
+  <svg
+    class="w-7 h-7 transition-transform duration-300 group-hover:scale-110"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
 
-      <!-- Logo image -->
-   <img
-  src="/assets/logo.png"
-  alt="JOTYA Logo"
-  routerLink="/home"
-  class="h-14 w-auto object-contain cursor-pointer
-         transition-all duration-300 ease-out
-         hover:scale-105 hover:-translate-y-0.5
-         hover:drop-shadow-[0_6px_12px_rgba(0,0,0,0.15)]"
-/>
+  <!-- Text -->
+  <span
+    class="text-xs md:text-sm uppercase
+           tracking-[0.2em]
+           select-none"
+  >
+    Menu
+  </span>
+</button>
 
 
-
-
+      <!-- Logo -->
+      <img
+        src="/assets/logo.png"
+        alt="JOTYA Logo"
+        routerLink="/home"
+        class="h-14 w-auto object-contain cursor-pointer
+               transition-all duration-300
+               hover:scale-105 hover:-translate-y-0.5
+               hover:drop-shadow-[0_6px_12px_rgba(0,0,0,0.15)]"
+      />
     </div>
 
     <!-- CENTER: SEARCH -->
@@ -38,150 +54,97 @@
       <input
         type="text"
         placeholder="Search products..."
-        class="w-full rounded-full border border-gray-300 px-5 py-2 pr-12 focus:outline-none focus:ring-2 focus:ring-black"
+        class="w-full rounded-full border border-gray-300 px-5 py-2 pr-12
+               focus:outline-none focus:ring-2 focus:ring-black"
       />
       <button
-        type="button"
-        class="absolute right-4 top-7 -translate-y-1/2 cursor-pointer transition-transform duration-300 hover:scale-110 text-gray-600"
-        aria-label="Search"
+        class="absolute right-4 top-1/2 -translate-y-1/2
+               transition-transform duration-300 hover:scale-110 text-gray-600"
       >
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M21 21l-4.35-4.35M5 11a6 6 0 1112 0 6 6 0 01-12 0z"
-          />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 21l-4.35-4.35M5 11a6 6 0 1112 0 6 6 0 01-12 0z"/>
         </svg>
       </button>
     </div>
 
     <!-- RIGHT: ICONS -->
     <div class="flex items-center gap-6">
-      <!-- Support -->
-      <button
-        class="group"
-        routerLink="/aide"
-        aria-label="View help and support"
-      >
-        <svg
-          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-[#9a9a93]"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
+      <!-- Help -->
+      <button routerLink="/aide" class="group">
+        <svg class="w-6 h-6 text-gray-800 transition group-hover:scale-110 group-hover:text-[#9a9a93]"
+             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
       </button>
 
       <!-- User -->
-      <button
-        class="group"
-        routerLink="/auth"
-        aria-label="User account and authentication"
-      >
-        <svg
-          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-[#9a9a93]"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-          />
+      <button routerLink="/auth" class="group">
+        <svg class="w-6 h-6 text-gray-800 transition group-hover:scale-110 group-hover:text-[#9a9a93]"
+             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5.121 17.804A13.937 13.937 0 0112 15
+                   c2.5 0 4.847.655 6.879 1.804
+                   M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
         </svg>
       </button>
 
       <!-- Cart -->
-      <button
-        class="group relative"
-        routerLink="/cart"
-        aria-label="View shopping cart"
-      >
-        <svg
-          class="w-6 h-6 text-gray-800 transition-all duration-300 group-hover:scale-110 group-hover:text-[#9a9a93]"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13l4-8m0 0h6"
-          />
+      <button routerLink="/cart" class="group relative">
+        <svg class="w-6 h-6 text-gray-800 transition group-hover:scale-110 group-hover:text-[#9a9a93]"
+             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4
+                   M7 13l-1.5 6h13M7 13l4-8m0 0h6"/>
         </svg>
-        <!-- Cart badge showing item count -->
+
         <span
-          *ngIf="cartItemsCount$ | async as count; else noItems"
-          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center min-w-[20px]"
+          *ngIf="cartItemsCount$ | async as count"
+          class="absolute -top-2 -right-2 bg-red-500 text-white
+                 text-xs font-bold rounded-full h-5 w-5
+                 flex items-center justify-center"
         >
           {{ count }}
         </span>
-        <ng-template #noItems>
-          <span class="hidden"></span>
-        </ng-template>
       </button>
     </div>
 
-
-    <!-- POSTEZ VOTRE ANNONCE Button -->
-      <button 
-  routerLink="/auth/vendeur-register"
-  class="flex items-center gap-2
-         px-3 md:px-4 py-1.5 md:py-2
-         bg-[#ffed00] hover:bg-[#ffed00]
-         text-black font-semibold uppercase
-         text-xs md:text-sm
-         shadow-md hover:shadow-lg hover:shadow-[#fff700]/20
-         hover:-translate-y-0.5
-         active:scale-95
-         transition-all duration-200
-         whitespace-nowrap ml-4"
->
-  <!-- Plus icon in black circle -->
-  <span
-    class="flex items-center justify-center
-           w-4 h-4
-           bg-black rounded-full
-           shrink-0
-           transition-transform duration-200
-           group-hover:rotate-90"
-  >
-    <svg
-      class="w-2.5 h-2.5 text-white"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="3"
-      viewBox="0 0 24 24"
+    <!-- CTA -->
+    <button
+      routerLink="/auth/vendeur-register"
+      class="ml-4 flex items-center gap-2 px-4 py-2
+             bg-[#ffed00] text-black text-xs md:text-sm
+             font-semibold uppercase
+             shadow-md hover:shadow-lg
+             hover:-translate-y-0.5 transition"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M12 4v16m8-8H4"
-      />
-    </svg>
-  </span>
-
-  <span class="leading-tight tracking-wide">
-    POSTEZ VOTRE ANNONCE
-  </span>
-</button>
+      <span class="w-4 h-4 bg-black rounded-full flex items-center justify-center">
+        <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
+      </span>
+      POSTEZ VOTRE ANNONCE
+    </button>
 
   </div>
 
-  <!-- BOTTOM NAV -->
+  <!-- ================= BOTTOM NAV (TOGGLE) ================= -->
+  <div
+    class="border-t border-gray-200 bg-white
+           overflow-hidden transition-all duration-300"
+    [class.max-h-0]="!menuOpen"
+    [class.max-h-[120px]]="menuOpen"
+  >
+    <nav class="flex justify-center gap-6 px-6 py-4 text-sm font-medium">
+      <a routerLink="/category/vetement" class="hover:text-[#fff700]">Vêtements</a>
+      <a routerLink="/category/accessoires" class="hover:text-[#fff700]">Accessoires</a>
+      <a routerLink="/category/electro" class="hover:text-[#fff700]">Pièces Uniques</a>
+      <a routerLink="/category/maison" class="hover:text-[#fff700]">Marques Rares</a>
+      <a routerLink="/category/livres" class="hover:text-[#fff700]">Électronique</a>
+      <a routerLink="/category/auto-moto" class="hover:text-[#fff700]">Vélos</a>
+      <a routerLink="/category/mode" class="hover:text-[#fff700]">Construction</a>
+    </nav>
+  </div>
+
 </header>

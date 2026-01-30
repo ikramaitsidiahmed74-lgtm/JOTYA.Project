@@ -12,8 +12,21 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./header.css'],
 })
 export class Header {
+  /* ================= FIXED HEADER ================= */
   @Input() fixed = false;
 
+  /* ================= MENU TOGGLE ================= */
+  menuOpen = false;
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
+  /* ================= CART COUNT ================= */
   readonly cartItemsCount$: Observable<number>;
 
   constructor(private readonly cartService: CartService) {
