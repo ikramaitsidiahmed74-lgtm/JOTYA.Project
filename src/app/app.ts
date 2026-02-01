@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Header } from './header/header';
 import { Header2 } from './header2/header2';
 import { Footer } from './footer/footer';
-import { Sidebar } from './components/sidebar/sidebar';
+import { Sidebar } from './fornisseur/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ import { Sidebar } from './components/sidebar/sidebar';
     Header,
     Header2,
     Footer,
-    Sidebar
+    Sidebar,
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
@@ -43,3 +43,4 @@ export class App {
     return this.router.url === '/' || this.router.url.startsWith('/home');
   }
 }
+
