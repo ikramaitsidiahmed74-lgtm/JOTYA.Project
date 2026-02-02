@@ -1,0 +1,39 @@
+/* Product Card Styles - Jotya Luxe Design */
+
+/* Shimmer loading animation */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #eae5cd 25%, #f4f2e6 50%, #eae5cd 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Hover effect for cart overlay */
+.product-card:hover .cart-overlay {
+  opacity: 1;
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eae5cd;
+  border-radius: 10px;
+}
+

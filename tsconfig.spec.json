@@ -1,9 +1,11 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+<<<<<<< HEAD
     "rootDir": "./src",
+=======
+    "rootDir": "src/app",
+>>>>>>> 54df383e3ef65b799c443c20681ae3009b6b758c
     "outDir": "./out-tsc/spec",
     "types": ["vitest/globals"]
   },

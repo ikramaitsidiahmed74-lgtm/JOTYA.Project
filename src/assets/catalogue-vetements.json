@@ -1,0 +1,606 @@
+{
+  "generatedAt": "2026-01-26",
+  "currency": "MAD",
+  "categories": [
+    {
+      "id": "robes",
+      "label": "Robes",
+      "items": [
+        {
+          "id": "robe-v1",
+          "name": "Robe Élégance V1",
+          "price": 290,
+          "description": "Robe fluide au tombé léger, idéale pour les sorties quotidiennes.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V1.jpg"
+        },
+        {
+          "id": "robe-v2",
+          "name": "Robe Élégance V2",
+          "price": 310,
+          "description": "Coupe flatteuse et confortable, parfaite pour un look chic-décontracté.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V2.jpg"
+        },
+        {
+          "id": "robe-v3",
+          "name": "Robe Élégance V3",
+          "price": 330,
+          "description": "Robe polyvalente avec finitions soignées pour toutes occasions.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V3.jpg"
+        },
+        {
+          "id": "robe-v4",
+          "name": "Robe Élégance V4",
+          "price": 320,
+          "description": "Silhouette féminine et matière agréable à porter.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V4.PNG"
+        },
+        {
+          "id": "robe-v5",
+          "name": "Robe Élégance V5",
+          "price": 340,
+          "description": "Design raffiné, idéale pour un style élégant et moderne.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V5.PNG"
+        },
+        {
+          "id": "robe-v6",
+          "name": "Robe Élégance V6",
+          "price": 300,
+          "description": "Robe légère avec une coupe confortable pour le quotidien.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V6.PNG"
+        },
+        {
+          "id": "robe-v7",
+          "name": "Robe Élégance V7",
+          "price": 315,
+          "description": "Look féminin et matière douce au toucher.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V7.PNG"
+        },
+        {
+          "id": "robe-v8",
+          "name": "Robe Élégance V8",
+          "price": 325,
+          "description": "Robe élégante adaptée aux journées comme aux soirées.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V8.PNG"
+        },
+        {
+          "id": "robe-v9",
+          "name": "Robe Élégance V9",
+          "price": 335,
+          "description": "Coupe soignée pour une allure moderne.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V9.PNG"
+        },
+        {
+          "id": "robe-v10",
+          "name": "Robe Élégance V10",
+          "price": 350,
+          "description": "Robe avec finitions élégantes et style intemporel.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V10.PNG"
+        },
+        {
+          "id": "robe-v11",
+          "name": "Robe Élégance V11",
+          "price": 355,
+          "description": "Silhouette raffinée, parfaite pour un look chic.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/V11.PNG"
+        },
+        {
+          "id": "robe-v17",
+          "name": "Robe Élégance V17",
+          "price": 345,
+          "description": "Robe confortable avec un style moderne.",
+          "category": "Robes",
+          "imageUrl": "assets/vetements/v17.PNG"
+        }
+      ]
+    },
+    {
+      "id": "tshirts-tops",
+      "label": "T-shirts & Tops",
+      "items": [
+        {
+          "id": "top-vt2",
+          "name": "Top Essentiel VT2",
+          "price": 140,
+          "description": "Top simple et polyvalent pour des looks quotidiens.",
+          "category": "T-shirts & Tops",
+          "imageUrl": "assets/vetements/VT2.PNG"
+        },
+        {
+          "id": "top-vt21",
+          "name": "Top Essentiel VT21",
+          "price": 150,
+          "description": "Coupe confortable, facile à assortir.",
+          "category": "T-shirts & Tops",
+          "imageUrl": "assets/vetements/VT21.PNG"
+        },
+        {
+          "id": "top-vt22",
+          "name": "Top Essentiel VT22",
+          "price": 155,
+          "description": "Top léger pour un style épuré.",
+          "category": "T-shirts & Tops",
+          "imageUrl": "assets/vetements/VT22.PNG"
+        },
+        {
+          "id": "top-vt23",
+          "name": "Top Essentiel VT23",
+          "price": 145,
+          "description": "Design minimaliste pour toutes saisons.",
+          "category": "T-shirts & Tops",
+          "imageUrl": "assets/vetements/VT23.PNG"
+        },
+        {
+          "id": "top-vt28",
+          "name": "Top Essentiel VT28",
+          "price": 160,
+          "description": "Top polyvalent avec finitions propres.",
+          "category": "T-shirts & Tops",
+          "imageUrl": "assets/vetements/VT28.PNG"
+        },
+        {
+          "id": "top-vt35",
+          "name": "Top Essentiel VT35",
+          "price": 165,
+          "description": "Confortable et facile à porter au quotidien.",
+          "category": "T-shirts & Tops",
+          "imageUrl": "assets/vetements/VT35.PNG"
+        }
+      ]
+    },
+    {
+      "id": "jupes",
+      "label": "Jupes",
+      "items": [
+        {
+          "id": "jupe-1",
+          "name": "Jupe Classique 1",
+          "price": 210,
+          "description": "Jupe élégante, idéale pour le bureau ou les sorties.",
+          "category": "Jupes",
+          "imageUrl": "assets/vetements/JUPE1.PNG"
+        },
+        {
+          "id": "jupe-3",
+          "name": "Jupe Classique 3",
+          "price": 225,
+          "description": "Coupe soignée et tissu confortable.",
+          "category": "Jupes",
+          "imageUrl": "assets/vetements/JUPE3.PNG"
+        }
+      ]
+    },
+    {
+      "id": "pantalons",
+      "label": "Pantalons",
+      "items": [
+        {
+          "id": "pantalon-vet",
+          "name": "Pantalon Tailoring",
+          "price": 260,
+          "description": "Pantalon droit élégant pour un style chic.",
+          "category": "Pantalons",
+          "imageUrl": "assets/vetements/vet pantalon.PNG"
+        }
+      ]
+    },
+    {
+      "id": "vestes",
+      "label": "Vestes & Blazers",
+      "items": [
+        {
+          "id": "veste-vet-jacket",
+          "name": "Veste Structurée",
+          "price": 380,
+          "description": "Veste chic pour compléter une tenue élégante.",
+          "category": "Vestes & Blazers",
+          "imageUrl": "assets/vetements/vet jacket.PNG"
+        },
+        {
+          "id": "veste-vete-jacket",
+          "name": "Veste Urbain",
+          "price": 395,
+          "description": "Coupe moderne avec finitions soignées.",
+          "category": "Vestes & Blazers",
+          "imageUrl": "assets/vetements/vete jacket.PNG"
+        },
+        {
+          "id": "veste-vete-jk",
+          "name": "Veste Casual",
+          "price": 370,
+          "description": "Veste polyvalente pour un style quotidien.",
+          "category": "Vestes & Blazers",
+          "imageUrl": "assets/vetements/vete jk.PNG"
+        }
+      ]
+    },
+    {
+      "id": "autres",
+      "label": "Autres",
+      "items": [
+        {
+          "id": "autre-1",
+          "name": "Vêtement Signature 1",
+          "price": 240,
+          "description": "Pièce élégante à associer selon vos envies.",
+          "category": "Autres",
+          "imageUrl": "assets/vetements/04a66d3e-8b6b-4d77-9d76-d29c74e134e5.jpeg"
+        },
+        {
+          "id": "autre-2",
+          "name": "Vêtement Signature 2",
+          "price": 250,
+          "description": "Style moderne pour un look raffiné.",
+          "category": "Autres",
+          "imageUrl": "assets/vetements/07878532805-e2.jpg"
+        },
+        {
+          "id": "autre-3",
+          "name": "Vêtement Signature 3",
+          "price": 255,
+          "description": "Coupe confortable et finitions propres.",
+          "category": "Autres",
+          "imageUrl": "assets/vetements/d9a97503-da9f-4e98-b957-3bc5ccf819e0.jpeg"
+        },
+        {
+          "id": "autre-4",
+          "name": "Vêtement Signature 4",
+          "price": 230,
+          "description": "Pièce polyvalente pour la garde-robe.",
+          "category": "Autres",
+          "imageUrl": "assets/vetements/vetemt ik.PNG"
+        },
+        {
+          "id": "autre-5",
+          "name": "Vêtement Signature 5",
+          "price": 235,
+          "description": "Design épuré pour un style moderne.",
+          "category": "Autres",
+          "imageUrl": "assets/vetements/vetik.PNG"
+        }
+      ]
+    },
+    {
+      "id": "electronique",
+      "label": "Électronique",
+      "items": [
+        {
+          "id": "elec-1",
+          "name": "Caméra Avec Baf 2",
+          "price": 890,
+          "description": "Caméra de surveillance haute définition avec baffle intégré.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/CAMERA AVEC BAF2.PNG"
+        },
+        {
+          "id": "elec-2",
+          "name": "Caméra 1",
+          "price": 650,
+          "description": "Caméra compacte pour la sécurité de votre maison.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/camera1.PNG"
+        },
+        {
+          "id": "elec-3",
+          "name": "Chargeur",
+          "price": 120,
+          "description": "Chargeur universel rapide et fiable.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/CHANIYOR.PNG"
+        },
+        {
+          "id": "elec-4",
+          "name": "PC Gamer 1",
+          "price": 8500,
+          "description": "Ordinateur de gaming haute performance.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/PC GAME1 - Copie.PNG"
+        },
+        {
+          "id": "elec-5",
+          "name": "PC 1",
+          "price": 4500,
+          "description": "Ordinateur portable polyvalent pour le travail et les loisirs.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/PC1.PNG"
+        },
+        {
+          "id": "elec-6",
+          "name": "PlayStation 1",
+          "price": 3200,
+          "description": "Console de jeux dernière génération.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/PLS1.PNG"
+        },
+        {
+          "id": "elec-7",
+          "name": "PlayStation 2",
+          "price": 3400,
+          "description": "Console de jeux avec manettes incluses.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/PLS2.PNG"
+        },
+        {
+          "id": "elec-8",
+          "name": "PlayStation 4",
+          "price": 3800,
+          "description": "Console de jeux édition spéciale.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/PLS4.PNG"
+        },
+        {
+          "id": "elec-9",
+          "name": "Télévision 1",
+          "price": 4200,
+          "description": "Téléviseur grand écran avec image cristalline.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/TELE1.PNG"
+        },
+        {
+          "id": "elec-10",
+          "name": "Télévision 2",
+          "price": 4500,
+          "description": "Téléviseur Smart TV avec connectivité complète.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/TELE2.PNG"
+        },
+        {
+          "id": "elec-11",
+          "name": "Télévision 3",
+          "price": 5200,
+          "description": "Téléviseur 4K Ultra HD pour une expérience immersive.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/TELE3.PNG"
+        },
+        {
+          "id": "elec-12",
+          "name": "Petite Télévision 1",
+          "price": 1800,
+          "description": "Téléviseur compact idéal pour les petits espaces.",
+          "category": "Électronique",
+          "imageUrl": "assets/electro/TELESGHIRE1.PNG"
+        }
+      ]
+    },
+    {
+      "id": "maison",
+      "label": "Maison & Décoration",
+      "items": [
+        {
+          "id": "maison-1",
+          "name": "Accessoire 2",
+          "price": 85,
+          "description": "Accessoire décoratif pour embellir votre intérieur.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ACS2.PNG"
+        },
+        {
+          "id": "maison-2",
+          "name": "Accessoire 4",
+          "price": 95,
+          "description": "Accessoire moderne pour une décoration élégante.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ACS4.PNG"
+        },
+        {
+          "id": "maison-3",
+          "name": "Accessoire 5",
+          "price": 110,
+          "description": "Accessoire raffiné pour un style contemporain.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ACS5.PNG"
+        },
+        {
+          "id": "maison-4",
+          "name": "Accessoire 51",
+          "price": 120,
+          "description": "Accessoire tendance pour décorer votre espace.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/acs51.PNG"
+        },
+        {
+          "id": "maison-5",
+          "name": "Accessoire 1",
+          "price": 75,
+          "description": "Accessoire polyvalent pour toutes les pièces.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ACSSISOIRE 1.PNG"
+        },
+        {
+          "id": "maison-6",
+          "name": "Article Déco",
+          "price": 180,
+          "description": "Objet décoratif unique pour votre maison.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/CHI HAJA.PNG"
+        },
+        {
+          "id": "maison-7",
+          "name": "Tasse 1",
+          "price": 45,
+          "description": "Tasse élégante en céramique artisanale.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/FIJANE1.PNG"
+        },
+        {
+          "id": "maison-8",
+          "name": "Tasse 2",
+          "price": 50,
+          "description": "Tasse design pour vos moments café ou thé.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/FINJAN2.PNG"
+        },
+        {
+          "id": "maison-9",
+          "name": "Couverture 2",
+          "price": 320,
+          "description": "Couverture douce et chaude pour vos soirées.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/KHALATE2.PNG"
+        },
+        {
+          "id": "maison-10",
+          "name": "Fil Déco",
+          "price": 35,
+          "description": "Fil décoratif pour personnaliser votre intérieur.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/KHATTT.PNG"
+        },
+        {
+          "id": "maison-11",
+          "name": "Couverture 10",
+          "price": 380,
+          "description": "Plaid confortable aux motifs traditionnels.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/LMANTA10.PNG"
+        },
+        {
+          "id": "maison-12",
+          "name": "Couverture 11",
+          "price": 395,
+          "description": "Couverture premium pour un confort optimal.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/LMANTA11.PNG"
+        },
+        {
+          "id": "maison-13",
+          "name": "Mortier 1",
+          "price": 150,
+          "description": "Mortier traditionnel en pierre naturelle.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/MAHRAZ1.PNG"
+        },
+        {
+          "id": "maison-14",
+          "name": "Balai 2",
+          "price": 65,
+          "description": "Balai artisanal en fibres naturelles.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/MIKNASA2.PNG"
+        },
+        {
+          "id": "maison-15",
+          "name": "Balai 3",
+          "price": 70,
+          "description": "Balai traditionnel de qualité supérieure.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/MIKNASA3.PNG"
+        },
+        {
+          "id": "maison-16",
+          "name": "Balai 1",
+          "price": 60,
+          "description": "Balai classique pour un nettoyage efficace.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/MIKNASSA1.PNG"
+        },
+        {
+          "id": "maison-17",
+          "name": "Balance 1",
+          "price": 220,
+          "description": "Balance traditionnelle décorative.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/mizane1.PNG"
+        },
+        {
+          "id": "maison-18",
+          "name": "Balance 2",
+          "price": 250,
+          "description": "Balance vintage pour une touche authentique.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/Mizane2.PNG"
+        },
+        {
+          "id": "maison-19",
+          "name": "Plateau 1",
+          "price": 180,
+          "description": "Plateau de service élégant et pratique.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/TABSSIL1.PNG"
+        },
+        {
+          "id": "maison-20",
+          "name": "Plateau 2",
+          "price": 195,
+          "description": "Plateau décoratif aux finitions soignées.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/TABSSIL2.PNG"
+        },
+        {
+          "id": "maison-21",
+          "name": "Pouf 4",
+          "price": 450,
+          "description": "Pouf marocain en cuir véritable.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/TAZARBITE4.PNG"
+        },
+        {
+          "id": "maison-22",
+          "name": "Vase 15",
+          "price": 280,
+          "description": "Vase artisanal aux motifs traditionnels.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/V15.PNG"
+        },
+        {
+          "id": "maison-23",
+          "name": "Vase 16",
+          "price": 295,
+          "description": "Vase décoratif pour sublimer vos fleurs.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/V16.PNG"
+        },
+        {
+          "id": "maison-24",
+          "name": "Tapis 1",
+          "price": 850,
+          "description": "Tapis berbère authentique fait main.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ZARBIA.PNG"
+        },
+        {
+          "id": "maison-25",
+          "name": "Tapis 2",
+          "price": 920,
+          "description": "Tapis traditionnel aux couleurs vives.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ZARBIA2.PNG"
+        },
+        {
+          "id": "maison-26",
+          "name": "Tapis 3",
+          "price": 780,
+          "description": "Tapis tissé à la main de qualité premium.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ZARBIA3.PNG"
+        },
+        {
+          "id": "maison-27",
+          "name": "Tapis 5",
+          "price": 1100,
+          "description": "Grand tapis marocain pour salon.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ZARBIA5.PNG"
+        },
+        {
+          "id": "maison-28",
+          "name": "Tapis 6",
+          "price": 950,
+          "description": "Tapis artisanal aux motifs géométriques.",
+          "category": "Maison & Décoration",
+          "imageUrl": "assets/maison/ZARBIA6.PNG"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "project": {
+    "name": "JOTYA",
+    "type": "E-Commerce Angular",
+    "version": "0.0.0",
+    "angular_version": "21.0.0",
+    "css_framework": "Tailwind CSS 4.1.12",
+    "ssr_enabled": true,
+    "generated_at": "2026-01-22"
+  },
+  "components": [
+    {
+      "id": 1,
+      "name": "App",
+      "type": "Component (Root)",
+      "selector": "app-root",
+      "path": "src/app/app.ts",
+      "template": "src/app/app.html",
+      "styles": "src/app/app.css",
+      "standalone": true,
+      "change_detection": "Default",
+      "status": "✅ Functional",
+      "functionality": "Root component - main entry point of the application",
+      "dependencies": {
+        "imports": ["RouterOutlet"],
+        "uses": ["signal", "Router"]
+      },
+      "ui_elements": ["app-home", "router-outlet"],
+      "buttons": [],
+      "forms": [],
+      "notes": "Uses RouterOutlet but no routes defined in app.routes. Needs integration of navigation.",
+      "recommendations": ["Integrate routes", "Add header/navbar"]
+    },
+    {
+      "id": 2,
+      "name": "Home",
+      "type": "Component (Page)",
+      "selector": "app-home",
+      "path": "src/app/home/home.ts",
+      "template": "src/app/home/home.html",
+      "styles": "src/app/home/home.css",
+      "standalone": true,
+      "change_detection": "Default",
+      "status": "✅ Functional",
+      "functionality": "Landing page with hero video and brand presentation",
+      "dependencies": {
+        "imports": [],
+        "assets": ["assets/jo.mp4"]
+      },
+      "ui_elements": [
+        "Video (autoplay/muted/loop)",
+        "Hero text (h1 'JOTIYA')",
+        "Subtitle (p 'Modern marketplace experience')",
+        "Dark overlay"
+      ],
+      "buttons": [],
+      "forms": [],
+      "notes": "Minimal content. Good starting point but missing CTA buttons to navigate to catalogue.",
+      "recommendations": [
+        "Add CTA button to catalogue",
+        "Add featured products section",
+        "Add categories section"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "CatalogueLuxe",
+      "type": "Component (Page)",
+      "selector": "app-catalogue-luxe",
+      "path": "src/app/catalogue-luxe/catalogue-luxe.component.ts",
+      "template": "src/app/catalogue-luxe/catalogue-luxe.component.html",
+      "styles": "src/app/catalogue-luxe/catalogue-luxe.component.css",
+      "standalone": true,
+      "change_detection": "Default",
+      "status": "✅ Functional but complex",
+      "functionality": "Full product catalogue with advanced filtering, sorting and pagination",
+      "lines_of_code": 382,
+      "implements": ["OnInit", "OnDestroy"],
+      "dependencies": {
+        "imports": [
+          "CommonModule",
+          "FormsModule",
+          "RouterModule",
+          "ProductCardComponent"
+        ],
+        "services": ["ProductService", "Router", "ActivatedRoute"],
+        "rxjs": ["Subject", "takeUntil"]
+      },
+      "properties": {
+        "products": "Product[]",
+        "filteredProducts": "Product[]",
+        "displayedProducts": "Product[]",
+        "categories": "Category[]",
+        "states": "ProductState[]",
+        "selectedCategory": "string",
+        "selectedStates": "ProductState[]",
+        "priceRange": "{ min: number, max: number }",
+        "sortBy": "SortOption",
+        "currentPage": "number",
+        "itemsPerPage": "number = 6",
+        "totalPages": "number"
+      },
+      "methods": {
+        "ngOnInit": "Load products and subscribe to route changes",
+        "ngOnDestroy": "Clean up subscriptions",
+        "applyFilters": "Filter by category, state, price",
+        "applySorting": "Sort by selection (nouveautes/prix/rating)",
+        "updatePagination": "Update displayed products",
+        "resetFilters": "Reset all filters",
+        "onCategorySelect": "Navigate to category route",
+        "onStateToggle": "Toggle state filter",
+        "onPriceChange": "Handle price range changes",
+        "onSortChange": "Apply new sort",
+        "toggleFavorite": "Toggle product favorite",
+        "addToCart": "Add product to cart (placeholder)",
+        "openProductDetail": "Open product detail (placeholder)",
+        "goToPage": "Navigate to specific page",
+        "loadMore": "Load next page",
+        "getPageNumbers": "Generate pagination numbers with ellipsis"
+      },
+      "ui_elements": {
+        "sidebar": [
+          "Dynamic catalogue title",
+          "Category list (5 categories)",
+          "State filter (checkboxes)",
+          "Price range (double range slider)",
+          "Reset button"
+        ],
+        "main": [
+          "Breadcrumb navigation",
+          "Sort toolbar",
+          "Product grid (responsive)",
+          "Pagination buttons",
+          "Empty state message",
+          "Load more button"
+        ]
+      },
+      "buttons": [
+        "Category selector buttons",
+        "State checkboxes",
+        "Sort dropdown",
+        "Pagination buttons (prev/next/pages)",
+        "Reset filters",
+        "Load more"
+      ],
+      "forms": [
+        "Price range inputs",
+        "Sort dropdown"
+      ],
+      "grid_responsive": {
+        "mobile": "1 column (grid-cols-1)",
+        "tablet": "2 columns (sm:grid-cols-2)",
+        "desktop": "3 columns (lg:grid-cols-3)"
+      },
+      "colors": {
+        "primary": "#FFD900",
+        "neutral": "stone",
+        "state_neuf": "emerald",
+        "state_excellent": "sky",
+        "state_bon": "amber"
+      },
+      "routes": ["catalogue-luxe/", "catalogue-luxe/:category"],
+      "notes": "Heavy component (382 lines). Advanced features: multi-filter, dynamic routing, pagination. Consider breaking into sub-components.",
+      "recommendations": [
+        "Split into smaller components",
+        "Extract filter logic to service",
+        "Add error handling",
+        "Add loading state during data fetch",
+        "Implement actual cart/detail pages"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "ProductCard",
+      "type": "Component (Reusable)",
+      "selector": "app-product-card",
+      "path": "src/app/shared/product-card/product-card.component.ts",
+      "template": "src/app/shared/product-card/product-card.component.html",
+      "styles": "src/app/shared/product-card/product-card.component.css",
+      "standalone": true,
+      "change_detection": "OnPush (optimized)",
+      "status": "✅ Functional",
+      "functionality": "Luxury product card with image, badges, price and interactive actions",
+      "dependencies": {
+        "imports": ["CommonModule"],
+        "models": ["Product", "ProductState"]
+      },
+      "inputs": {
+        "product": "Product | null",
+        "loading": "boolean = false",
+        "showFavorite": "boolean = true"
+      },
+      "outputs": {
+        "addToCart": "EventEmitter<Product>",
+        "favoriteToggle": "EventEmitter<Product>",
+        "viewDetail": "EventEmitter<Product>"
+      },
+      "methods": {
+        "onCardClick": "Emit viewDetail event",
+        "onFavoriteClick": "Emit favoriteToggle event (stopPropagation)",
+        "onAddToCart": "Emit addToCart event (stopPropagation)",
+        "getStateClass": "Return CSS classes for product state",
+        "get hasData": "Check if product data exists"
+      },
+      "ui_elements": [
+        "Image placeholder (aspect 3/4)",
+        "Verified badge (emerald)",
+        "Favorite button (hover reveal)",
+        "Product name (line clamp 2)",
+        "Price with MAD currency",
+        "Rating with stars",
+        "State badge (dynamic colors)",
+        "Add to cart button (hover overlay)"
+      ],
+      "buttons": [
+        "Favorite button (with icon)",
+        "Add to cart button"
+      ],
+      "hover_effects": [
+        "Image zoom (scale-110)",
+        "Shadow enhancement",
+        "Gradient overlay on image",
+        "Button slide-up animation"
+      ],
+      "loading_state": {
+        "enabled": true,
+        "animation": "shimmer",
+        "shows_placeholders": true
+      },
+      "colors": {
+        "neuf": "bg-emerald-50 text-emerald-700",
+        "excellent": "bg-sky-50 text-sky-700",
+        "bon": "bg-amber-50 text-amber-700"
+      },
+      "notes": "Well-crafted, reusable component with OnPush change detection. Shimmer loading animation. Ready for integration.",
+      "recommendations": [
+        "Add image error handling",
+        "Add accessibility (alt text, labels)",
+        "Consider extracting overlay to sub-component"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "VetementsCatalogue",
+      "type": "Component (Page)",
+      "selector": "app-vetements-catalogue",
+      "path": "src/app/vetements-catalogue/vetements-catalogue.component.ts",
+      "template": "src/app/vetements-catalogue/vetements-catalogue.component.html",
+      "standalone": true,
+      "change_detection": "OnPush",
+      "status": "✅ Functional (new)",
+      "functionality": "Specialized Vetements catalogue with simple pagination (3 pages x 6 products)",
+      "lines_of_code": 69,
+      "dependencies": {
+        "imports": ["CommonModule", "VetementProductCardComponent"],
+        "data_source": "static array"
+      },
+      "properties": {
+        "products": "VetementProduct[] (18 items static)",
+        "itemsPerPage": "number = 6",
+        "currentPage": "number = 1",
+        "isTransitioning": "boolean = false"
+      },
+      "methods": {
+        "totalPages": "Getter - calculate total pages",
+        "pageNumbers": "Getter - array of page numbers",
+        "visibleProducts": "Getter - slice products for current page",
+        "goToPage": "Navigate to specific page with fade transition",
+        "onViewProduct": "Log to console (placeholder)"
+      },
+      "ui_elements": [
+        "Page header (title + description)",
+        "Product grid (responsive 1/2/3)",
+        "Pagination buttons (1/2/3)",
+        "Previous/Next buttons"
+      ],
+      "pagination": {
+        "total_pages": 3,
+        "items_per_page": 6,
+        "total_items": 18
+      },
+      "grid_responsive": {
+        "mobile": "1 column",
+        "tablet": "2 columns",
+        "desktop": "3 columns"
+      },
+      "data": {
+        "example_products": [
+          "Blouson matelasse modern (1290 MAD) - New",
+          "Chemise en coton premium (620 MAD)",
+          "Robe fluide de soiree (1430 MAD) - Sale",
+          "... 15 more items"
+        ]
+      },
+      "notes": "Specialized component for Vetements only. No filters, no sorting. Simple and clean pagination. Ready for real images.",
+      "recommendations": [
+        "Add route /vetements",
+        "Replace static data with API",
+        "Add filters/sorting if needed",
+        "Implement real product images"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "VetementProductCard",
+      "type": "Component (Reusable)",
+      "selector": "app-vetement-product-card",
+      "path": "src/app/vetements-catalogue/product-card.component.ts",
+      "template": "src/app/vetements-catalogue/product-card.component.html",
+      "standalone": true,
+      "change_detection": "OnPush",
+      "status": "✅ Functional (new)",
+      "functionality": "Simplified product card for Vetements with placeholder image",
+      "dependencies": {
+        "imports": ["CommonModule"]
+      },
+      "inputs": {
+        "product": "VetementProduct (required)"
+      },
+      "outputs": {
+        "viewProduct": "EventEmitter<VetementProduct>"
+      },
+      "methods": {
+        "onViewProduct": "Emit product event",
+        "badgeClass": "Return CSS class based on badge type (New/Sale)",
+        "placeholderLabel": "Return product name initials for placeholder"
+      },
+      "ui_elements": [
+        "Placeholder image (gradient + initials circle)",
+        "Product name (2 lines max)",
+        "Optional badge (New/Sale)",
+        "Price with MAD currency",
+        "View Product button"
+      ],
+      "buttons": ["View Product"],
+      "hover_effects": [
+        "Card shadow enhancement",
+        "Placeholder zoom"
+      ],
+      "badge_colors": {
+        "Sale": "bg-rose-100 text-rose-700",
+        "New": "bg-emerald-100 text-emerald-700"
+      },
+      "notes": "Minimal, clean component. Placeholder with product initials. Ready for real images integration.",
+      "recommendations": [
+        "Add image integration when available",
+        "Add hover state text overlay",
+        "Consider adding quick-view modal"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "ProductService",
+      "type": "Service",
+      "path": "src/app/services/product.service.ts",
+      "providedIn": "root",
+      "status": "✅ Functional",
+      "functionality": "Provide products and categories data",
+      "methods": {
+        "getProducts": "Return Product[] (12 items)",
+        "getCategories": "Return Category[] (5 items)"
+      },
+      "exports": [
+        "ProductState (union type)",
+        "Category (interface)",
+        "Product (interface)"
+      ],
+      "data": {
+        "categories": [
+          { "id": "vetements", "label": "Vêtements", "icon": "👔", "count": 241 },
+          { "id": "accessoires", "label": "Accessoires", "icon": "👜", "count": 156 },
+          { "id": "jeux", "label": "Jeux", "icon": "🎮", "count": 89 },
+          { "id": "maison", "label": "Maison", "icon": "🏠", "count": 203 },
+          { "id": "electronique", "label": "Électronique", "icon": "📱", "count": 312 }
+        ],
+        "products_count": 12
+      },
+      "interfaces": {
+        "Product": {
+          "id": "number",
+          "name": "string",
+          "category": "string",
+          "price": "number",
+          "state": "ProductState",
+          "imageUrl": "string (Unsplash URL)",
+          "verified": "boolean",
+          "rating": "number | undefined",
+          "isFavorite": "boolean | undefined"
+        },
+        "Category": {
+          "id": "string",
+          "label": "string",
+          "icon": "string (emoji)",
+          "count": "number | undefined"
+        }
+      },
+      "notes": "Simple static service. Data hardcoded. Images from Unsplash (temporary). No HTTP client.",
+      "recommendations": [
+        "Add HttpClient for API integration",
+        "Implement caching strategy",
+        "Add error handling",
+        "Add mock data for testing",
+        "Extract categories to enum"
+      ]
+    }
+  ],
+  "routes": {
+    "status": "⚠️ Incomplete - Defined but not integrated",
+    "path": "src/app/app.routes.ts",
+    "current_routes": [
+      {
+        "path": "catalogue-luxe",
+        "component": "CatalogueLuxeComponent",
+        "description": "Full catalogue without category filter"
+      },
+      {
+        "path": "catalogue-luxe/:category",
+        "component": "CatalogueLuxeComponent",
+        "description": "Catalogue filtered by category"
+      }
+    ],
+    "needed_routes": [
+      {
+        "path": "",
+        "component": "Home",
+        "description": "Landing page"
+      },
+      {
+        "path": "vetements",
+        "component": "VetementsCatalogueComponent",
+        "description": "Specialized Vetements catalogue"
+      },
+      {
+        "path": "product/:id",
+        "component": "ProductDetailComponent (not yet created)",
+        "description": "Product detail page"
+      }
+    ],
+    "notes": "Routes defined in app.routes but not actually used. App currently uses Home as default.",
+    "recommendations": [
+      "Integrate routes into app routing",
+      "Add default route redirect",
+      "Create product detail component",
+      "Add route guards for authentication"
+    ]
+  },
+  "configuration": {
+    "app_config": {
+      "path": "src/app/app.config.ts",
+      "status": "✅ Functional",
+      "providers": [
+        "provideBrowserGlobalErrorListeners",
+        "provideRouter(routes)",
+        "provideClientHydration(withEventReplay)"
+      ]
+    },
+    "app_config_server": {
+      "path": "src/app/app.config.server.ts",
+      "status": "✅ Functional",
+      "features": ["SSR enabled", "Server-side rendering with prerender"]
+    }
+  },
+  "dependencies": {
+    "angular": {
+      "@angular/core": "^21.0.0",
+      "@angular/common": "^21.0.0",
+      "@angular/router": "^21.0.0",
+      "@angular/forms": "^21.0.0",
+      "@angular/platform-browser": "^21.0.0",
+      "@angular/platform-server": "^21.0.0",
+      "@angular/ssr": "^21.0.4",
+      "@angular/compiler": "^21.0.0"
+    },
+    "css": {
+      "tailwindcss": "^4.1.12",
+      "@tailwindcss/postcss": "^4.1.12",
+      "postcss": "^8.5.3"
+    },
+    "reactive": {
+      "rxjs": "~7.8.0"
+    },
+    "backend": {
+      "express": "^5.1.0"
+    },
+    "dev": {
+      "vitest": "^4.0.8",
+      "jsdom": "^27.1.0",
+      "typescript": "~5.9.2"
+    }
+  },
+  "project_status": {
+    "completeness": "60%",
+    "functional_features": [
+      "Standalone components architecture",
+      "Tailwind CSS styling",
+      "ProductService with data",
+      "CatalogueLuxe with filters/sort/pagination",
+      "ProductCard with hover effects",
+      "VetementsCatalogue with pagination",
+      "SSR ready configuration"
+    ],
+    "missing_features": [
+      "Route integration",
+      "Navigation header",
+      "Cart functionality",
+      "Product detail page",
+      "Real images",
+      "API integration",
+      "Unit tests",
+      "Authentication"
+    ],
+    "critical_tasks": [
+      "1. Integrate routes and navigation",
+      "2. Implement cart service",
+      "3. Create product detail page",
+      "4. Connect to backend API",
+      "5. Add unit tests"
+    ]
+  },
+  "summary": {
+    "total_components": 6,
+    "total_services": 1,
+    "total_routes": 2,
+    "standalone_components": 6,
+    "responsive_grids": 3,
+    "uses_tailwind": true,
+    "uses_ssr": true,
+    "uses_rxjs": true,
+    "test_coverage": "0%",
+    "critical_issues": 0,
+    "warnings": 3
+  }
+}

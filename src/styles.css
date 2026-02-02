@@ -2,5 +2,34 @@
 
 @import "tailwindcss";
 
+<<<<<<< HEAD
 
 
+=======
+/* Custom background colors for catalogue */
+@theme {
+  --color-background-light: #f8f7f4;
+  --color-background-dark: #1a1a1a;
+  --color-primary: #ffed00;
+  --color-primary-hover: #e6d600;
+}
+
+/* Reusable primary button component */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #1a1a1a;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 10px 25px -5px rgba(255, 237, 0, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+>>>>>>> 54df383e3ef65b799c443c20681ae3009b6b758c

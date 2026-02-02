@@ -1,0 +1,81 @@
+<!-- Similar Products Carousel - Auto-scrolling Marquee -->
+<section class="similar-products-carousel" *ngIf="products.length > 0">
+  
+  <!-- Section Header -->
+  <div class="carousel-header">
+    <h2 class="carousel-title">{{ title }}</h2>
+    <p class="carousel-subtitle">{{ subtitle }}</p>
+  </div>
+
+  <!-- Carousel Container -->
+  <div 
+    class="carousel-container"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <!-- Gradient Overlays for fade effect -->
+    <div class="gradient-overlay gradient-left"></div>
+    <div class="gradient-overlay gradient-right"></div>
+
+    <!-- Scrolling Track -->
+    <div 
+      #carouselTrack
+      class="carousel-track"
+      [class.paused]="isPaused"
+      [style.animation-duration]="animationDuration"
+    >
+      <!-- Product Cards (duplicated for infinite loop) -->
+      <article 
+        *ngFor="let product of displayProducts; let i = index; trackBy: trackByProduct"
+        class="product-card"
+        (click)="onProductClick(product.id)"
+        tabindex="0"
+        (keyup.enter)="onProductClick(product.id)"
+      >
+        <!-- Product Image -->
+        <div class="card-image">
+          <img 
+            [src]="product.imageUrl" 
+            [alt]="product.name"
+            loading="lazy"
+          />
+          <!-- State Badge -->
+          <span 
+            class="state-badge" 
+            [ngClass]="getStateBadgeClass(product.state)"
+          >
+            {{ product.state }}
+          </span>
+          <!-- Verified Badge -->
+          <span *ngIf="product.verified" class="verified-badge">
+            <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Vérifié
+          </span>
+        </div>
+
+        <!-- Product Info -->
+        <div class="card-content">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-category">{{ product.category }}</p>
+          <div class="product-price">
+            <span class="price-current">{{ formatPrice(product.price) }} DH</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Chargement des produits...</p>
+  </div>
+
+</section>
+
+<!-- Empty State -->
+<div *ngIf="!loading && products.length === 0" class="empty-state">
+  <p>Aucun produit similaire disponible</p>
+</div>
