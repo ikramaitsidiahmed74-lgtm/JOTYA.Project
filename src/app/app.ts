@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-<<<<<<< HEAD
 import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -19,13 +18,6 @@ import { Sidebar } from './fornisseur/sidebar/sidebar';
     Footer,
     Sidebar,
   ],
-=======
-import { RouterOutlet } from '@angular/router';
-
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
->>>>>>> 54df383e3ef65b799c443c20681ae3009b6b758c
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
@@ -34,7 +26,6 @@ export class App {
 
   constructor(public router: Router) {}
 
-  // Pages li fihom sidebar (admin)
   isDashboardRoute(): boolean {
     return [
       '/dashboard',
@@ -46,9 +37,7 @@ export class App {
     ].some((path) => this.router.url.startsWith(path));
   }
 
-  // Home page (full width)
   isHomeRoute(): boolean {
     return this.router.url === '/' || this.router.url.startsWith('/home');
   }
 }
-
