@@ -1,5 +1,10 @@
 
 <main class="max-w-[1200px] mx-auto px-4 sm:px-10 py-12">
+   <div class="flex items-center gap-2 mb-8 text-sm">
+          <a class="text-[#a19345] hover:underline" href="#">Accueil</a>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <span class="font-semibold">Aide &amp; Support</span>
+        </div>
   <!-- PageHeading -->
   <div class="mb-12">
     <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Support et Contact Client</h1>
@@ -100,30 +105,31 @@
               </div>
               <div>
                 <p class="font-bold text-lg">Téléphone</p>
-                <p class="text-[#a19345]">+212 (0) 5 22 00 00 00</p>
+                <p class="text-[#a19345]">+212 688 857 091 </p>
               </div>
             </div>
-            <div class="flex items-start gap-4">
+            <div class="flex items-start gap-4 cursor-pointer" (click)="openMaps()">
               <div class="p-3 bg-primary/10 rounded-lg">
                 <span class="material-symbols-outlined text-primary">location_on</span>
               </div>
               <div>
                 <p class="font-bold text-lg">Siège Social</p>
-                <p class="text-[#a19345]">AnfaPlace, Boulevard de la Corniche, Casablanca, Maroc</p>
+                <p class="text-[#a19345]">Whad Adahab, Ecole Academia, Ouarzazate, Maroc</p>
               </div>
             </div>
           </div>
         </div>
         <!-- Map Section -->
         <div
-          class="h-64 w-full rounded-xl overflow-hidden grayscale border border-[#eae5cd] relative"
+          class="h-64 w-full rounded-xl overflow-hidden grayscale border border-[#eae5cd] relative cursor-pointer"
+          (click)="openMaps()"
         >
           <div
             class="absolute inset-0 bg-cover bg-center"
             data-alt="Muted grayscale city map showing Casablanca location"
             data-location="Casablanca, Morocco"
             style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLGPm86CVmO2msg_y3U1zCIZzAbtSl5pkRV7XUTqA-XZ1m_LO59ujZR33q_L5wJar5S-WDYqZQl4vzTzqC9a0YWSaEYx-jqRXQyUq3_fvlys9wqcZCg6AYNe3_W8tiku0XqR7xDC6LygYtO7IH7x7UUjLWIQBvQy4LWS8t7nbMhcUt2WGXG-x5wBf0Qt5u-IQW_5a39zJORa896M02yMnUTaoEGRhVyqvUU8M6S3CRq6IZ-TABYDT-iuLVNir-VJieFvCyUXyccsiJ');
+              background-image: url('https://maps.app.goo.gl/NhfQZFbHoEiPuNwk6');
             "
           ></div>
           <div class="absolute inset-0 bg-black/10"></div>
