@@ -1,0 +1,137 @@
+<!-- Breadcrumb -->
+<nav class="border-b border-stone-200 bg-white">
+  <div class="mx-auto max-w-7xl px-6 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-stone-500">
+      <li><a routerLink="/" class="hover:text-[#ffed00] transition">Accueil</a></li>
+      <li class="flex items-center">
+        <svg class="h-4 w-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <a routerLink="/catalogue-luxe" class="hover:text-[#ffed00] transition">Catalogue</a>
+      </li>
+      <li class="flex items-center">
+        <svg class="h-4 w-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span class="font-semibold text-stone-900">{{ categoryLabel }}</span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Layout principal -->
+<div class="min-h-screen bg-linear-to-b from-stone-50 to-white">
+  <div class="mx-auto max-w-7xl px-6 py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+      
+      <!-- SIDEBAR CATÉGORIES -->
+      <aside class="w-full lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-200 p-6">
+          
+          <!-- Titre de la catégorie -->
+          <div class="mb-6">
+            <div class="flex items-center gap-3 mb-2">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-stone-100 text-stone-900"
+                [innerHTML]="safeCategoryIcon"
+                aria-hidden="true"
+              ></span>
+              <h1 class="text-2xl font-bold text-stone-900">{{ categoryLabel }}</h1>
+            </div>
+            <p class="text-sm text-stone-500">{{ categoryDescription }}</p>
+          </div>
+
+          <!-- Navigation catégories -->
+          <div class="mb-8">
+            <h2 class="text-sm font-bold text-stone-900 mb-4 uppercase tracking-wide">Toutes les catégories</h2>
+            
+            <ul class="space-y-2">
+              <li *ngFor="let category of categories">
+                <a
+                  [routerLink]="['/categories', category.id]"
+                  class="w-full flex items-center justify-between px-4 py-3 rounded-xl border-2 transition-all duration-200 cursor-pointer"
+                  [ngClass]="category.id === resolvedCategoryId 
+                    ? 'bg-[#ffed00] border-[#ffed00] text-black font-semibold shadow-md'
+                    : 'bg-white border-stone-200 text-stone-700 hover:border-[#ffed00] hover:shadow-sm'"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-stone-50 text-stone-800"
+                      [innerHTML]="safeIcons.get(category.id) || safeCategoryIcon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text-sm font-medium">{{ category.label }}</span>
+                  </div>
+                  <span *ngIf="category.count && category.id !== resolvedCategoryId" 
+                        class="text-xs bg-stone-100 px-2 py-1 rounded-full text-stone-600">
+                    {{ category.count }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Lien retour catalogue complet -->
+          <a
+            routerLink="/catalogue-luxe"
+            class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-black text-white text-sm font-semibold rounded-xl hover:bg-[#ffed00] hover:text-black transition-all duration-300"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Voir tout le catalogue
+          </a>
+        </div>
+      </aside>
+
+      <!-- CONTENU PRINCIPAL -->
+      <main class="flex-1">
+        
+        <!-- En-tête -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+          <p class="text-stone-600 text-sm">
+            <span class="font-bold text-stone-900">{{ products.length }}</span> articles trouvés dans <span class="font-semibold">{{ categoryLabel }}</span>
+          </p>
+        </div>
+
+        <!-- Grille de produits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          <ng-container *ngIf="!loading && products.length > 0">
+            <app-product-card
+              *ngFor="let product of products; trackBy: trackByProductId"
+              [product]="product"
+              (favoriteToggle)="toggleFavorite($event)"
+              (addToCart)="addToCart($event)"
+              (viewDetail)="openProductDetail($event)"
+            ></app-product-card>
+          </ng-container>
+
+          <!-- Loading state -->
+          <ng-container *ngIf="loading">
+            <app-product-card
+              *ngFor="let i of [1,2,3,4,5,6]"
+              [product]="null"
+              [loading]="true"
+              [showFavorite]="false"
+            ></app-product-card>
+          </ng-container>
+        </div>
+
+        <!-- Message si aucun produit -->
+        <div *ngIf="!loading && products.length === 0" class="text-center py-16">
+          <svg class="w-20 h-20 mx-auto text-stone-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+          </svg>
+          <h3 class="text-xl font-bold text-stone-900 mb-2">Aucun produit trouvé</h3>
+          <p class="text-stone-500 mb-6">Cette catégorie ne contient pas encore d'articles.</p>
+          <a
+            routerLink="/catalogue-luxe"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-[#ffed00] text-black font-semibold rounded-xl hover:bg-[#ffed00] hover:brightness-90 transition-all duration-300"
+          >
+            Découvrir le catalogue complet
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
