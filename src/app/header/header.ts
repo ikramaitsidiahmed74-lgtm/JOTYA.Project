@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable, map } from 'rxjs';
 import { CartService } from '../services/cart.service';
+import { ThemeService } from '../services/theme'; // <-- Zid had import
 
 @Component({
   selector: 'app-header',
@@ -12,14 +13,32 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./header.css'],
 })
 export class Header {
-  /**
-   * Observable that emits the total number of items in the cart.
-   * Used to display the cart badge count.
-   */
+  /* ================= FIXED HEADER ================= */
+  @Input() fixed = false;
+
+  /* ================= MENU TOGGLE ================= */
+  menuOpen = false;
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
+  /* ================= CART COUNT ================= */
   readonly cartItemsCount$: Observable<number>;
 
-  constructor(private readonly cartService: CartService) {
-    // Create an observable that maps cart items to total count
+  /* ================= THEME TOGGLE ================= */
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  constructor(
+    private readonly cartService: CartService,
+    public readonly themeService: ThemeService  // <-- Zid had line
+  ) {
     this.cartItemsCount$ = this.cartService.items$.pipe(
       map(items => this.cartService.getItemsCount(items))
     );

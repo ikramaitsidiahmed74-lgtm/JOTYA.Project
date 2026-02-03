@@ -1,67 +1,72 @@
-<header class="w-full border-b border-gray-200 bg-white">
+<header    [ngClass]="fixed ? 'fixed top-0 left-0 w-full z-50' : 'relative'"
+           class="w-full border-b border-gray-200 bg-white">
   <div class="border-b border-gray-200">
     <nav class="flex items-center justify-between px-6 md:px-8 py-3 md:py-4">
-       <!-- Navigation Links -->
-       <!-- Added `items-center` and `min-w-0` so inline items (including the PLUS button)
-         align vertically with the links and allow the center group to shrink responsively. -->
-       <div class="flex items-center justify-center gap-4 md:gap-8 text-sm md:text-base font-medium flex-1 min-w-0">
+      <!-- Navigation Links -->
+      <div class="flex justify-center gap-4 md:gap-8 text-sm md:text-base font-medium flex-1">
         <a
           routerLink="/category/vetement"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          VETEMENT
+          Vêtements
         </a>
         <a
           routerLink="/category/accessoires"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          ACCESSOIRES
+          Accessoires
         </a>
         <a
           routerLink="/category/electro"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          ELECTRO
+          Pièces Uniques
         </a>
         <a
           routerLink="/category/maison"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          MAISON
+          Marque Rares
         </a>
         <a
           routerLink="/category/jeux"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          JEUX
+          Maison 
         </a>
-      
+        <a
+          routerLink="/category/livres"
+          routerLinkActive="text-[#fff700]"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
+        >
+         Electronique
+        </a>
         <a
           routerLink="/category/auto-moto"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          AUTO 
+          Vélos
         </a>
         
         
         <a
           routerLink="/category/mode"
           routerLinkActive="text-[#fff700]"
-          class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800"
+          class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800"
         >
-          MODE
+          Construction
         </a>
 
         <!-- Plus Dropdown Menu -->
         <div class="relative group">
-          <button class="cursor-pointer transition-all duration-200 hover:text-[#9e9a20] text-gray-800 font-medium flex items-center gap-1 px-2 py-1 rounded-md hover:bg-gray-50">
-            PLUS
+          <button class="cursor-pointer transition-all duration-200 hover:text-[#fff700] text-gray-800  flex items-center gap-1 px-2  rounded-md hover:bg-gray-50">
+            Plus
             <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
@@ -70,41 +75,64 @@
           <!-- Dropdown Content -->
           <div class="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             <div class="py-2">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#9e9a20] transition-colors">
-                Sport & Loisirs
-              </a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#9e9a20] transition-colors">
-                Beauté & Santé
-              </a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#9e9a20] transition-colors">
-                Jardin & Extérieur
-              </a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#9e9a20] transition-colors">
-                Services
-              </a>
-              <div class="border-t border-gray-100 my-1"></div>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-[#9e9a20] transition-colors">
+              
+              <a href="#" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-[#fff700] transition-colors">
                 Voir tout le catalogue
               </a>
             </div>
           </div>
         </div>
       </div>
-      
-       <!-- POSTEZ VOTRE ANNONCE Button -->
-       <!-- Responsive tweaks: reduce horizontal padding on smaller screens, remove left margin on small
-         screens and restore on md+, allow wrapping below md to avoid overflow, and prevent
-         unwanted shrinking. No text, color or desktop size changes. -->
-       <button class="flex items-center gap-2 px-2 md:px-4 py-1 md:py-2 bg-[#fff700] hover:bg-[#ffaf02] text-black font-semibold uppercase text-xs md:text-sm rounded-full shadow-md hover:shadow-lg hover:shadow-[#fff700]/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 md:whitespace-nowrap whitespace-normal ml-0 md:ml-4 shrink-0">
-        <!-- Plus icon in black circle -->
-        <span class="flex items-center justify-center w-4 h-4 bg-black rounded-full shrink-0">
-          <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-          </svg>
-        </span>
-        <span class="leading-tight tracking-wide">POSTEZ VOTRE ANNONCE</span>
-      </button>
     </nav>
   </div>
-</header>
 
+  <div class="bg-[#ffed00] py-4 overflow-hidden">
+  <div class="relative w-full">
+    
+    <div  class="flex gap-10 whitespace-nowrap animate-scroll text-black text-xl font-medium">
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+
+      <!-- Duplication pour un défilement continu -->
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+      <span>EL HEMZA</span>
+      <span>EL HOUTA</span>
+    </div>
+  </div>
+</div>
+</header>

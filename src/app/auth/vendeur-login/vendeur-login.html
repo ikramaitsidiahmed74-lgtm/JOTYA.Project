@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submitVendeurLogin()" class="space-y-6">
+  <h1 class="text-3xl font-serif">Bienvenue</h1>
+
+  <input formControlName="email" placeholder="Email professionnel"
+    class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+
+  <input type="password" formControlName="password" placeholder="Mot de passe"
+    class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+
+  <button class="w-full transition duration-300 bg-[#FFED00] text-black py-3 tracking-widest font-medium hover:bg-black hover:text-white hover:shadow-lg">
+    SE CONNECTER
+  </button>
+
+  <p class="text-center text-sm text-gray-400 cursor-pointer" (click)="goRegister()">
+    Créer un compte
+  </p>
+</form>

@@ -1,4 +1,14 @@
-<app-header></app-header>
-<app-header2></app-header2>
-<router-outlet></router-outlet>
+<div class="flex flex-col min-h-screen w-full">
 
+  <!-- HEADER (غير فـ public pages) -->
+  <app-header *ngIf="!isDashboardRoute()"></app-header>
+
+  <!-- PAGE CONTENT -->
+  <main class="flex-1">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- FOOTER (غير فـ public pages) -->
+  <app-footer *ngIf="!isDashboardRoute()"></app-footer>
+
+</div>

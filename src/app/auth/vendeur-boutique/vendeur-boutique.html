@@ -1,0 +1,75 @@
+<h1 class="text-3xl font-serif">Votre boutique</h1>
+
+<form [formGroup]="form" class="space-y-6">
+  <input
+    formControlName="nomBoutique"
+    placeholder="Nom de la boutique"
+    class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none"
+  >
+
+  <input
+    formControlName="ville"
+    placeholder="Ville"
+    class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none"
+  >
+
+  <textarea
+    formControlName="description"
+    placeholder="Description"
+    class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none"
+  ></textarea>
+
+  <!-- LOGO -->
+  <div>
+    <p class="text-xs tracking-widest mb-2">LOGO</p>
+    <label
+      class="flex items-center justify-center h-32 border border-dashed border-gray-300 cursor-pointer hover:border-[#FFED00]"
+    >
+      <img
+        *ngIf="logoPreview"
+        [src]="logoPreview"
+        class="h-20 object-contain"
+      >
+      <span *ngIf="!logoPreview" class="text-gray-400 text-sm">
+        Uploader logo
+      </span>
+      <input
+        type="file"
+        class="hidden"
+        accept="image/*"
+        (change)="onLogoUpload($event)"
+      >
+    </label>
+  </div>
+
+  <!-- COVER -->
+  <div>
+    <p class="text-xs tracking-widest mb-2">IMAGE DE COUVERTURE</p>
+    <label
+      class="flex items-center justify-center h-40 border border-dashed border-gray-300 cursor-pointer hover:border-[#FFED00]"
+    >
+      <img
+        *ngIf="coverPreview"
+        [src]="coverPreview"
+        class="h-full w-full object-cover"
+      >
+      <span *ngIf="!coverPreview" class="text-gray-400 text-sm">
+        Uploader image
+      </span>
+      <input
+        type="file"
+        class="hidden"
+        accept="image/*"
+        (change)="onCoverUpload($event)"
+      >
+    </label>
+  </div>
+
+  <button
+    type="button"
+    (click)="next()"
+    class="w-full transition duration-300 bg-[#FFED00] text-black py-3 tracking-widest font-medium hover:bg-black hover:text-white hover:shadow-lg"
+  >
+    CONTINUER
+  </button>
+</form>
