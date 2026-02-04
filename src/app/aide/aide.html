@@ -1,5 +1,10 @@
-
-<main class="bg-background-light dark:bg-background-dark max-w-[1200px] mx-auto px-4 sm:px-10 py-12">
+<div class="bg-[#faf9f4] text-[#1d1a0c] min-h-screen">
+<main class="max-w-[1200px] mx-auto px-4 sm:px-10 py-12">
+   <div class="flex items-center gap-2 mb-8 text-sm">
+          <a class="text-[#a19345] hover:underline" href="#">Accueil</a>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <span class="font-semibold">Aide &amp; Support</span>
+        </div>
   <!-- PageHeading -->
   <div class="mb-12">
     <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Support et Contact Client</h1>
@@ -99,39 +104,42 @@
               </div>
               <div>
                 <p class="font-bold text-lg">Téléphone</p>
-                <p class="text-[#a19345]">+212 (0) 5 22 00 00 00</p>
+                <p class="text-[#a19345]">+212 688 857 091 </p>
               </div>
             </div>
-            <div class="flex items-start gap-4">
+            <div class="flex items-start gap-4 cursor-pointer" (click)="openMaps()">
               <div class="p-3 bg-primary/10 rounded-lg">
                 <span class="material-symbols-outlined text-[#ffed00]">location_on</span>
               </div>
               <div>
                 <p class="font-bold text-lg">Siège Social</p>
-                <p class="text-[#a19345]">AnfaPlace, Boulevard de la Corniche, Casablanca, Maroc</p>
+                <p class="text-[#a19345]">Whad Adahab, Ecole Academia, Ouarzazate, Maroc</p>
               </div>
             </div>
           </div>
         </div>
         <!-- Map Section -->
         <div
-          class="h-64 w-full rounded-xl overflow-hidden grayscale border border-[#eae5cd] relative"
-        >
-          <div
-            class="absolute inset-0 bg-cover bg-center"
-            data-alt="Muted grayscale city map showing Casablanca location"
-            data-location="Casablanca, Morocco"
-            style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLGPm86CVmO2msg_y3U1zCIZzAbtSl5pkRV7XUTqA-XZ1m_LO59ujZR33q_L5wJar5S-WDYqZQl4vzTzqC9a0YWSaEYx-jqRXQyUq3_fvlys9wqcZCg6AYNe3_W8tiku0XqR7xDC6LygYtO7IH7x7UUjLWIQBvQy4LWS8t7nbMhcUt2WGXG-x5wBf0Qt5u-IQW_5a39zJORa896M02yMnUTaoEGRhVyqvUU8M6S3CRq6IZ-TABYDT-iuLVNir-VJieFvCyUXyccsiJ');
-            "
-          ></div>
-          <div class="absolute inset-0 bg-black/10"></div>
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <span class="material-symbols-outlined text-primary text-5xl drop-shadow-lg"
-              >location_on</span
-            >
-          </div>
-        </div>
+  class="h-64 w-full rounded-xl overflow-hidden  border border-[#eae5cd] relative cursor-pointer"
+  (click)="openMaps()"
+>
+  <iframe
+    class="absolute inset-0 w-full h-full pointer-events-none"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6845.170537232803!2d-6.904469112442017!3d30.92621465433198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdbb118a7c207d71%3A0x2b786ff8dff4cc39!2sEcole%20Academia%20Ouarzazate!5e0!3m2!1sfr!2sma!4v1770043295551!5m2!1sfr!2sma"
+    style="border:0;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+
+  <div class="absolute inset-0"></div>
+
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <span class="material-symbols-outlined text-primary text-5xl drop-shadow-lg">
+      location_on
+    </span>
+  </div>
+</div>
+
         <!-- Social Media -->
         <div>
           <p class="font-bold mb-4">Suivez notre communauté</p>
@@ -170,9 +178,5 @@
     </div>
   </div>
 </main>
-<footer class="mt-20 border-t border-[#f4f2e6] dark:border-[#3a351a] py-12">
-  <div class="max-w-[1200px] mx-auto px-4 text-center text-sm text-[#a19345]">
-    <p>© 2026 Jotya Maroc. Produits d’occasion authentiques et accessibles pour tous.</p>
-  </div>
-</footer>
+</div>
 

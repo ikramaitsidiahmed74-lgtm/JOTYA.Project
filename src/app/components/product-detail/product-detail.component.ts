@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductService, Product } from '../../services/product.service';
 import { SimilarProductsCarouselComponent } from './similar-products-carousel/similar-products-carousel.component';
+import { CartService } from '../../services/cart.service';
+import { Product as CartProduct } from '../../models/product.model';
 
 // Interface étendue pour l'affichage
 interface ProductDisplay {
@@ -40,6 +42,7 @@ export class ProductDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
 
   product: ProductDisplay | null = null;
   selectedImage: string = '';
@@ -127,9 +130,16 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(): void {
     if (this.product) {
-      console.log(`Ajout au panier : ${this.quantity}x ${this.product.name}`);
-      // TODO: Implémenter l'ajout au panier via un service
-      alert(`${this.quantity}x ${this.product.name} ajouté au panier!`);
+      const cartProduct: CartProduct = {
+        id: String(this.product.id),
+        name: this.product.name,
+        brand: this.product.category || 'JOTYA',
+        condition: this.product.state || 'Excellent état',
+        price: this.product.price,
+        imageUrl: this.product.imageUrl
+      };
+      this.cartService.addItem(cartProduct, this.quantity);
+      console.log(`✅ Ajout au panier : ${this.quantity}x ${this.product.name}`);
     }
   }
 

@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './aide.html',
   styleUrls: ['./aide.css'],
 })
-export class Aide {}
+export class Aide {
+  mapsUrl = 'https://maps.app.goo.gl/NhfQZFbHoEiPuNwk6';
+
+  openMaps(): void {
+    window.open(this.mapsUrl, '_blank');
+  }
+}

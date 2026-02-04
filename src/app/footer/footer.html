@@ -20,7 +20,20 @@
   <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-12 items-start text-center md:text-left">
     <!-- LOGO -->
     <div class="md:col-span-1 -mt-4 md:pr-6 flex flex-col items-start">
-  <img src="assets/logo s w.png" alt="Jotya logo" class="h-14 mb-2" />
+<!-- Light mode -->
+<img
+  src="assets/logo.png"
+  alt="Jotya logo"
+  class="h-14 mb-2 block dark:hidden"
+/>
+
+<!-- Dark mode -->
+<img
+  src="assets/logo s w.png"
+  alt="Jotya logo"
+  class="h-14 mb-2 hidden dark:block"
+/>
+  
   <p class="text-sm leading-relaxed mt-1">
     LA MARKETPLACE DE PRODUITS D'OCCASION.<br />
     ACHETEZ MALIN, VENDEZ FACILEMENT.
@@ -33,9 +46,9 @@
       <div class="justify-self-center md:justify-self-start">
         <h3 class="font-semibold mb-3">MARKETPLACE</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-yellow-300 transition">Comment ça marche</a></li>
-          <li><a href="#" class="hover:text-yellow-300 transition">Authentification</a></li>
-          <li><a href="#" class="hover:text-yellow-300 transition">Vendre sur Jotya</a></li>
+          <li><a routerLink="/guide" class="hover:text-yellow-300 transition">Comment ça marche</a></li>
+          <li><a routerLink="/guide" class="hover:text-yellow-300 transition">Authentification</a></li>
+          <li><a routerLink="/auth/vendeur-register" class="hover:text-yellow-300 transition">Vendre sur Jotya</a></li>
         </ul>
       </div>
 
@@ -43,9 +56,9 @@
       <div class="justify-self-center md:justify-self-start">
         <h3 class="font-semibold mb-3">NAVIGATION</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-yellow-300 transition">Home</a></li>
-          <li><a href="#" class="hover:text-yellow-300 transition">Menu</a></li>
-          <li><a href="#" class="hover:text-yellow-300 transition">Mon panier</a></li>
+          <li><a routerLink="/home" class="hover:text-yellow-300 transition">Home</a></li>
+          <li><a routerLink="/catalogue-luxe" class="hover:text-yellow-300 transition">Menu</a></li>
+          <li><a routerLink="/cart" class="hover:text-yellow-300 transition">Mon panier</a></li>
         </ul>
       </div>
 
@@ -53,9 +66,9 @@
       <div class="justify-self-center md:justify-self-start">
         <h3 class="font-semibold mb-3">ASSISTANCE</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-yellow-300 transition">Support</a></li>
-          <li><a href="#" class="hover:text-yellow-300 transition">Faq</a></li>
-          <li><a href="#" class="hover:text-yellow-300 transition">Contact</a></li>
+          <li><a routerLink="/aide" class="hover:text-yellow-300 transition">Support</a></li>
+          <li><a routerLink="/aide" class="hover:text-yellow-300 transition">Faq</a></li>
+          <li><a routerLink="/aide" class="hover:text-yellow-300 transition">Contact</a></li>
         </ul>
       </div>
     </div>

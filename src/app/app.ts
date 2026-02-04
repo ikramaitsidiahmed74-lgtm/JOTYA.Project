@@ -3,9 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { Header } from './header/header';
-import { Header2 } from './header2/header2';
 import { Footer } from './footer/footer';
-import { Sidebar } from './fornisseur/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +12,7 @@ import { Sidebar } from './fornisseur/sidebar/sidebar';
     RouterOutlet,
     CommonModule,
     Header,
-    Header2,
     Footer,
-    Sidebar,
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],

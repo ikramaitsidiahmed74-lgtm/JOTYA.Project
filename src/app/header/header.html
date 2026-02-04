@@ -53,9 +53,8 @@
     <div class="flex-1 mx-8 max-w-xl relative">
       <input
         type="text"
-        placeholder="Search products..."
-        class="w-full rounded-full border border-gray-300 px-5 py-2 pr-12
-               focus:outline-none focus:ring-2 focus:ring-black"
+        placeholder="Rechercher des produits..."
+        class="w-full rounded-full border border-gray-300 px-5 py-2 pr-12 focus:outline-none focus:ring-2 focus:ring-black"
       />
       <button
         class="absolute right-4 top-1/2 -translate-y-1/2
@@ -70,6 +69,12 @@
 
     <!-- RIGHT: ICONS -->
     <div class="flex items-center gap-6">
+<button 
+  (click)="toggleTheme()" 
+  class="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-200">
+  {{ (themeService.isDarkMode$ | async) ? '☀️' : '🌙' }}
+</button>
+
       <!-- Help -->
       <button routerLink="/aide" class="group">
         <svg class="w-6 h-6 text-gray-800 transition group-hover:scale-110 group-hover:text-[#9a9a93]"
@@ -137,13 +142,14 @@
     [class.max-h-[120px]]="menuOpen"
   >
     <nav class="flex justify-center gap-6 px-6 py-4 text-sm font-medium">
-      <a routerLink="/category/vetement" class="hover:text-[#fff700]">Vêtements</a>
-      <a routerLink="/category/accessoires" class="hover:text-[#fff700]">Accessoires</a>
-      <a routerLink="/category/electro" class="hover:text-[#fff700]">Pièces Uniques</a>
-      <a routerLink="/category/maison" class="hover:text-[#fff700]">Marques Rares</a>
-      <a routerLink="/category/livres" class="hover:text-[#fff700]">Électronique</a>
-      <a routerLink="/category/auto-moto" class="hover:text-[#fff700]">Vélos</a>
-      <a routerLink="/category/mode" class="hover:text-[#fff700]">Construction</a>
+      <a routerLink="/catalogue-luxe" class="hover:text-[#938f21]">Tout le Catalogue</a>
+      <a routerLink="/catalogue-luxe/vetements" class="hover:text-[#938f21]">Vêtements</a>
+      <a routerLink="/catalogue-luxe/accessoires" class="hover:text-[#938f21]">Accessoires</a>
+      <a routerLink="/catalogue-luxe/pieces-uniques" class="hover:text-[#938f21]">Pièces Uniques</a>
+      <a routerLink="/catalogue-luxe/electronique" class="hover:text-[#938f21]">Électronique</a>
+      <a routerLink="/catalogue-luxe/maison" class="hover:text-[#938f21]">Maison</a>
+      <a routerLink="/catalogue-luxe/velo" class="hover:text-[#938f21]">Vélos</a>
+      <a routerLink="/catalogue-luxe/construction" class="hover:text-[#938f21]">Construction</a>
     </nav>
   </div>
 

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -89,7 +90,7 @@ export class Home implements OnInit, OnDestroy {
   }
 
   goToProduct(product: any) {
-    this.router.navigate(['/product', product.id]);
+    this.router.navigate(['/products', product.id]);
   }
 
   // ===================== 3D COVERFLOW =====================

@@ -8,6 +8,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Category, Product, ProductService, ProductState } from '../services/product.service';
 import { ProductCardComponent } from '../shared/product-card/product-card.component';
 import { CATEGORY_ICON_DEFAULT, CATEGORY_ICON_SVGS } from '../shared/icons/category-icons';
+import { CartService } from '../services/cart.service';
+import { Product as CartProduct } from '../models/product.model';
 
 type SortOption = 'nouveautes' | 'prix-asc' | 'prix-desc' | 'rating';
 
@@ -75,7 +77,8 @@ export class CatalogueLuxeComponent implements OnInit, OnDestroy {
     private readonly productService: ProductService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
-    private readonly sanitizer: DomSanitizer
+    private readonly sanitizer: DomSanitizer,
+    private readonly cartService: CartService
   ) {
     this.defaultCategoryIcon = this.toSafeIcon();
   }
@@ -291,19 +294,27 @@ export class CatalogueLuxeComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Ajouter au panier (à implémenter)
+   * Ajouter au panier
    */
   addToCart(product: Product): void {
-    console.log('Ajouter au panier:', product);
-    // TODO: Implémenter la logique d'ajout au panier
+    // Convert ProductService.Product to Cart's Product model
+    const cartProduct: CartProduct = {
+      id: String(product.id),
+      name: product.name,
+      brand: product.category || 'JOTYA',
+      condition: product.state,
+      price: product.price,
+      imageUrl: product.imageUrl
+    };
+    this.cartService.addItem(cartProduct, 1);
+    console.log('✅ Ajouté au panier:', product.name);
   }
 
   /**
    * Ouvrir le détail d'un produit
    */
   openProductDetail(product: Product): void {
-    console.log('Ouvrir détail:', product);
-    // TODO: Router vers la page de détail ou ouvrir un modal
+    this.router.navigate(['/products', product.id]);
   }
 
   /**

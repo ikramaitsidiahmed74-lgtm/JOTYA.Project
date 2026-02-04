@@ -1,0 +1,281 @@
+﻿/* =====================================================
+   HERO SECTION - Premium Second-Hand E-Commerce
+   Colors: White (#F9F9F7) + Soft Yellow (#F5C400)
+   Hierarchy: Products -> Text -> Logo
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  min-height: 100vh;
+  background: #F9F9F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5rem 2rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.hero-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: 100;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-logo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-logo.sticky {
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
+}
+
+.hero-logo img {
+  height: 45px;
+  width: auto;
+}
+
+.hero-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  max-width: 1300px;
+  width: 100%;
+  align-items: center;
+}
+
+/* ====== 3D CAROUSEL STYLES ====== */
+.scene, .a3d { 
+  display: grid;
+}
+
+.scene {
+  /* prevent scrollbars */
+  overflow: hidden;
+  /* for 3D look; smaller = more extreme effect */
+  perspective: 35em;
+  /* lateral fade */
+  mask: linear-gradient(90deg, #0000, red 20% 80%, #0000);
+  height: 500px;
+  position: relative;
+}
+
+.a3d {
+  /* middle align */
+  place-self: center;
+  /* don't flatten 3D transformed children 
+   * of this parent having its own 3D transform */
+  transform-style: preserve-3d;
+  animation: ry 32s linear infinite;
+}
+
+/* simplest y axis rotation */
+@keyframes ry { 
+  to { 
+    transform: rotateY(1turn);
+  } 
+}
+
+.card {
+  /* base card width, you may change this */
+  --w: 17.5em;
+  /* compute base angle corresponding to a card */
+  --ba: calc(360deg / var(--n));
+  /* stack in same one grid cell */
+  grid-area: 1 / 1;
+  width: var(--w);
+  aspect-ratio: 7 / 10;
+  object-fit: cover;
+  border-radius: 1.5em;
+  /* don't want to see back of cards in front of screen plane */
+  backface-visibility: hidden;
+  /* need to use a transform chain here, cannot use separate 
+   * rotate & translate properties because they'd be applied 
+   * in wrong order (translate, then rotate) for what we need */
+  transform: 
+    /* rotate around y axis */
+    rotateY(calc(var(--i) * var(--ba)))
+    /* only after that translate along z axis with minus */
+    translateZ(calc(-1 * (0.5 * var(--w) + 0.5em) / tan(0.5 * var(--ba))));
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a3d { 
+    animation-duration: 128s;
+  }
+}
+
+.hero-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-headline {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.hero-headline .highlight {
+  position: relative;
+  display: inline;
+}
+
+.hero-headline .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0.05em;
+  left: 0;
+  width: 100%;
+  height: 0.3em;
+  background: rgba(245, 196, 0, 0.4);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.hero-content.visible .hero-headline .highlight::after {
+  transform: scaleX(1);
+}
+
+.accent-line {
+  width: 50px;
+  height: 3px;
+  background: #F5C400;
+  margin: 1.5rem 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.hero-content.visible .accent-line {
+  transform: scaleX(1);
+}
+
+.hero-subheadline {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #666666;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 420px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 1rem 1.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: #F5C400;
+  color: #1a1a1a;
+  border-color: #F5C400;
+}
+
+.btn-primary:hover {
+  background: #1a1a1a;
+  color: #F5C400;
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #666666;
+  border-color: #e0e0e0;
+}
+
+.btn-secondary:hover {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  border-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card, .product-item, .hero-content, .hero-logo, .accent-line, .hero-headline .highlight::after {
+    transition: opacity 0.3s ease !important;
+    animation: none !important;
+  }
+  .hero.loaded .product-item { animation: none; }
+}
+
+@media (max-width: 1200px) {
+  .hero-main { gap: 3rem; }
+  .hero-headline { font-size: 2.5rem; }
+  .showcase-card { width: 280px; height: 350px; }
+  .product-item { width: 110px; height: 140px; }
+}
+
+@media (max-width: 992px) {
+  .hero-main { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+  .product-showcase { order: 1; height: 400px; }
+  .hero-content { order: 2; }
+  .hero-subheadline { margin-left: auto; margin-right: auto; }
+  .hero-cta-group { justify-content: center; }
+  .showcase-card { width: 240px; height: 300px; }
+  .product-item { width: 95px; height: 120px; }
+  .hero-logo { left: 50%; transform: translateX(-50%) translateY(-20px); }
+  .hero-logo.visible { transform: translateX(-50%) translateY(0); }
+  .hero-logo.sticky { left: 50%; transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 4rem 1.5rem 3rem; min-height: auto; }
+  .hero-headline { font-size: 2rem; line-height: 1.2; }
+  .hero-subheadline { font-size: 1rem; margin-bottom: 2rem; }
+  .product-showcase { height: 320px; }
+  .showcase-card { width: 200px; height: 250px; }
+  .product-item { width: 80px; height: 100px; border-radius: 12px; }
+  .hero.loaded .product-item { animation: none; }
+  .hero-cta-group { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 280px; text-align: center; }
+  .hero-logo img { height: 38px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 3.5rem 1rem 2rem; }
+  .hero-main { gap: 2rem; }
+  .hero-headline { font-size: 1.7rem; }
+  .hero-subheadline { font-size: 0.95rem; }
+  .product-showcase { height: 280px; }
+  .showcase-card { width: 160px; height: 200px; border-radius: 18px; }
+  .product-item { width: 65px; height: 82px; border-radius: 10px; }
+  .btn-primary, .btn-secondary { padding: 0.875rem 1.5rem; font-size: 0.85rem; }
+  .hero-logo img { height: 32px; }
+}

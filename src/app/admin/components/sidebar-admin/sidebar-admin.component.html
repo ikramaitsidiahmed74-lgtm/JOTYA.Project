@@ -15,15 +15,18 @@
     <p class="text-xs text-gray-400 mb-2">MAIN MENU</p>
 
     <a
-      href="/dashboard/admin"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium bg-yellow-100 text-yellow-700"
+      routerLink="/dashboard/admin"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-gray-600 hover:bg-gray-100"
     >
       <span class="w-4 h-4 bg-yellow-200 rounded-sm inline-block"></span>
       <span>Vue d'ensemble</span>
     </a>
 
     <a
-      href="/dashboard/admin/users"
+      routerLink="/dashboard/admin/users"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
       class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
     >
       <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
@@ -31,7 +34,8 @@
     </a>
 
     <a
-      href="/dashboard/admin/validation"
+      routerLink="/dashboard/admin/validation"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
       class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
     >
       <div class="flex items-center gap-3">
@@ -42,7 +46,8 @@
     </a>
 
     <a
-      href="/dashboard/admin/commandes"
+      routerLink="/dashboard/admin/commandes"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
       class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
     >
       <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
@@ -50,7 +55,8 @@
     </a>
 
     <a
-      href="/dashboard/admin/rapports"
+      routerLink="/dashboard/admin/rapports"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
       class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
     >
       <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
@@ -58,14 +64,16 @@
     </a>
 
     <a
-      href="/dashboard/admin/parametres"
+      routerLink="/dashboard/admin/parametres"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
       class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
     >
       <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
       <span>Paramètres</span>
     </a>
     <a
-      href="/dashboard/admin/centr-aide"
+      routerLink="/dashboard/admin/centr-aide"
+      routerLinkActive="bg-yellow-100 text-yellow-700"
       class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
     >
       <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>

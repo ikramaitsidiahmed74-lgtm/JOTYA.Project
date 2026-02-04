@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 <div class="flex flex-col min-h-screen w-full">
 
-  <!-- HEADER (غير فـ public pages) -->
+  <!-- HEADER (public pages only) -->
   <app-header *ngIf="!isDashboardRoute()"></app-header>
 
   <!-- PAGE CONTENT -->
@@ -9,10 +8,7 @@
     <router-outlet></router-outlet>
   </main>
 
-  <!-- FOOTER (غير فـ public pages) -->
+  <!-- FOOTER (public pages only) -->
   <app-footer *ngIf="!isDashboardRoute()"></app-footer>
 
 </div>
-=======
-<router-outlet></router-outlet>
->>>>>>> 54df383e3ef65b799c443c20681ae3009b6b758c

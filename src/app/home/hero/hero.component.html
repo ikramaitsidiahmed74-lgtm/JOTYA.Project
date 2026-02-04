@@ -1,0 +1,69 @@
+<!-- =====================================================
+   HERO SECTION - Premium Second-Hand E-Commerce
+   Hierarchy: 1) Products → 2) Text/CTAs → 3) Logo
+===================================================== -->
+<section class="hero" [class.loaded]="isLoaded">
+
+  <!-- 3️⃣ LOGO (Appears Last - Top Left) -->
+  <div 
+    class="hero-logo" 
+    [class.visible]="showLogo"
+    [class.sticky]="isLogoSticky"
+  >
+    <img [src]="logoUrl" alt="Jotya Logo" />
+  </div>
+
+  <!-- Main Container -->
+  <div class="hero-main">
+
+    <!-- 1️⃣ MAIN FOCUS: 3D Rotating Carousel -->
+    <div class="scene">
+      <div class="a3d" [style.--n]="carouselCount">
+        <img 
+          *ngFor="let photoId of carouselData; let i = index"
+          class="card"
+          [src]="'https://images.unsplash.com/photo-' + photoId + '?w=280'"
+          [style.--i]="i"
+          alt="Product Image"
+        />
+      </div>
+    </div>
+
+    <!-- 2️⃣ SECONDARY: Text Content & CTAs -->
+    <div class="hero-content" [class.visible]="showText">
+      
+      <!-- Headline -->
+      <h1 class="hero-headline">
+        Chaque pièce mérite une 
+        <span class="highlight">seconde chance</span>
+      </h1>
+
+      <!-- Yellow accent line -->
+      <div class="accent-line"></div>
+
+      <!-- Sub-headline -->
+      <p class="hero-subheadline">
+        Vêtements et accessoires soigneusement sélectionnés pour une nouvelle vie.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-cta-group">
+        <button 
+          class="btn-primary"
+          (click)="navigateTo('/catalogue-luxe')"
+        >
+          Découvrir les trouvailles
+        </button>
+        <button 
+          class="btn-secondary"
+          (click)="navigateTo('/guide')"
+        >
+          Comment on sélectionne
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
