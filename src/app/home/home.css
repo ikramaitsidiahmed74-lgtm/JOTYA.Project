@@ -207,3 +207,134 @@
   transform: translateX(380px) rotateY(-45deg) scale(0.75);
   opacity: 0.4;
 }
+
+/* =====================================================
+   3D ROTATING CAROUSEL
+===================================================== */
+.scene, .carousel-3d {
+  display: grid;
+}
+
+.scene {
+  overflow: visible;
+  perspective: 35em;
+  mask: linear-gradient(90deg, transparent, #000 15% 85%, transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, #000 15% 85%, transparent);
+  width: 100%;
+  height: 450px;
+}
+
+.carousel-3d {
+  place-self: center;
+  transform-style: preserve-3d;
+  animation: carousel-rotate 32s linear infinite;
+}
+
+@keyframes carousel-rotate {
+  to { 
+    transform: rotateY(1turn); 
+  }
+}
+
+.carousel-card {
+  --w: 14em;
+  --ba: calc(1turn / var(--n));
+  grid-area: 1 / 1;
+  width: var(--w);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 1.25em;
+  backface-visibility: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transform:
+    rotateY(calc(var(--i) * var(--ba)))
+    translateZ(calc(-1 * (.5 * var(--w) + .5em) / tan(.5 * var(--ba))));
+  transition: box-shadow 0.3s ease;
+}
+
+.carousel-card:hover {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Pause on hover */
+.scene:hover .carousel-3d {
+  animation-play-state: paused;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-3d {
+    animation-duration: 128s;
+  }
+}
+
+/* Responsive carousel */
+@media (max-width: 1024px) {
+  .scene {
+    height: 380px;
+  }
+  .carousel-card {
+    --w: 12em;
+  }
+}
+
+@media (max-width: 768px) {
+  .scene {
+    height: 320px;
+  }
+  .carousel-card {
+    --w: 10em;
+  }
+}
+
+@media (max-width: 480px) {
+  .scene {
+    height: 280px;
+  }
+  .carousel-card {
+    --w: 8em;
+  }
+}
+
+/* =====================================================
+   HERO SECTION ANIMATIONS
+===================================================== */
+
+/* Main content: starts off-screen right, then moves to center and rises */
+.hero-content {
+  opacity: 0;
+  transform: translateX(100px) translateY(30px);
+  transition: 
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated state: centered and risen */
+.hero-content-animated {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Buttons: hidden initially, fade-in after content animation */
+.hero-buttons {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+    opacity 0.6s ease-out 1s,
+    transform 0.6s ease-out 1s;
+}
+
+/* Buttons animated state */
+.hero-buttons-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion: instant transitions */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-buttons {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+  }
+}

@@ -16,6 +16,25 @@ export class Home implements OnInit, OnDestroy {
   pauseScroll = false;
   pauseScroll2 = false;
 
+  // Hero animation state
+  heroAnimated = false;
+
+  // 3D Carousel Data - Images for rotating carousel
+  carouselImages = [
+    '/assets/V1.jpg',
+    '/assets/V5.PNG',
+    '/assets/V10.PNG',
+    '/assets/V9.PNG',
+    '/assets/V12.jpg',
+    '/assets/V13.jpg',
+    '/assets/V14.jpg',
+    '/assets/V18.PNG',
+    '/assets/V19.PNG',
+    '/assets/V20.PNG',
+    '/assets/V21.PNG',
+    '/assets/V22.PNG'
+  ];
+
   constructor(private router: Router) {}
 
   goRegisterVendeur() {
@@ -105,6 +124,11 @@ export class Home implements OnInit, OnDestroy {
   private coverInterval!: any;
 
   ngOnInit() {
+    // Trigger hero animation after a short delay
+    setTimeout(() => {
+      this.heroAnimated = true;
+    }, 100);
+
     this.coverInterval = setInterval(() => {
       this.rotateCoverflow();
     }, 2500);
