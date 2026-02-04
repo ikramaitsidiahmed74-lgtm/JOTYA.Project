@@ -16,9 +16,12 @@ import { CheckoutService } from '../services/checkout.service';
   templateUrl: './panier.html',
   styleUrls: ['./panier.css'],
 })
+
+
 export class Panier implements OnInit {
   readonly authenticationFee = 250;
   readonly shippingCost = 0;
+
   readonly paymentMethods: { id: PaymentMethod; label: string; icon: string }[] = [
     { id: 'credit-card', label: 'Carte Bancaire', icon: 'credit_card' },
     { id: 'paypal', label: 'PayPal', icon: 'account_balance_wallet' },
@@ -27,6 +30,7 @@ export class Panier implements OnInit {
     { id: 'bank-transfer', label: 'Virement / Cash', icon: 'payments' },
   ];
 
+ 
   cartItems$!: Observable<CartItem[]>;
   paymentMethod$!: Observable<PaymentMethod | null>;
   totals$!: Observable<{ subtotal: number; itemsCount: number; total: number }>;
@@ -37,7 +41,8 @@ export class Panier implements OnInit {
     private readonly cartService: CartService,
     private readonly checkoutService: CheckoutService,
     private readonly router: Router
-  ) {
+  )
+   {
     this.cartItems$ = this.cartService.items$;
     this.paymentMethod$ = this.checkoutService.paymentMethod$;
     this.totals$ = this.cartItems$.pipe(
