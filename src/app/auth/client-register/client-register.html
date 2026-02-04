@@ -1,0 +1,19 @@
+<form [formGroup]="clientRegisterForm" (ngSubmit)="submit()" class="space-y-4">
+
+  <h1 class="text-3xl font-serif">Créer un compte</h1>
+
+  <input formControlName="fullname" placeholder="Nom complet" class="w-full border-b py-2 focus:border-[#FFED00] focus:outline-none">
+  <input formControlName="email" placeholder="Email" class="w-full border-b py-2 focus:border-[#FFED00] focus:outline-none">
+  <input type="password" formControlName="password" placeholder="Mot de passe" class="w-full border-b py-2 focus:border-[#FFED00] focus:outline-none">
+  <input type="password" formControlName="confirmPassword" placeholder="Confirmer mot de passe" class="w-full border-b py-2 focus:border-[#FFED00] focus:outline-none">
+
+  <button type="submit" class="w-full bg-[#FFED00] text-black py-3 mt-4 hover:bg-black hover:text-white transition">
+    CRÉER MON COMPTE
+  </button>
+
+  <p class="text-center text-sm text-gray-400 cursor-pointer mt-2"
+     routerLink="/auth/login">
+    Se connecter
+  </p>
+
+</form>

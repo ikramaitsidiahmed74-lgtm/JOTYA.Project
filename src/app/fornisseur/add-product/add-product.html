@@ -1,0 +1,148 @@
+<div class="w-full bg-white p-6 space-y-6">
+
+  <!-- Title -->
+  <div>
+    <h2 class="text-xl font-semibold text-gray-900">Ajouter un produit</h2>
+    <p class="text-sm text-gray-500">Vendez vos pièces en toute confiance</p>
+  </div>
+
+  <!-- Upload Box -->
+  <div
+    class="w-full border-2 border-dashed border-gray-200 rounded-xl p-10 flex flex-col items-center justify-center text-center gap-3"
+  >
+    <div
+      class="w-12 h-12 rounded-full bg-[#ffed00]/20 flex items-center justify-center"
+    >
+      <span class="material-symbols-outlined text-[#ffed00]">
+        photo_camera
+      </span>
+    </div>
+
+    <p class="text-sm font-medium text-gray-700">
+      Glissez-déposez vos photos ici
+    </p>
+    <p class="text-xs text-gray-400">
+      Ajoutez jusqu’à 10 photos – Fond neutre recommandé
+    </p>
+
+    <button
+      class="mt-2 px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50"
+    >
+      Parcourir les fichiers
+    </button>
+  </div>
+
+  <!-- Form Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Left -->
+    <div class="lg:col-span-2 space-y-4">
+
+      <!-- Title -->
+      <div>
+        <label class="text-xs font-medium text-gray-600">
+          TITRE DE L’ANNONCE
+        </label>
+        <input
+          type="text"
+          placeholder="Ex : Sac à main en cuir matelassé"
+          class="w-full mt-1 px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ffed00]"
+        />
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="text-xs font-medium text-gray-600">
+          DESCRIPTION DÉTAILLÉE
+        </label>
+        <textarea
+          rows="5"
+          placeholder="Décrivez votre pièce : dimensions, matière, année d’achat..."
+          class="w-full mt-1 px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ffed00]"
+        ></textarea>
+      </div>
+
+      <!-- Selects -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-medium text-gray-600">CATÉGORIE</label>
+          <select
+            class="w-full mt-1 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ffed00]"
+          >
+            <option>Marquinerie</option>
+            <option>Bijoux</option>
+            <option>Montres</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="text-xs font-medium text-gray-600">ÉTAT</label>
+          <select
+            class="w-full mt-1 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ffed00]"
+          >
+            <option>Excellent</option>
+            <option>Très bon</option>
+            <option>Bon</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div>
+        <label class="text-xs font-medium text-gray-600">
+          PRIX DE VENTE
+        </label>
+        <div class="relative mt-1">
+          <input
+            type="number"
+            placeholder="0.00"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl pr-14 focus:ring-2 focus:ring-[#ffed00]"
+          />
+          <span
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+          >
+            MAD
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Card -->
+    <div class="space-y-4">
+
+      <div class="border border-gray-200 rounded-xl p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[#ffed00]">
+            verified
+          </span>
+          <p class="text-sm font-semibold">Confiance JOTYA</p>
+        </div>
+
+        <p class="text-xs text-gray-500 leading-relaxed">
+          Chaque pièce est soumise à un contrôle qualité rigoureux et une
+          vérification d’authenticité par nos experts avant l’expédition
+          à l’acheteur.
+        </p>
+      </div>
+
+      <button
+        class="w-full bg-[#ffed00] hover:bg-[#f5e400] text-black font-medium py-3 rounded-xl"
+      >
+        Publier le produit
+      </button>
+
+      <button
+        class="w-full border border-gray-300 py-3 rounded-xl text-sm hover:bg-gray-50"
+      >
+        Enregistrer comme brouillon
+      </button>
+
+      <p class="text-xs text-center text-gray-400">
+        Besoin d’aide pour estimer le prix ?
+      </p>
+
+    </div>
+
+  </div>
+</div>

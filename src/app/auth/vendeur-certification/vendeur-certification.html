@@ -1,0 +1,98 @@
+<h1 class="text-3xl font-serif">Certification</h1>
+
+<!-- BADGE -->
+<div class="flex items-center gap-3 bg-gray-50 p-4 border-l-4 border-[#FFED00]">
+  <div class="w-10 h-10 rounded-full bg-[#FFED00] flex items-center justify-center font-bold">
+    ✓
+  </div>
+  <div>
+    <p class="text-sm font-medium">Badge de confiance</p>
+    <p class="text-xs text-gray-400">Profil vendeur vérifié</p>
+  </div>
+</div>
+
+<form [formGroup]="form" class="space-y-6">
+  <input
+    formControlName="siret"
+    placeholder="ICE / SIRET"
+    class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none"
+  >
+
+  <!-- IDENTITY -->
+  <div class="space-y-4">
+    <p class="text-xs tracking-widest">PIÈCE D’IDENTITÉ</p>
+
+    <label
+      class="flex flex-col items-center justify-center h-40 border border-dashed border-gray-300 cursor-pointer hover:border-[#FFED00]"
+    >
+      <img
+        *ngIf="idRectoPreview"
+        [src]="idRectoPreview"
+        class="h-full w-full object-cover"
+      >
+      <span *ngIf="!idRectoPreview" class="text-sm text-gray-400">
+        Uploader Recto
+      </span>
+      <input
+        type="file"
+        accept="image/*"
+        class="hidden"
+        (change)="onIdRectoUpload($event)"
+      >
+    </label>
+
+    <label
+      class="flex flex-col items-center justify-center h-40 border border-dashed border-gray-300 cursor-pointer hover:border-[#FFED00]"
+    >
+      <img
+        *ngIf="idVersoPreview"
+        [src]="idVersoPreview"
+        class="h-full w-full object-cover"
+      >
+      <span *ngIf="!idVersoPreview" class="text-sm text-gray-400">
+        Uploader Verso
+      </span>
+      <input
+        type="file"
+        accept="image/*"
+        class="hidden"
+        (change)="onIdVersoUpload($event)"
+      >
+    </label>
+  </div>
+
+  <label class="flex gap-2 text-sm text-gray-500">
+    <input type="checkbox" formControlName="accepted">
+    Je certifie l’exactitude des informations fournies
+  </label>
+
+  <div class="space-y-2 text-sm text-gray-600">
+    <p class="font-medium text-black">Pourquoi vérifier mon identité ?</p>
+    <p>
+      +45% de ventes :
+      <span class="text-gray-500">
+        Les acheteurs privilégient les profils vérifiés.
+      </span>
+    </p>
+    <p>
+      Paiements sécurisés :
+      <span class="text-gray-500">
+        Accélérez le déblocage de vos fonds après vos ventes.
+      </span>
+    </p>
+    <p>
+      Statut Premium :
+      <span class="text-gray-500">
+        Accédez à des fonctionnalités de mise en avant exclusives.
+      </span>
+    </p>
+  </div>
+
+  <button routerLink="/dashboard/fournisseur"
+    type="button"
+    (click)="submitAll()"
+    class="w-full transition duration-300 bg-[#FFED00] text-black py-3 tracking-widest font-medium hover:bg-black hover:text-white hover:shadow-lg"
+  >
+    TERMINER
+  </button>
+</form>

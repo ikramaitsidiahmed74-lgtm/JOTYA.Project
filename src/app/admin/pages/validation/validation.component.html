@@ -1,121 +1,167 @@
-<div class="space-y-6">
-
-  <!-- HEADER -->
-  <div class="flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <h1 class="text-2xl font-semibold">Validation des Produits</h1>
-      <span class="px-3 py-1 text-xs rounded-full bg-red-100 text-red-600">
-        42 EN ATTENTE
-      </span>
-    </div>
-
-    <div class="flex items-center gap-3">
-      <input
-        type="text"
-        placeholder="Rechercher une annonce..."
-        class="px-4 py-2 border rounded-lg text-sm w-72 focus:ring-2 focus:ring-yellow-400 outline-none"
-      />
-      <button class="w-9 h-9 border rounded-lg">⚙️</button>
-    </div>
-  </div>
+<div class="bg-[#FFFBF2] min-h-screen p-6">
 
   <!-- GRID -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
     <!-- CARD -->
     <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+        class="w-full h-56 object-cover"
+      />
 
-      <div class="relative">
-        <img
-          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
-          class="w-full h-56 object-cover"
-          alt="Rolex"
-        />
-        <span
-          class="absolute top-3 left-3 px-2 py-1 text-xs rounded-full bg-black text-white"
-        >
-          LUXE GARANTI
+      <div class="p-4 space-y-2">
+        <h3 class="font-semibold text-sm">Rolex Submariner</h3>
+
+        <p class="text-sm font-bold text-[#ffed00]">
+          125.000 MAD
+        </p>
+
+        <div class="text-xs text-gray-500 flex justify-between">
+          <span>Vendeur: Kamal Mansouri</span>
+          <span>24 Oct • 14:30</span>
+        </div>
+
+        <div class="flex gap-3 pt-3">
+          <button
+            class="flex-1 bg-[#ffed00] text-black text-xs font-semibold py-2 rounded-lg hover:opacity-90 transition"
+          >
+            APPROUVER
+          </button>
+
+          <button
+            class="flex-1 border border-red-500 text-red-500 text-xs font-semibold py-2 rounded-lg hover:bg-red-50 transition"
+          >
+            REFUSER
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+  <img
+    src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c"
+    class="w-full h-56 object-cover"
+  />
+
+  <div class="p-4 space-y-2">
+    <h3 class="font-semibold text-sm">Hermès Birkin 30</h3>
+
+    <p class="text-sm font-bold text-[#ffed00]">
+      210.000 MAD
+    </p>
+
+    <div class="text-xs text-gray-500 flex justify-between">
+      <span> Vendeur: Ghita Mansour</span>
+      <span>22 Oct • 16:50</span>
+    </div>
+
+    <div class="flex gap-3 pt-3">
+      <button class="flex-1 bg-[#ffed00] text-black text-xs font-semibold py-2 rounded-lg">
+        APPROUVER
+      </button>
+      <button class="flex-1 border border-red-500 text-red-500 text-xs font-semibold py-2 rounded-lg">
+        REFUSER
+      </button>
+    </div>
+  </div>
+</div>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden">
+  <div class="w-full h-56 bg-gradient-to-br from-[#d6b27c] to-[#b9965a] flex items-center justify-center">
+    <span class="material-symbols-outlined text-white text-6xl">
+      person
+    </span>
+  </div>
+
+  <div class="p-4 space-y-2">
+    <h3 class="font-semibold text-sm">Produit sans image</h3>
+
+    <p class="text-sm font-bold text-[#ffed00]">
+      12.000 MAD
+    </p>
+
+    <div class="text-xs text-gray-500 flex justify-between">
+      <span> Vendeur: Anonyme</span>
+      <span>Aujourd’hui</span>
+    </div>
+
+    <div class="flex gap-3 pt-3">
+      <button class="flex-1 bg-[#ffed00] text-black text-xs font-semibold py-2 rounded-lg">
+        APPROUVER
+      </button>
+      <button class="flex-1 border border-red-500 text-red-500 text-xs font-semibold py-2 rounded-lg">
+        REFUSER
+      </button>
+    </div>
+  </div>
+</div>
+    <!-- CARD -->
+    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c"
+        class="w-full h-56 object-cover"
+      />
+
+      <div class="p-4 space-y-2">
+        <h3 class="font-semibold text-sm">Sac Chanel Flap Bag</h3>
+
+        <p class="text-sm font-bold text-[#ffed00]">
+          45.000 MAD
+        </p>
+
+        <div class="text-xs text-gray-500 flex justify-between">
+          <span> Vendeur: Sofia Bennis</span>
+          <span> 24 Oct • 12:15</span>
+        </div>
+
+        <div class="flex gap-3 pt-3">
+          <button
+            class="flex-1 bg-[#ffed00] text-black text-xs font-semibold py-2 rounded-lg"
+          >
+            APPROUVER
+          </button>
+
+          <button
+            class="flex-1 border border-red-500 text-red-500 text-xs font-semibold py-2 rounded-lg"
+          >
+            REFUSER
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD (NO IMAGE USER) -->
+    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+      <div
+        class="w-full h-56 bg-gradient-to-br from-[#d6b27c] to-[#b9965a] flex items-center justify-center"
+      >
+        <span class="material-symbols-outlined text-white text-6xl">
+          person
         </span>
       </div>
 
       <div class="p-4 space-y-2">
-        <h3 class="font-semibold">Rolex Submariner</h3>
+        <h3 class="font-semibold text-sm">Louis Vuitton Keepall</h3>
 
-        <p class="text-yellow-500 font-bold">
-          125.000 MAD
+        <p class="text-sm font-bold text-[#ffed00]">
+          18.500 MAD
         </p>
 
-        <div class="text-xs text-gray-500 space-y-1">
-          <p>👤 Vendeur: Kamal Mansouri</p>
-          <p>🕒 24 Oct, 14:30</p>
+        <div class="text-xs text-gray-500 flex justify-between">
+          <span> Vendeur: Mehdi Alami</span>
+          <span> Hier • 18:40</span>
         </div>
 
         <div class="flex gap-3 pt-3">
           <button
-            class="flex-1 bg-yellow-400 text-sm font-medium py-2 rounded-lg hover:bg-yellow-500 transition"
+            class="flex-1 bg-[#ffed00] text-black text-xs font-semibold py-2 rounded-lg"
           >
             APPROUVER
           </button>
+
           <button
-            class="flex-1 border border-red-500 text-red-500 text-sm py-2 rounded-lg hover:bg-red-50 transition"
+            class="flex-1 border border-red-500 text-red-500 text-xs font-semibold py-2 rounded-lg"
           >
-            REFUSER
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CARD -->
-    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-      <img
-        src="https://images.unsplash.com/photo-1585386959984-a41552231693"
-        class="w-full h-56 object-cover"
-        alt="Chanel"
-      />
-
-      <div class="p-4 space-y-2">
-        <h3 class="font-semibold">Sac Chanel Flap Bag</h3>
-        <p class="text-yellow-500 font-bold">45.000 MAD</p>
-
-        <div class="text-xs text-gray-500 space-y-1">
-          <p>👤 Vendeur: Sofia Benali</p>
-          <p>🕒 24 Oct, 12:15</p>
-        </div>
-
-        <div class="flex gap-3 pt-3">
-          <button class="flex-1 bg-yellow-400 py-2 rounded-lg text-sm font-medium">
-            APPROUVER
-          </button>
-          <button class="flex-1 border border-red-500 text-red-500 py-2 rounded-lg text-sm">
-            REFUSER
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD -->
-    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-      <img
-        src="https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0"
-        class="w-full h-56 object-cover"
-        alt="Hermes"
-      />
-
-      <div class="p-4 space-y-2">
-        <h3 class="font-semibold">Hermès Birkin 30</h3>
-        <p class="text-yellow-500 font-bold">210.000 MAD</p>
-
-        <div class="text-xs text-gray-500 space-y-1">
-          <p>👤 Vendeur: Ghita Mansouri</p>
-          <p>🕒 22 Oct, 16:50</p>
-        </div>
-
-        <div class="flex gap-3 pt-3">
-          <button class="flex-1 bg-yellow-400 py-2 rounded-lg text-sm font-medium">
-            APPROUVER
-          </button>
-          <button class="flex-1 border border-red-500 text-red-500 py-2 rounded-lg text-sm">
             REFUSER
           </button>
         </div>
@@ -125,7 +171,7 @@
   </div>
 
   <!-- FOOTER -->
-  <p class="text-center text-sm text-gray-500">
+  <p class="text-center text-xs text-gray-400 mt-8">
     Affichage de 6 sur 42 produits en attente
   </p>
 

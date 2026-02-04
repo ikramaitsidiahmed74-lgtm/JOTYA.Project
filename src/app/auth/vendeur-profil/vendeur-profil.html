@@ -1,0 +1,14 @@
+<h1 class="text-3xl font-serif">Créer un compte vendeur</h1>
+
+<form [formGroup]="form" class="space-y-6">
+  <input formControlName="fullname" placeholder="Nom complet" class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+  <input formControlName="email" placeholder="Email professionnel" class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+  <input formControlName="telephone" placeholder="Numéro de téléphone" class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+  <input type="password" formControlName="password" placeholder="Mot de passe" class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+  <input type="password" formControlName="confirmPassword" placeholder="Confirmer le mot de passe" class="w-full border-b border-gray-300 py-2 focus:border-[#FFED00] focus:outline-none">
+
+  <button type="button" (click)="next()"
+    class="w-full transition duration-300 bg-[#FFED00] text-black py-3 tracking-widest font-medium hover:bg-black hover:text-white hover:shadow-lg">
+    CONTINUER
+  </button>
+</form>

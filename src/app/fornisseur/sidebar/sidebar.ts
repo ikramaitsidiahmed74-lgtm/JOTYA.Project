@@ -15,6 +15,9 @@ interface MenuItem {
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+isDashboardRoute(): any {
+throw new Error('Method not implemented.');
+}
 
    showLogoutModal = false;
 
@@ -33,7 +36,7 @@ export class Sidebar {
   }
 
   menuItems: MenuItem[] = [
-    { label: 'Tableau de Bord', route: '/' },
+    { label: 'Tableau de Bord', route: '/dashboard' },
     { label: 'Mes Produits', route: '/products' },
     { label: 'Ventes', route: '/sales' },
     { label: 'Commandes', route: '/orders' },

@@ -1,0 +1,178 @@
+
+<main class="bg-background-light dark:bg-background-dark max-w-[1200px] mx-auto px-4 sm:px-10 py-12">
+  <!-- PageHeading -->
+  <div class="mb-12">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Support et Contact Client</h1>
+    <p class="text-[#a19345] text-lg max-w-2xl leading-relaxed">
+      Une question sur un article ? Besoin d'aide pour votre commande ? Notre équipe est là pour vous aider à profiter pleinement de l’expérience Jotya et faire briller vos articles de seconde main.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <!-- Left Section: Form -->
+    <div class="lg:col-span-7">
+      <div
+        class="bg-white dark:bg-[#2c2813] p-8 rounded-xl shadow-sm border border-[#eae5cd] dark:border-[#3a351a]"
+      >
+        <h3 class="text-2xl font-bold mb-8">Envoyez-nous un message</h3>
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- TextField Nom -->
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-semibold uppercase tracking-wider text-[#a19345]"
+                >Nom Complet</label
+              >
+              <input
+                class="form-input w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base"
+                placeholder="Votre nom"
+              />
+            </div>
+            <!-- TextField Email -->
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-semibold uppercase tracking-wider text-[#a19345]"
+                >Adresse Email</label
+              >
+              <input
+                class="form-input w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base"
+                placeholder="exemple@mail.com"
+                type="email"
+              />
+            </div>
+          </div>
+          <!-- TextField Sujet -->
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-semibold uppercase tracking-wider text-[#a19345]"
+              >Sujet</label
+            >
+            <select
+              class="form-select w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:outline-none focus:ring-2 focus:ring-[#ffde00] focus:border-[#ffde00] h-14 px-4 text-base"
+            >
+              <option>Sélectionnez un sujet</option>
+              <option>Achat &amp; Commandes</option>
+              <option>Vente d'articles</option>
+              <option>Authentification</option>
+              <option>Livraison &amp; Retours</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+          <!-- TextField Message -->
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-semibold uppercase tracking-wider text-[#a19345]"
+              >Message</label
+            >
+            <textarea
+              class="form-textarea w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:border-primary focus:ring-1 focus:ring-primary min-h-[160px] p-4 text-base"
+              placeholder="Comment pouvons-nous vous aider ?"
+            ></textarea>
+          </div>
+          <button
+            class="w-full bg-[#ffed00] hover:bg-[#ffed00]/90 text-black font-bold py-4 rounded-lg transition-all transform hover:scale-[1.01] flex items-center justify-center gap-2"
+          >
+            Envoyer le message
+            <span class="material-symbols-outlined">send</span>
+          </button>
+          <p class="text-center text-sm text-[#a19345] italic">
+            Nous répondons généralement en moins de 24h.
+          </p>
+        </form>
+      </div>
+    </div>
+    <!-- Right Section: Contact Info & Map -->
+    <div class="lg:col-span-5 flex flex-col gap-8">
+      <div class="flex flex-col gap-8">
+        <div>
+          <h3 class="text-2xl font-bold mb-6">Nos Coordonnées</h3>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <span class="material-symbols-outlined text-[#ffed00]">mail</span>
+              </div>
+              <div>
+                <p class="font-bold text-lg">Email</p>
+                <a class="text-[#a19345] hover:text-primary" href="mailto:support@jotya.ma"
+                  >support@jotya.ma</a
+                >
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <span class="material-symbols-outlined text-[#ffed00]">call</span>
+              </div>
+              <div>
+                <p class="font-bold text-lg">Téléphone</p>
+                <p class="text-[#a19345]">+212 (0) 5 22 00 00 00</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-lg">
+                <span class="material-symbols-outlined text-[#ffed00]">location_on</span>
+              </div>
+              <div>
+                <p class="font-bold text-lg">Siège Social</p>
+                <p class="text-[#a19345]">AnfaPlace, Boulevard de la Corniche, Casablanca, Maroc</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Map Section -->
+        <div
+          class="h-64 w-full rounded-xl overflow-hidden grayscale border border-[#eae5cd] relative"
+        >
+          <div
+            class="absolute inset-0 bg-cover bg-center"
+            data-alt="Muted grayscale city map showing Casablanca location"
+            data-location="Casablanca, Morocco"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLGPm86CVmO2msg_y3U1zCIZzAbtSl5pkRV7XUTqA-XZ1m_LO59ujZR33q_L5wJar5S-WDYqZQl4vzTzqC9a0YWSaEYx-jqRXQyUq3_fvlys9wqcZCg6AYNe3_W8tiku0XqR7xDC6LygYtO7IH7x7UUjLWIQBvQy4LWS8t7nbMhcUt2WGXG-x5wBf0Qt5u-IQW_5a39zJORa896M02yMnUTaoEGRhVyqvUU8M6S3CRq6IZ-TABYDT-iuLVNir-VJieFvCyUXyccsiJ');
+            "
+          ></div>
+          <div class="absolute inset-0 bg-black/10"></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <span class="material-symbols-outlined text-primary text-5xl drop-shadow-lg"
+              >location_on</span
+            >
+          </div>
+        </div>
+        <!-- Social Media -->
+        <div>
+          <p class="font-bold mb-4">Suivez notre communauté</p>
+          <div class="flex gap-4">
+            <a
+              class="h-12 w-12 rounded-full border border-[#eae5cd] flex items-center justify-center hover:bg-primary hover:border-primary transition-all group"
+              href="#"
+            >
+              <span class="material-symbols-outlined group-hover:text-black">camera_alt</span>
+            </a>
+            <a
+              class="h-12 w-12 rounded-full border border-[#eae5cd] flex items-center justify-center hover:bg-primary hover:border-primary transition-all group"
+              href="#"
+            >
+              <span class="material-symbols-outlined group-hover:text-black"
+                >social_leaderboard</span
+              >
+            </a>
+            <a
+              class="h-12 w-12 rounded-full border border-[#eae5cd] flex items-center justify-center hover:bg-primary hover:border-primary transition-all group"
+              href="#"
+            >
+              <span class="material-symbols-outlined group-hover:text-black">link</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Trust Badges -->
+      <div class="mt-auto p-6 bg-[#f4f2e6] dark:bg-[#3a351a] rounded-xl flex items-center gap-4">
+        <span class="material-symbols-outlined text-3xl text-[#ffed00]">verified_user</span>
+        <div>
+          <p class="font-bold text-sm">Communication Sécurisée</p>
+          <p class="text-xs text-[#a19345]">Vos données sont protégées par chiffrement SSL.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="mt-20 border-t border-[#f4f2e6] dark:border-[#3a351a] py-12">
+  <div class="max-w-[1200px] mx-auto px-4 text-center text-sm text-[#a19345]">
+    <p>© 2026 Jotya Maroc. Produits d’occasion authentiques et accessibles pour tous.</p>
+  </div>
+</footer>
+
