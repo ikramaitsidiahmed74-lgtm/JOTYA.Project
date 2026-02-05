@@ -1,15 +1,15 @@
 <div class="space-y-6">
-
   <!-- HEADER -->
   <div class="flex justify-between items-center">
     <div>
-      <h1 class="text-xl font-bold">Bonjour, Marc </h1>
-      <p class="text-sm text-gray-500">Lundi, 18 Septembre 2023</p>
+      <h1 class="text-xl font-bold">Bonjour, Ahmad</h1>
+      <p class="text-sm text-gray-500">Lundi, 10/02/2026</p>
     </div>
 
     <button
-      class="bg-[#ffed00] text-black font-semibold px-4 py-2 rounded-lg
-             flex items-center gap-2 hover:opacity-90 transition">
+      routerLink="/dashboard/fournisseur/ajouter-produit"
+      class="bg-[#ffed00] text-black font-semibold px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 transition"
+    >
       <span class="material-symbols-outlined text-sm">add</span>
       Ajouter un produit
     </button>
@@ -17,14 +17,11 @@
 
   <!-- STATS CARDS -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
     <!-- Total ventes -->
     <div
-  routerLink="/sales"
-  class="bg-white rounded-xl p-5 shadow-sm cursor-pointer
-         hover:shadow-md hover:-translate-y-0.5 transition"
->
-
+      routerLink="/sales"
+      class="bg-white rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition"
+    >
       <div class="flex justify-between items-start">
         <div>
           <p class="text-xs text-gray-500">TOTAL VENTES</p>
@@ -35,22 +32,19 @@
     </div>
 
     <!-- Produits en ligne -->
-     <div
-  routerLink="/products"
-  class="bg-white rounded-xl p-5 shadow-sm cursor-pointer
-         hover:shadow-md hover:-translate-y-0.5 transition"
->
+    <div
+      routerLink="/products"
+      class="bg-white rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition"
+    >
       <p class="text-xs text-gray-500">PRODUITS EN LIGNE</p>
       <h2 class="text-2xl font-bold mt-1">24</h2>
     </div>
 
     <!-- Commandes -->
     <div
-  routerLink="/orders"
- class="bg-white rounded-xl p-5 shadow-sm cursor-pointer
-         hover:shadow-md hover:-translate-y-0.5 transition"
->
-
+      routerLink="/orders"
+      class="bg-white rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition"
+    >
       <div class="flex justify-between">
         <div>
           <p class="text-xs text-gray-500">COMMANDES EN ATTENTE</p>
@@ -59,29 +53,34 @@
         <span class="text-red-500 text-xs font-semibold">Urgent</span>
       </div>
     </div>
-
   </div>
 
   <!-- CHART + MESSAGES -->
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-
     <!-- PERFORMANCE -->
-    <div 
-  routerLink="/sales"
-  
-    class="bg-white rounded-xl p-5 shadow-sm lg:col-span-2">
-      <div class="flex justify-between items-center mb-4 hover:-translate-0.5 transition">
-        <h3 class="font-semibold">Performance des ventes</h3>
+    <div class="bg-white rounded-xl p-5 shadow-sm lg:col-span-2">
+      <!-- HEADER -->
+      <div class="flex justify-between items-center mb-4">
+        <!-- الرابط فقط على العنوان -->
+        <a
+          routerLink="/sales"
+          class="font-semibold cursor-pointer hover:underline hover:-translate-y-0.5 transition"
+        >
+          Performance des ventes
+        </a>
 
+        <!-- select حر -->
         <select class="text-sm border rounded-md px-2 py-1">
           <option>Derniers 6 mois</option>
           <option>Cette année</option>
         </select>
       </div>
 
-      <!-- Fake chart -->
-      <div routerLink="/ventes"
-      class="h-48 flex items-center justify-center text-gray-400 text-sm">
+      <!-- CHART (clickable) -->
+      <div
+        routerLink="/sales"
+        class="h-48 flex items-center justify-center text-gray-400 text-sm cursor-pointer hover:bg-gray-50 transition"
+      >
         📊 Chart ici (Chart.js / ApexCharts)
       </div>
     </div>
@@ -95,9 +94,7 @@
           <div class="w-8 h-8 rounded-full bg-gray-300"></div>
           <div class="flex-1">
             <p class="text-sm font-medium">Amel D.</p>
-            <p class="text-xs text-gray-500 truncate">
-              Est-ce que le sac est toujours dispo ?
-            </p>
+            <p class="text-xs text-gray-500 truncate">Est-ce que le sac est toujours dispo ?</p>
           </div>
         </div>
 
@@ -105,9 +102,7 @@
           <div class="w-8 h-8 rounded-full bg-gray-300"></div>
           <div class="flex-1">
             <p class="text-sm font-medium">Karim T.</p>
-            <p class="text-xs text-gray-500 truncate">
-              Je souhaiterais un remboursement...
-            </p>
+            <p class="text-xs text-gray-500 truncate">Je souhaiterais un remboursement...</p>
           </div>
         </div>
 
@@ -115,50 +110,33 @@
           <div class="w-8 h-8 rounded-full bg-gray-300"></div>
           <div class="flex-1">
             <p class="text-sm font-medium">Sophie L.</p>
-            <p class="text-xs text-gray-500 truncate">
-              Le paiement a été effectué.
-            </p>
+            <p class="text-xs text-gray-500 truncate">Le paiement a été effectué.</p>
           </div>
         </div>
       </div>
 
-      <a
-        routerLink="/messages"
-        class="block text-center text-xs text-[#ffed00] font-semibold mt-4">
+      <a routerLink="/messages" class="block text-center text-xs text-[#ffed00] font-semibold mt-4">
         VOIR TOUT
       </a>
     </div>
-
   </div>
 
   <!-- PRODUITS RECENTS -->
-  <div class="bg-white rounded-xl p-5 shadow-sm
-            hover:shadow-md hover:-translate-y-0.5 transition">
+  <div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-4">
+      <!-- TITLE -->
+      <h3 routerLink="/products" class="font-semibold cursor-pointer">Produits Récents</h3>
 
-  <!-- HEADER -->
-  <div class="flex items-center justify-between mb-4">
+      <!-- SEARCH -->
+      <input
+        type="text"
+        placeholder="Rechercher"
+        class="border rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-[#ffed00]"
+      />
+    </div>
 
-    <!-- TITLE -->
-    <h3
-      routerLink="/products"
-      class="font-semibold cursor-pointer">
-      Produits Récents
-    </h3>
-
-    <!-- SEARCH -->
-    <input
-      type="text"
-      placeholder="Rechercher"
-      class="border rounded-md px-3 py-1 text-sm
-             focus:outline-none focus:ring-1 focus:ring-[#ffed00]"
-    />
-  </div>
-
-  <!-- content dyal produits t7t (ila bghiti) -->
-
-
-
-
+    <!-- TABLE PRODUITS -->
     <table class="w-full text-sm">
       <thead class="text-gray-400 text-xs border-b">
         <tr>
@@ -177,9 +155,7 @@
           <td>12,500 MAD</td>
           <td>12 Sep 2023</td>
           <td>
-            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded">
-              Excellent
-            </span>
+            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded"> Excellent </span>
           </td>
           <td class="text-green-600 text-xs font-semibold">En ligne</td>
           <td>•••</td>
@@ -190,16 +166,12 @@
           <td>85,000 MAD</td>
           <td>08 Sep 2023</td>
           <td>
-            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded">
-              Très bon
-            </span>
+            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded"> Très bon </span>
           </td>
           <td class="text-blue-600 text-xs font-semibold">Vendu</td>
           <td>•••</td>
         </tr>
       </tbody>
     </table>
-
   </div>
-
 </div>

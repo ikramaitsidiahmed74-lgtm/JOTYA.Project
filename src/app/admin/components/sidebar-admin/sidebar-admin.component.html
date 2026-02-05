@@ -1,91 +1,125 @@
-<aside class="w-64 bg-black border-r min-h-screen flex flex-col">
-  <div class="px-6 py-6 flex items-center gap-3 border-b">
-     <div
-    class="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center bg-white"
-  >
-    <img
-      src="assets/logo.png"
-      alt="JOTYA Logo"
-      class="w-full h-full object-cover"
-    />
+<aside class="fixed top-0 left-0 w-64 h-screen bg-black text-white z-50 flex flex-col overflow-y-auto">
+
+  <!-- TOP -->
+  <div class="p-8">
+    <!-- LOGO -->
+    <div class="flex items-center mb-8">
+      <img
+        src="assets/logo s w.png"
+        alt="JOTYA Logo"
+        class="w-40 h-auto object-contain"
+      />
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="flex flex-col gap-2 text-sm">
+
+      <!-- Vue d'ensemble -->
+      <a
+        routerLink="/dashboard/admin"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
+               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>Vue d'ensemble</span>
+      </a>
+
+      <!-- Utilisateurs -->
+      <a
+        routerLink="/dashboard/admin/users"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
+               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <span class="material-symbols-outlined">group</span>
+        <span>Utilisateurs</span>
+      </a>
+
+      <!-- Validation Produits -->
+      <a
+        routerLink="/dashboard/admin/validation"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg
+               text-slate-400 hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined">fact_check</span>
+          <span>Validation Produits</span>
+        </div>
+
+        <span class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
+          42
+        </span>
+      </a>
+
+      <!-- Commandes -->
+      <a
+        routerLink="/dashboard/admin/commandes"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
+               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span>Commandes Globales</span>
+      </a>
+
+      <!-- Rapports -->
+      <a
+        routerLink="/dashboard/admin/rapports"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
+               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <span class="material-symbols-outlined">bar_chart</span>
+        <span>Rapports</span>
+      </a>
+
+      <!-- Paramètres -->
+      <a
+        routerLink="/dashboard/admin/parametres"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
+               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <span class="material-symbols-outlined">settings</span>
+        <span>Paramètres</span>
+      </a>
+
+      <!-- Centre d'aide -->
+      <a
+        routerLink="/dashboard/admin/centr-aide"
+        routerLinkActive="bg-gray-800 !text-[#ffed00]"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
+               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+      >
+        <span class="material-symbols-outlined">help</span>
+        <span>Centre d'aide</span>
+      </a>
+
+    </nav>
   </div>
-  </div>
 
-  <nav class="flex-1 px-4 py-6 space-y-1 text-sm">
-    <p class="text-xs text-gray-400 mb-2">MAIN MENU</p>
-
-    <a
-      routerLink="/dashboard/admin"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-gray-600 hover:bg-gray-100"
-    >
-      <span class="w-4 h-4 bg-yellow-200 rounded-sm inline-block"></span>
-      <span>Vue d'ensemble</span>
-    </a>
-
-    <a
-      routerLink="/dashboard/admin/users"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
-    >
-      <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
-      <span>Utilisateurs</span>
-    </a>
-
-    <a
-      routerLink="/dashboard/admin/validation"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
-    >
-      <div class="flex items-center gap-3">
-        <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
-        <span>Validation Produits</span>
+  <!-- BOTTOM -->
+  <div class="mt-auto p-8 border-t border-white/10">
+    <div class="flex items-center gap-3">
+      <!-- IMAGE PROFILE -->
+      <div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+        <img
+          src="assets/Latech.jpg"
+          alt="Admin"
+          class="w-full h-full object-cover"
+        />
       </div>
-      <span class="text-xs bg-red-100 text-red-500 px-2 rounded-full">42</span>
-    </a>
 
-    <a
-      routerLink="/dashboard/admin/commandes"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
-    >
-      <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
-      <span>Commandes Globales</span>
-    </a>
-
-    <a
-      routerLink="/dashboard/admin/rapports"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
-    >
-      <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
-      <span>Rapports</span>
-    </a>
-
-    <a
-      routerLink="/dashboard/admin/parametres"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
-    >
-      <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
-      <span>Paramètres</span>
-    </a>
-    <a
-      routerLink="/dashboard/admin/centr-aide"
-      routerLinkActive="bg-yellow-100 text-yellow-700"
-      class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
-    >
-      <span class="w-4 h-4 bg-gray-200 rounded-sm inline-block"></span>
-      <span>Centre d'aide </span>
-    </a>
-  </nav>
-
-  <div class="px-6 py-4 border-t flex items-center gap-3">
-    <div class="w-9 h-9 bg-gray-200 rounded-full"></div>
-    <div>
-      <p class="text-sm font-medium">LA TECH</p>
-      <span class="text-xs text-gray-400">Super Admin</span>
+      <!-- INFOS -->
+      <div>
+        <p class="text-sm font-medium">LA TECH</p>
+        <span class="text-xs text-gray-400">Super Admin</span>
+      </div>
     </div>
   </div>
+
+
 </aside>

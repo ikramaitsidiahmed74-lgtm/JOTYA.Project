@@ -1,119 +1,181 @@
-<div class="flex h-screen bg-gray-50">
+<div class="h-screen bg-[#FFFBF2] flex font-sans">
 
-  <!-- SIDEBAR -->
-  
+  <!-- LEFT PANEL -->
+  <div class="w-[420px] border-r bg-[#FFFBF2] flex flex-col">
 
-  <!-- MAIN -->
-  <main class="flex-1 flex">
-
-    <!-- TICKETS -->
-    <section class="w-1/2 bg-white border-r flex flex-col">
-
-      <div class="p-5 border-b">
-        <h2 class="font-semibold">Centre d’Aide & Support</h2>
-
-        <div class="flex gap-2 mt-3">
-          <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">
+    <!-- HEADER -->
+    <div class="p-5 border-b">
+      <div class="flex items-center justify-between">
+        <h2 class="font-semibold">Tickets d’assistance ouverts</h2>
+        <div class="flex gap-2">
+          <span class="bg-[#ffed00] text-black text-xs px-3 py-1 rounded-full">
             12 Nouveaux
           </span>
-          <span class="text-xs bg-gray-100 px-2 py-1 rounded-full">
+          <span class="bg-gray-100 text-xs px-3 py-1 rounded-full">
             45 En cours
           </span>
         </div>
+      </div>
 
+      <div class="relative mt-4">
         <input
-          class="mt-4 w-full px-4 py-2 border rounded text-sm"
+          type="text"
           placeholder="Rechercher par sujet ou utilisateur..."
+          class="w-full border rounded-lg pl-9 pr-3 py-2 text-sm"
         />
+        <span class="absolute left-3 top-2.5 text-gray-400">🔍</span>
+      </div>
+    </div>
+
+    <!-- TABLE HEADER -->
+    <div class="px-5 py-3 text-xs text-gray-400 grid grid-cols-4">
+      <span>SUJET</span>
+      <span>UTILISATEUR</span>
+      <span>PRIORITÉ</span>
+      <span>STATUT</span>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="flex-1 overflow-y-auto">
+
+      <!-- Ticket -->
+      <div class="px-5 py-4 border-t grid grid-cols-4 items-center">
+        <div>
+          <p class="font-medium text-sm">Défaut sur Sac de luxe</p>
+          <p class="text-xs text-gray-400">Ticket #TK-1029 · il y a 5min</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <img class="w-7 h-7 rounded-full" src="https://i.pravatar.cc/30" />
+          <span class="text-sm">Mehdi Tazi</span>
+        </div>
+        <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">
+          URGENT
+        </span>
+        <span class="text-[#ffed00] text-xs font-medium">
+          ● Nouveau
+        </span>
       </div>
 
-      <div class="flex-1 divide-y">
-
-        <div class="p-4 flex justify-between hover:bg-gray-50 cursor-pointer">
-          <div>
-            <p class="font-medium">Défaut sur Sac de luxe</p>
-            <p class="text-xs text-gray-400">
-              Mehdi Tazi • Ticket #TK-1029 • il y a 5 min
-            </p>
-          </div>
-          <div class="flex gap-2 items-center">
-            <span class="text-xs bg-red-100 text-red-500 px-2 py-1 rounded">URGENT</span>
-            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded">Nouveau</span>
-          </div>
+      <div class="px-5 py-4 border-t grid grid-cols-4 items-center">
+        <div>
+          <p class="font-medium text-sm">Virement non reçu</p>
+          <p class="text-xs text-gray-400">Ticket #TK-1028 · il y a 2h</p>
         </div>
-
-        <div class="p-4 flex justify-between hover:bg-gray-50 cursor-pointer">
-          <div>
-            <p class="font-medium">Virement non reçu</p>
-            <p class="text-xs text-gray-400">
-              Leila Bennani • Ticket #TK-1028 • il y a 2h
-            </p>
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center text-xs">
+            LB
           </div>
-          <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">
-            En cours
-          </span>
+          <span class="text-sm">Leila Bennani</span>
         </div>
-
-        <div class="p-4 flex justify-between hover:bg-gray-50 cursor-pointer">
-          <div>
-            <p class="font-medium">Problème authentification</p>
-            <p class="text-xs text-gray-400">
-              Sami Alami • Ticket #TK-1025 • Hier
-            </p>
-          </div>
-          <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
-            Résolu
-          </span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CHAT -->
-    <section class="w-1/2 flex flex-col bg-gray-50">
-
-      <div class="p-4 border-b bg-white flex justify-between">
-        <div class="flex gap-3 items-center">
-          <div class="w-9 h-9 bg-gray-300 rounded-full"></div>
-          <div>
-            <p class="text-sm font-medium">Mehdi Tazi</p>
-            <p class="text-xs text-green-500">En ligne</p>
-          </div>
-        </div>
-        <div class="flex gap-2">
-          <span>📞</span>
-          <span>⋮</span>
-        </div>
+        <span class="bg-gray-100 text-xs px-2 py-1 rounded">
+          NORMAL
+        </span>
+        <span class="text-blue-500 text-xs font-medium">
+          En cours
+        </span>
       </div>
 
-      <div class="flex-1 p-4 space-y-4 overflow-y-auto">
-
-        <div class="bg-white p-3 rounded-xl text-sm w-3/4">
-          Bonjour, j’ai reçu ma Rolex Submariner hier,
-          il semble y avoir une micro-rayure sur le fermoir.
+      <div class="px-5 py-4 border-t grid grid-cols-4 items-center">
+        <div>
+          <p class="font-medium text-sm">Problème authentification</p>
+          <p class="text-xs text-gray-400">Ticket #TK-1025 · Hier</p>
         </div>
-
-        <div class="bg-yellow-400 p-3 rounded-xl text-sm w-3/4 ml-auto">
-          Bonjour Mehdi, je suis désolé d’entendre cela.
-          Pouvez-vous nous envoyer une photo ?
+        <div class="flex items-center gap-2">
+          <img class="w-7 h-7 rounded-full" src="https://i.pravatar.cc/31" />
+          <span class="text-sm">Sami Alami</span>
         </div>
-
-        <div class="bg-white p-3 rounded-xl text-sm w-3/4">
-          <div class="w-full h-32 bg-gray-200 rounded mb-2"></div>
-          Voici la photo. C’est léger mais pour ce prix je préfère signaler.
-        </div>
-
+        <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">
+          URGENT
+        </span>
+        <span class="text-gray-400 text-xs font-medium">
+          Résolu
+        </span>
       </div>
 
-      <div class="p-4 border-t bg-white flex gap-2">
-        <input
-          class="flex-1 border px-4 py-2 rounded text-sm"
-          placeholder="Écrivez votre réponse ici..."
+    </div>
+
+    <!-- FAQ -->
+    <div class="p-5 border-t">
+      <div class="flex justify-between items-center mb-3">
+        <p class="text-xs text-gray-400">BASE DE CONNAISSANCES FAQ</p>
+        <button class="bg-[#ffed00] px-3 py-1 rounded-lg text-xs">
+          + Nouvel Article
+        </button>
+      </div>
+
+      <div class="flex gap-2">
+        <span class="border rounded-lg px-3 py-2 text-xs">
+          Comment valider un virement ?
+        </span>
+        <span class="border rounded-lg px-3 py-2 text-xs">
+          Politique de retour luxe
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="flex-1 flex flex-col">
+
+    <!-- CHAT HEADER -->
+    <div class="p-5 border-b bg-white flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img class="w-9 h-9 rounded-full" src="https://i.pravatar.cc/32" />
+        <div>
+          <p class="font-medium">Mehdi Tazi</p>
+          <p class="text-xs text-green-500">● En ligne</p>
+        </div>
+      </div>
+      <div class="flex gap-4 text-gray-400">
+        📞 ⋮
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="flex-1 p-6 space-y-4 overflow-y-auto">
+
+      <div class="text-center text-xs text-gray-400">AUJOURD’HUI</div>
+
+      <div class="bg-white max-w-lg p-4 rounded-xl text-sm">
+        Bonjour, j’ai reçu ma Rolex Submariner hier,
+        mais il semble y avoir une micro-rayure sur le fermoir
+        qui n’était pas mentionnée.
+        <div class="text-xs text-gray-400 mt-2">10:42</div>
+      </div>
+
+      <div class="bg-[#ffed00] max-w-lg p-4 rounded-xl text-sm ml-auto">
+        Bonjour Mehdi, je suis désolé d’entendre cela.
+        Pouvez-vous nous envoyer une photo macro de la rayure
+        s’il vous plaît ?
+        <div class="text-xs text-gray-700 mt-2 text-right">10:45 · Lu</div>
+      </div>
+
+      <div class="bg-white max-w-lg p-4 rounded-xl">
+        <img
+          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+          class="rounded-lg mb-3"
         />
-        <button class="bg-yellow-400 px-4 rounded">➤</button>
+        <p class="text-sm">
+          Voici la photo. C’est assez léger mais pour ce prix je préfère signaler.
+        </p>
+        <div class="text-xs text-gray-400 mt-2">10:48</div>
       </div>
 
-    </section>
+    </div>
 
-  </main>
+    <!-- INPUT -->
+    <div class="p-4 border-t bg-white flex gap-3 items-center">
+      <input
+        type="text"
+        placeholder="Écrivez votre réponse ici..."
+        class="flex-1 border rounded-lg px-3 py-2 text-sm"
+      />
+      <button class="bg-[#ffed00] p-3 rounded-lg">
+        ➤
+      </button>
+    </div>
+
+  </div>
+
 </div>

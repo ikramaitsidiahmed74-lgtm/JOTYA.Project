@@ -1,147 +1,160 @@
-<div class="space-y-8">
+<div class="bg-[#FFFBF2] p-6 space-y-6">
 
   <!-- HEADER -->
   <div>
-    <h1 class="text-2xl font-semibold">Configuration Globale</h1>
+    <h1 class="text-xl font-semibold text-gray-900">Configuration Globale</h1>
     <p class="text-sm text-gray-500">
       Gérez les règles métier, les accès et la maintenance de la plateforme Jotya.
     </p>
   </div>
 
-  <!-- COMMISSION -->
-  <div class="bg-white rounded-xl shadow-sm">
-    <div class="p-5 border-b flex items-center gap-2">
-      <span class="text-yellow-500">⚙️</span>
+  <!-- PARAMÈTRES COMMISSION -->
+  <div class="bg-white border border-gray-200 rounded-xl p-6">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="material-symbols-outlined text-[#ffed00]">percent</span>
       <h2 class="font-semibold">Paramètres de Commission</h2>
     </div>
 
-    <div class="p-5 space-y-3 max-w-md">
-      <label class="text-xs text-gray-500">
-        TAUX DE COMMISSION PLATEFORME (%)
-      </label>
+    <p class="text-xs text-gray-400 mb-2 uppercase">
+      Taux de commission plateforme (%)
+    </p>
 
-      <div class="flex gap-3">
-        <input
-          type="number"
-          value="10"
-          class="w-28 px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-yellow-400 outline-none"
-        />
-        <button
-          class="px-4 py-2 bg-yellow-400 rounded-lg text-sm font-medium hover:bg-yellow-500 transition"
-        >
-          Mettre à jour
-        </button>
-      </div>
+    <div class="flex items-center gap-3">
+      <input
+        type="number"
+        value="10"
+        class="border border-gray-200 rounded-lg px-3 py-2 w-24 text-sm"
+      />
 
-      <p class="text-xs text-gray-400">
-        Ce taux est appliqué sur chaque vente réussie d’un produit d’occasion.
-      </p>
+      <button
+        class="bg-[#ffed00] text-black font-medium px-4 py-2 rounded-lg text-sm"
+      >
+        Mettre à jour
+      </button>
     </div>
+
+    <p class="text-xs text-gray-400 mt-2">
+      Ce taux est appliqué sur chaque vente réussie d’un produit d’occasion.
+    </p>
   </div>
 
-  <!-- ROLES & PERMISSIONS -->
-  <div class="bg-white rounded-xl shadow-sm">
-    <div class="p-5 border-b flex justify-between items-center">
+  <!-- RÔLES & PERMISSIONS -->
+  <div class="bg-white border border-gray-200 rounded-xl p-6">
+    <div class="flex justify-between items-center mb-4">
       <div class="flex items-center gap-2">
-        <span class="text-yellow-500">🔐</span>
+        <span class="material-symbols-outlined text-[#ffed00]">shield</span>
         <h2 class="font-semibold">Gestion des Rôles & Permissions</h2>
       </div>
 
       <button
-        class="px-3 py-2 bg-yellow-400 rounded-lg text-sm font-medium"
+        class="border border-gray-200 rounded-lg px-4 py-2 text-sm flex items-center gap-1"
       >
-        + Nouveau Rôle
+        ➕ Nouveau Rôle
       </button>
     </div>
 
-    <div class="p-5 overflow-x-auto">
-      <table class="w-full text-sm">
-        <thead class="text-gray-400 border-b">
-          <tr>
-            <th class="text-left py-2">Rôle</th>
-            <th class="text-center py-2">Accès Utilisateurs</th>
-            <th class="text-center py-2">Validation Produits</th>
-            <th class="text-center py-2">Paiements</th>
-            <th class="text-center py-2">Action</th>
-          </tr>
-        </thead>
+    <table class="w-full text-sm">
+      <thead class="text-left text-gray-400 border-b">
+        <tr>
+          <th class="py-3">Rôle</th>
+          <th>Accès utilisateurs</th>
+          <th>Validation produits</th>
+          <th>Paiements</th>
+          <th></th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr class="border-b">
-            <td class="py-3 font-medium">Super Admin</td>
-            <td class="text-center">✅</td>
-            <td class="text-center">✅</td>
-            <td class="text-center">✅</td>
-            <td class="text-center">✏️</td>
-          </tr>
+      <tbody>
 
-          <tr class="border-b">
-            <td class="py-3 font-medium">Modérateur</td>
-            <td class="text-center">✅</td>
-            <td class="text-center">✅</td>
-            <td class="text-center text-gray-300">—</td>
-            <td class="text-center">✏️</td>
-          </tr>
+        <tr class="border-b">
+          <td class="py-3 font-medium">Super Admin</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td class="text-gray-400 cursor-pointer">✏️</td>
+        </tr>
 
-          <tr>
-            <td class="py-3 font-medium">Agent Support</td>
-            <td class="text-center">✅</td>
-            <td class="text-center text-gray-300">—</td>
-            <td class="text-center text-gray-300">—</td>
-            <td class="text-center">✏️</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <tr class="border-b">
+          <td class="py-3 font-medium">Modérateur</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td class="text-gray-400 cursor-pointer">✏️</td>
+        </tr>
+
+        <tr>
+          <td class="py-3 font-medium">Agent Support</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td class="text-gray-400 cursor-pointer">✏️</td>
+        </tr>
+
+      </tbody>
+    </table>
   </div>
 
-  <!-- BOTTOM GRID -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- BOTTOM SETTINGS -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-    <!-- PAYMENT -->
-    <div class="bg-white rounded-xl shadow-sm p-5 space-y-4">
-      <div class="flex items-center gap-2">
-        <span class="text-yellow-500">💳</span>
-        <h2 class="font-semibold">Passerelles de Paiement</h2>
+    <!-- PASSERELLES -->
+    <div class="bg-white border border-gray-200 rounded-xl p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-[#ffed00]">credit_card</span>
+        <h3 class="font-semibold">Passerelles de Paiement</h3>
       </div>
 
-      <div class="flex justify-between items-center border rounded-lg p-4">
+      <div class="flex justify-between items-center border rounded-lg px-4 py-3">
         <div>
-          <p class="font-medium text-sm">Carte Bancaire (CMI)</p>
-          <span class="text-xs text-gray-400">Actif au Maroc</span>
+          <p class="font-medium">Carte Bancaire (CMI)</p>
+          <p class="text-xs text-gray-400">Actif au Maroc</p>
         </div>
 
-        <span class="w-10 h-6 bg-yellow-400 rounded-full relative">
-          <span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
-        </span>
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" checked class="sr-only peer">
+          <div
+            class="w-10 h-5 bg-gray-300 peer-checked:bg-[#ffed00] rounded-full relative"
+          >
+            <span
+              class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"
+            ></span>
+          </div>
+        </label>
       </div>
     </div>
 
     <!-- MAINTENANCE -->
-    <div class="bg-white rounded-xl shadow-sm p-5 space-y-4">
-      <div class="flex items-center gap-2">
-        <span class="text-yellow-500">🛠️</span>
-        <h2 class="font-semibold">Maintenance du Site</h2>
+    <div class="bg-white border border-gray-200 rounded-xl p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-[#ffed00]">build</span>
+        <h3 class="font-semibold">Maintenance du Site</h3>
       </div>
 
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center mb-4">
         <div>
-          <p class="font-medium text-sm">Mode Maintenance</p>
-          <span class="text-xs text-gray-400">
+          <p class="font-medium">Mode Maintenance</p>
+          <p class="text-xs text-gray-400">
             Désactive l’accès public à la boutique.
-          </span>
+          </p>
         </div>
 
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" class="sr-only peer" />
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" class="sr-only peer">
           <div
-            class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-yellow-400
-            after:content-[''] after:absolute after:top-0.5 after:left-0.5
-            after:w-5 after:h-5 after:bg-white after:rounded-full
-            after:transition-all peer-checked:after:translate-x-full"
-          ></div>
+            class="w-10 h-5 bg-gray-300 peer-checked:bg-[#ffed00] rounded-full relative"
+          >
+            <span
+              class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"
+            ></span>
+          </div>
         </label>
       </div>
+
+      <textarea
+        placeholder="Message de maintenance personnalisé"
+        class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm"
+        rows="3"
+      ></textarea>
     </div>
 
   </div>

@@ -3,13 +3,13 @@
 
 <!-- Breadcrumbs -->
 <div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-8">
-  <div class="flex items-center gap-2 mb-8 text-sm font-medium text-[#a19345]">
+  <div class="flex items-center gap-2 mb-8 text-sm font-medium text-[#a19345] dark:text-[#c9b84e]">
     <a class="hover:text-[#ffd900] transition-colors" href="/">Accueil</a>
     <span class="text-xs">›</span>
-    <a routerLink="/catalogue-luxe" class="hover:text-[#ffd900] text-[#1d1a0c] transition-colors">Catalogue Luxe</a>
+    <a routerLink="/catalogue-luxe" class="hover:text-[#ffd900] text-[#1d1a0c] dark:text-white transition-colors">Catalogue Luxe</a>
     <ng-container *ngIf="catalogueInfo.categoryId">
       <span class="text-xs">›</span>
-      <span class="text-[#1d1a0c]">{{ catalogueInfo.categoryLabel }}</span>
+      <span class="text-[#1d1a0c] dark:text-white">{{ catalogueInfo.categoryLabel }}</span>
     </ng-container>
   </div>
 
@@ -20,9 +20,9 @@
       
       <!-- Categories -->
       <div>
-        <h3 class="text-lg font-bold mb-5 flex items-center gap-3 text-[#1d1a0c]">
+        <h3 class="text-lg font-bold mb-5 flex items-center gap-3 text-[#1d1a0c] dark:text-white">
           <span
-            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#ffd900]/10 text-[#1d1a0c]"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#ffd900]/10 text-[#1d1a0c] dark:text-[#ffed00]"
             [innerHTML]="defaultCategoryIcon"
             aria-hidden="true"
           ></span>
@@ -35,11 +35,11 @@
             (click)="onCategoryClick(category.id)"
             class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium"
             [ngClass]="isCategoryActive(category.id)
-              ? 'bg-[#ffd900]/10 text-[#1d1a0c] font-bold border border-[#ffd900]/20'
-              : 'hover:bg-[#f4f2e6] text-[#1d1a0c]/70 group'"
+              ? 'bg-[#ffd900]/10 text-[#1d1a0c] dark:text-white font-bold border border-[#ffd900]/20'
+              : 'hover:bg-[#f4f2e6] dark:hover:bg-[#2a2a2a] text-[#1d1a0c]/70 dark:text-gray-300 group'"
           >
             <span
-              class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#ffd900]/30 bg-[#ffd900]/5 text-[#1d1a0c]"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#ffd900]/30 bg-[#ffd900]/5 text-[#1d1a0c] dark:text-[#ffed00]"
               [innerHTML]="categoryIcons.get(category.id) || defaultCategoryIcon"
               aria-hidden="true"
             ></span>
@@ -53,7 +53,7 @@
 
       <!-- Condition -->
       <div>
-        <h3 class="text-lg font-bold mb-5 text-[#1d1a0c]">État de l'objet</h3>
+        <h3 class="text-lg font-bold mb-5 text-[#1d1a0c] dark:text-white">État de l'objet</h3>
         <div class="space-y-4 px-1">
           <label 
             class="flex items-center gap-3 cursor-pointer group"
@@ -68,14 +68,14 @@
               />
               <span class="material-symbols-outlined absolute opacity-0 peer-checked:opacity-100 text-black text-sm left-1/2 -translate-x-1/2 pointer-events-none font-bold">check</span>
             </div>
-            <span class="text-sm font-semibold group-hover:text-[#ffd900] transition-colors text-[#1d1a0c]">{{ state }}</span>
+            <span class="text-sm font-semibold group-hover:text-[#ffd900] transition-colors text-[#1d1a0c] dark:text-gray-200">{{ state }}</span>
           </label>
         </div>
       </div>
 
       <!-- Price Range -->
       <div>
-        <h3 class="text-lg font-bold mb-5 text-[#1d1a0c]">Gamme de prix (MAD)</h3>
+        <h3 class="text-lg font-bold mb-5 text-[#1d1a0c] dark:text-white">Gamme de prix (MAD)</h3>
         <div class="px-2">
           <input 
             type="range"
@@ -105,17 +105,17 @@
     <!-- PRODUCT GRID AREA -->
     <div class="flex-1">
       <!-- Toolbar -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-[#eae5cd]">
-        <div class="text-sm text-[#a19345]">
-          Affichage de <span class="font-bold text-[#1d1a0c]">{{ filteredProducts.length }} articles</span> de luxe
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-[#eae5cd] dark:border-[#3d3d3d]">
+        <div class="text-sm text-[#a19345] dark:text-gray-400">
+          Affichage de <span class="font-bold text-[#1d1a0c] dark:text-white">{{ filteredProducts.length }} articles</span> de luxe
         </div>
         <div class="flex items-center gap-4">
-          <span class="text-xs font-bold uppercase tracking-widest text-[#a19345]">Trier par</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#a19345] dark:text-gray-400">Trier par</span>
           <div class="relative">
             <select 
               [(ngModel)]="sortBy"
               (ngModelChange)="onSortChange()"
-              class="appearance-none bg-[#f4f2e6] border-none rounded-lg py-2 pl-4 pr-10 text-sm font-bold focus:ring-2 focus:ring-[#ffd900] cursor-pointer"
+              class="appearance-none bg-[#f4f2e6] dark:bg-[#2a2a2a] border-none rounded-lg py-2 pl-4 pr-10 text-sm font-bold dark:text-white focus:ring-2 focus:ring-[#ffd900] cursor-pointer"
             >
               <option *ngFor="let option of sortOptions" [value]="option.value">
                 {{ option.label }}
@@ -150,9 +150,9 @@
 
       <!-- Empty State -->
       <div *ngIf="filteredProducts.length === 0 && products.length > 0" class="text-center py-16">
-        <span class="material-symbols-outlined text-6xl text-[#eae5cd] mb-4">search_off</span>
-        <h3 class="text-xl font-bold text-[#1d1a0c] mb-2">Aucun article trouvé</h3>
-        <p class="text-[#a19345] mb-6">Essayez de modifier vos filtres</p>
+        <span class="material-symbols-outlined text-6xl text-[#eae5cd] dark:text-[#3d3d3d] mb-4">search_off</span>
+        <h3 class="text-xl font-bold text-[#1d1a0c] dark:text-white mb-2">Aucun article trouvé</h3>
+        <p class="text-[#a19345] dark:text-gray-400 mb-6">Essayez de modifier vos filtres</p>
         <button
           type="button"
           (click)="resetFilters()"

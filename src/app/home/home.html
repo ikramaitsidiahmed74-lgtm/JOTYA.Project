@@ -1,59 +1,7 @@
-<!-- Section promotion -->
+<!-- HERO SECTION - 3D CAROUSEL -->
+<app-hero></app-hero>
 
-<!-- HERO SECTION WITH 3D CAROUSEL -->
-<section class="relative w-full min-h-screen bg-background-light dark:bg-background-dark overflow-hidden">
-  
-  <!-- Background Gradient -->
-  <div class="absolute inset-0 bg-gradient-to-br from-black/5 via-transparent to-primary/5 dark:from-black/20 dark:to-primary/10"></div>
-  
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-32">
-    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-      
-      <!-- LEFT: Text Content - Animated -->
-      <div class="text-center lg:text-left space-y-8">
-        <!-- Main content: enters from right, moves to center, then rises up -->
-        <div class="space-y-4 hero-content" [class.hero-content-animated]="heroAnimated">
-          <p class="text-sm tracking-[0.3em] text-primary font-semibold uppercase">Marketplace de seconde main</p>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-            Donnez une <span class="text-primary">seconde vie</span> à vos objets
-          </h1>
-          <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-xl">
-            Achetez et vendez des articles uniques. Rejoignez notre communauté de passionnés.
-          </p>
-        </div>
-        
-        <!-- Buttons: fade-in after main content animation -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start hero-buttons" [class.hero-buttons-animated]="heroAnimated">
-          <button routerLink="/catalogue-luxe/vetements" 
-                  class="bg-primary text-black font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg">
-            Découvrir les articles
-          </button>
-          <button (click)="goRegisterVendeur()" 
-                  class="border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-bold px-8 py-4 rounded-xl hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
-            Devenir vendeur
-          </button>
-        </div>
-      </div>
-      
-      <!-- RIGHT: 3D Rotating Carousel -->
-      <div class="relative flex items-center justify-center">
-        <div class="scene">
-          <div class="carousel-3d" [style.--n]="carouselImages.length">
-            <img 
-              *ngFor="let img of carouselImages; let i = index"
-              [src]="img"
-              [style.--i]="i"
-              alt="Product image"
-              class="carousel-card"
-            />
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</section>
+<!-- Section promotion -->
 
 <!-- باقي الهوم -->
 
@@ -62,7 +10,7 @@
     <div class="grid md:grid-cols-2 gap-12">
 
       <!-- CARD - Pièces uniques -->
-      <div class="group relative h-[320px] rounded-2xl overflow-hidden shadow-2xl">
+      <div class="promo-card group relative h-[320px] rounded-2xl overflow-hidden shadow-2xl">
 
         <!-- Image -->
         <img
@@ -89,7 +37,7 @@
       </div>
 
       <!-- CARD - Marques rares -->
-      <div class="group relative h-[320px] rounded-2xl overflow-hidden shadow-2xl">
+      <div class="promo-card group relative h-[320px] rounded-2xl overflow-hidden shadow-2xl">
 
         <!-- Image -->
         <img
@@ -124,21 +72,21 @@
 
 
 
-<section class="max-w-700xl mx-auto px-6 py-16 space-y-24 bg-background-light dark:bg-background-dark">
+<section class="products-section max-w-700xl mx-auto px-6 py-16 space-y-24 bg-background-light dark:bg-background-dark">
 
   <!-- ================= ROW 1 ================= -->
   <div>
-    <div class="flex items-center justify-between mb-4">
-      <h2 class="text-2xl font-light tracking-[0.2em] uppercase text-black">
+    <div class="section-heading flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-light tracking-[0.2em] uppercase text-black dark:text-white">
         Vêtements & Accessoires
       </h2>
-      <button routerLink="/catalogue-luxe/vetements" class="text-xs tracking-widest uppercase text-black hover:text-[#ffed00]">
+      <button routerLink="/catalogue-luxe/vetements" class="text-xs tracking-widest uppercase text-black dark:text-gray-300 hover:text-[#ffed00] transition-colors">
         Voir plus
       </button>
     </div>
 
     <!-- AUTO SCROLL -->
-    <div class="relative overflow-hidden">
+    <div class="scroll-container relative overflow-hidden">
       <div
         class="flex gap-10 animate-scroll"
         (mouseenter)="pauseScroll = true"
@@ -176,10 +124,10 @@
             </div>
 
             <!-- TEXT -->
-            <p class="mt-3 text-[11px] uppercase tracking-widest text-gray-700">
+            <p class="mt-3 text-[11px] uppercase tracking-widest text-gray-700 dark:text-gray-400">
               {{ product.name }}
             </p>
-            <span class="text-sm font-medium text-black">
+            <span class="text-sm font-medium text-black dark:text-white">
               {{ product.price }} MAD
             </span>
           </div>
@@ -192,17 +140,17 @@
 
   <!-- ================= ROW 2 ================= -->
   <div>
-    <div class="flex items-center justify-between mb-4">
-      <h2 class="text-2xl font-light tracking-[0.2em] uppercase text-black">
+    <div class="section-heading flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-light tracking-[0.2em] uppercase text-black dark:text-white">
         Maison & Électroniques & Jeux
       </h2>
-      <button routerLink="/catalogue-luxe/electronique" class="text-xs tracking-widest uppercase text-black hover:text-[#ffed00]">
+      <button routerLink="/catalogue-luxe/electronique" class="text-xs tracking-widest uppercase text-black dark:text-gray-300 hover:text-[#ffed00] transition-colors">
         Voir plus
       </button>
     </div>
 
     <!-- AUTO SCROLL REVERSE -->
-    <div class="relative overflow-hidden">
+    <div class="scroll-container relative overflow-hidden">
       <div
         class="flex gap-10 animate-scroll-reverse"
         (mouseenter)="pauseScroll2 = true"
@@ -240,10 +188,10 @@
             </div>
 
             <!-- TEXT -->
-            <p class="mt-3 text-[11px] uppercase tracking-widest text-gray-700">
+            <p class="mt-3 text-[11px] uppercase tracking-widest text-gray-700 dark:text-gray-400">
               {{ product.name }}
             </p>
-            <span class="text-sm font-medium text-black">
+            <span class="text-sm font-medium text-black dark:text-white">
               {{ product.price }} MAD
             </span>
           </div>
@@ -263,11 +211,11 @@
 
 
 
-<section class="relative bg-gradient-to-r from-black via-[#161400] to-black overflow-hidden">
+<section class="vendeur-section relative bg-gradient-to-r from-black via-[#161400] to-black overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
 
     <!-- LEFT CONTENT -->
-    <div>
+    <div class="vendeur-left">
       <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-white">
         <span class="text-[#ffed00]">PRÊT À</span><br />
         <span class="text-[#ffed00]">DONNER UNE</span><br />
@@ -293,7 +241,7 @@
     </div>
 
     <!-- RIGHT CONTENT -->
-    <div class="relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
+    <div class="vendeur-right relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
       <h3 class="text-white font-semibold mb-2">Restez informé</h3>
       <p class="text-sm text-gray-400 mb-6">
         Recevez nos dernières pépites directement dans votre boîte mail.
@@ -324,12 +272,12 @@
   <div class="max-w-7xl mx-auto px-6 text-center">
 
     <!-- Subtitle -->
-    <p class="text-xs tracking-[0.3em] text-[#ffed00] font-semibold uppercase mb-4">
+    <p class="section-title text-xs tracking-[0.3em] text-[#ffed00] font-semibold uppercase mb-4">
       Notre engagement
     </p>
 
     <!-- Title -->
-    <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+    <h2 class="section-title text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">
       Pourquoi choisir Jotya ?
     </h2>
 
@@ -340,8 +288,8 @@
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
 
       <!-- Card 1 -->
-      <div class="bg-white border border-yellow-100 rounded-2xl p-8 hover:shadow-lg transition">
-        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 flex items-center justify-center">
+      <div class="why-card bg-white dark:bg-[#1a1a1a] border border-yellow-100 dark:border-[#2d2d2d] rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-[#ffed00]/10 transition">
+        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center">
           <!-- Shield Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#ffed00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -349,18 +297,18 @@
           </svg>
         </div>
 
-        <h3 class="font-semibold text-lg text-gray-900 mb-2">
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-2">
           Confiance
         </h3>
 
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
           Vendeurs vérifiés et transactions sécurisées
         </p>
       </div>
 
       <!-- Card 2 -->
-      <div class="bg-white border border-yellow-100 rounded-2xl p-8 hover:shadow-lg transition">
-        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 flex items-center justify-center">
+      <div class="why-card bg-white dark:bg-[#1a1a1a] border border-yellow-100 dark:border-[#2d2d2d] rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-[#ffed00]/10 transition">
+        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center">
           <!-- Diamond Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#ffed00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -368,18 +316,18 @@
           </svg>
         </div>
 
-        <h3 class="font-semibold text-lg text-gray-900 mb-2">
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-2">
           Qualité
         </h3>
 
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
           Chaque pièce est authentifiée par nos experts
         </p>
       </div>
 
       <!-- Card 3 -->
-      <div class="bg-white border border-yellow-100 rounded-2xl p-8 hover:shadow-lg transition">
-        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 flex items-center justify-center">
+      <div class="why-card bg-white dark:bg-[#1a1a1a] border border-yellow-100 dark:border-[#2d2d2d] rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-[#ffed00]/10 transition">
+        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center">
           <!-- Tag Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#ffed00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -387,18 +335,18 @@
           </svg>
         </div>
 
-        <h3 class="font-semibold text-lg text-gray-900 mb-2">
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-2">
           Prix correct
         </h3>
 
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
           Le luxe accessible sans compromis
         </p>
       </div>
 
       <!-- Card 4 -->
-      <div class="bg-white border border-yellow-100 rounded-2xl p-8 hover:shadow-lg transition">
-        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 flex items-center justify-center">
+      <div class="why-card bg-white dark:bg-[#1a1a1a] border border-yellow-100 dark:border-[#2d2d2d] rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-[#ffed00]/10 transition">
+        <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center">
           <!-- Smile Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#ffed00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -406,11 +354,11 @@
           </svg>
         </div>
 
-        <h3 class="font-semibold text-lg text-gray-900 mb-2">
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-2">
           Bonheur
         </h3>
 
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
           L’émotion unique d’un unboxing premium
         </p>
       </div>

@@ -1,148 +1,214 @@
-<div class="space-y-6">
+<div class="min-h-screen bg-[#FFFBF2] p-6">
 
-  <!-- TITLE + SEARCH -->
-  <div class="flex justify-between items-center">
+  <!-- HEADER -->
+  <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
     <div>
-      <h1 class="text-2xl font-semibold">Utilisateurs</h1>
+      <h1 class="text-2xl font-semibold text-gray-900">Utilisateurs</h1>
       <p class="text-sm text-gray-500">
         Gérez vos clients et vendeurs premium sur la plateforme.
       </p>
     </div>
 
     <div class="flex items-center gap-3">
-      <input
-        type="text"
-        placeholder="Rechercher un utilisateur (nom, email)"
-        class="w-72 px-4 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-yellow-400 outline-none"
-      />
+      <button class="px-3 py-1 text-sm rounded-lg bg-[#ffed00] text-black font-medium">
+        Tous
+      </button>
+      <button class="px-3 py-1 text-sm rounded-lg border bg-white">
+        Clients
+      </button>
+      <button class="px-3 py-1 text-sm rounded-lg border bg-white">
+        Vendeurs
+      </button>
+
+      <select class="ml-3 px-3 py-2 text-sm rounded-lg border bg-white">
+        <option>Status : Tous</option>
+        <option>Actif</option>
+        <option>Banni</option>
+      </select>
+
       <button
-        class="flex items-center gap-2 bg-yellow-400 px-4 py-2 rounded-lg font-medium text-sm"
+        routerLink="/admin/users/add"
+        class="ml-2 px-4 py-2 rounded-lg bg-[#ffed00] text-black font-medium flex items-center gap-2"
       >
-        ➕ Ajouter Utilisateur
+        + Ajouter Utilisateur
       </button>
     </div>
   </div>
 
-  <!-- FILTERS -->
-  <div class="flex gap-3">
-    <button class="px-4 py-2 rounded-lg bg-yellow-400 text-sm font-medium">
-      Tous
-    </button>
-    <button class="px-4 py-2 rounded-lg border text-sm">
-      Clients
-    </button>
-    <button class="px-4 py-2 rounded-lg border text-sm">
-      Vendeurs
-    </button>
-
-    <select
-      class="ml-auto px-4 py-2 border rounded-lg text-sm"
-    >
-      <option>Statut: Tous</option>
-      <option>Actif</option>
-      <option>Banni</option>
-    </select>
-  </div>
-
   <!-- TABLE -->
-  <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+  <div class="bg-white rounded-xl shadow p-4 mb-6">
 
     <table class="w-full text-sm">
-      <thead class="bg-gray-50 text-gray-500">
+      <thead class="text-left text-gray-400 border-b">
         <tr>
-          <th class="px-6 py-4 text-left">Utilisateur</th>
-          <th class="px-6 py-4 text-left">Rôle</th>
-          <th class="px-6 py-4 text-left">Statut</th>
-          <th class="px-6 py-4 text-left">Date d'inscription</th>
-          <th class="px-6 py-4 text-left">C.A Généré</th>
-          <th class="px-6 py-4 text-center">Actions</th>
+          <th class="py-3">UTILISATEUR</th>
+          <th>RÔLE</th>
+          <th>STATUT</th>
+          <th>DATE D’INSCRIPTION</th>
+          <th>C.A GÉNÉRÉ</th>
+          <th>ACTIONS</th>
         </tr>
       </thead>
 
       <tbody class="divide-y">
 
-        <!-- ROW -->
+        <!-- USER 1 -->
         <tr>
-          <td class="px-6 py-4 flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-gray-200"></div>
+          <td class="py-4 flex items-center gap-3">
+            <img
+              src="https://i.pravatar.cc/40?img=12"
+              class="w-10 h-10 rounded-full object-cover"
+            />
             <div>
               <p class="font-medium">Ahmed Mansouri</p>
-              <p class="text-xs text-gray-500">ahmed@email.com</p>
+              <p class="text-xs text-gray-500">ahmed.m@jotya.ma</p>
             </div>
           </td>
-
-          <td class="px-6 py-4">
-            <span class="px-2 py-1 rounded-full bg-blue-100 text-blue-600 text-xs">
-              Client
+          <td>
+            <span class="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700">
+              CLIENT
             </span>
           </td>
-
-          <td class="px-6 py-4">
-            <span class="px-2 py-1 rounded-full bg-green-100 text-green-600 text-xs">
-              Actif
+          <td>
+            <span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">
+              ● Actif
             </span>
           </td>
-
-          <td class="px-6 py-4 text-gray-500">
-            12 Jan 2024
-          </td>
-
-          <td class="px-6 py-4 font-medium">
-            45.200 MAD
-          </td>
-
-          <td class="px-6 py-4 flex justify-center gap-2">
-            <button class="px-3 py-1 text-xs border rounded-lg 💬">
+          <td class="text-gray-500">12 Jan 2024</td>
+          <td class="font-medium">45.200 MAD</td>
+          <td class="flex gap-2">
+            <button
+              routerLink="/admin/users/edit/1"
+              class="px-3 py-1 text-xs rounded border"
+            >
               Modifier
             </button>
-            <button class="px-3 py-1 text-xs border border-red-500 text-red-500 rounded-lg">
+            <button
+              class="px-3 py-1 text-xs rounded border border-red-200 text-red-600"
+            >
               Suspendre
             </button>
           </td>
         </tr>
 
-        <!-- DUPLICATE ROWS -->
-        <!-- Copy same structure -->
+        <!-- USER 2 -->
+        <tr>
+          <td class="py-4 flex items-center gap-3">
+            <img
+              src="https://i.pravatar.cc/40?img=32"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            <div>
+              <p class="font-medium">Sarra Kabbaj</p>
+              <p class="text-xs text-gray-500">kabbaj.sarra@gmail.com</p>
+            </div>
+          </td>
+          <td>
+            <span class="text-xs px-2 py-1 rounded-full bg-yellow-100 text-yellow-700">
+              FRS (VENDEUR)
+            </span>
+          </td>
+          <td>
+            <span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">
+              ● Actif
+            </span>
+          </td>
+          <td class="text-gray-500">05 Fév 2024</td>
+          <td class="font-medium">128.900 MAD</td>
+          <td class="flex gap-2">
+            <button
+              routerLink="/admin/users/edit/2"
+              class="px-3 py-1 text-xs rounded border"
+            >
+              Modifier
+            </button>
+            <button
+              class="px-3 py-1 text-xs rounded border border-red-200 text-red-600"
+            >
+              Suspendre
+            </button>
+          </td>
+        </tr>
+
+        <!-- USER 3 -->
+        <tr>
+          <td class="py-4 flex items-center gap-3">
+            <img
+              src="https://i.pravatar.cc/40?img=5"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            <div>
+              <p class="font-medium">Oumaima El Ouardi</p>
+              <p class="text-xs text-gray-500">ouaima.ouardi@live.fr</p>
+            </div>
+          </td>
+          <td>
+            <span class="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700">
+              CLIENT
+            </span>
+          </td>
+          <td>
+            <span class="text-xs px-2 py-1 rounded-full bg-red-100 text-red-700">
+              ● Banni
+            </span>
+          </td>
+          <td class="text-gray-500">18 Nov 2023</td>
+          <td class="font-medium">1.200 MAD</td>
+          <td class="flex gap-2">
+            <button
+              routerLink="/admin/users/edit/3"
+              class="px-3 py-1 text-xs rounded border"
+            >
+              Modifier
+            </button>
+            <button
+              class="px-3 py-1 text-xs rounded bg-green-100 text-green-700"
+            >
+              Réactiver
+            </button>
+          </td>
+        </tr>
 
       </tbody>
     </table>
 
-    <!-- PAGINATION -->
-    <div class="flex justify-between items-center px-6 py-4 text-sm text-gray-500">
-      <p>Affichage de 1 à 4 sur 1,240 utilisateurs</p>
-
-      <div class="flex gap-2">
-        <button class="w-8 h-8 border rounded-lg">‹</button>
-        <button class="w-8 h-8 bg-yellow-400 rounded-lg font-medium">1</button>
-        <button class="w-8 h-8 border rounded-lg">2</button>
-        <button class="w-8 h-8 border rounded-lg">3</button>
-        <button class="w-8 h-8 border rounded-lg">›</button>
+    <!-- FOOTER -->
+    <div class="flex items-center justify-between text-xs text-gray-500 mt-4">
+      <span>Affichage de 1 à 4 sur 1.240 utilisateurs</span>
+      <div class="flex gap-1">
+        <button class="w-8 h-8 rounded border">&lt;</button>
+        <button class="w-8 h-8 rounded bg-[#ffed00] text-black">1</button>
+        <button class="w-8 h-8 rounded border">2</button>
+        <button class="w-8 h-8 rounded border">3</button>
+        <button class="w-8 h-8 rounded border">&gt;</button>
       </div>
     </div>
 
   </div>
 
   <!-- STATS -->
-  <div class="grid grid-cols-3 gap-4">
-
-    <div class="bg-white p-5 rounded-xl shadow-sm">
-      <p class="text-sm text-gray-500">Nouveaux vendeurs certifiés</p>
-      <p class="text-2xl font-semibold mt-2">24</p>
-      <span class="text-xs text-green-600">+8.2%</span>
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="bg-white rounded-xl shadow p-4">
+      <p class="text-xs text-gray-400">Nouveaux vendeurs certifiés</p>
+      <p class="text-2xl font-semibold">24</p>
+      <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+        +8.2%
+      </span>
     </div>
 
-    <div class="bg-white p-5 rounded-xl shadow-sm">
-      <p class="text-sm text-gray-500">Signalements utilisateurs</p>
-      <p class="text-2xl font-semibold mt-2">12</p>
-      <span class="text-xs text-red-500">-2%</span>
+    <div class="bg-white rounded-xl shadow p-4">
+      <p class="text-xs text-gray-400">Signalements utilisateurs</p>
+      <p class="text-2xl font-semibold">12</p>
+      <span class="text-xs text-gray-400">-2%</span>
     </div>
 
-    <div class="bg-white p-5 rounded-xl shadow-sm">
-      <p class="text-sm text-gray-500">Score de rétention global</p>
-      <p class="text-2xl font-semibold mt-2">94%</p>
-      <span class="text-xs text-green-600">Excellent</span>
+    <div class="bg-white rounded-xl shadow p-4">
+      <p class="text-xs text-gray-400">Score rétention global</p>
+      <p class="text-2xl font-semibold">94%</p>
+      <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+        Excellent
+      </span>
     </div>
-
-  </div>
+  </section>
 
 </div>

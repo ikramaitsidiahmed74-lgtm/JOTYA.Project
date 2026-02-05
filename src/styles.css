@@ -2,11 +2,185 @@
 
 @import "tailwindcss";
 
+/* ========================================
+   CSS CUSTOM PROPERTIES - LIGHT MODE (DEFAULT)
+   ======================================== */
 
+:root {
+  /* Background colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f7f4;
+  --bg-tertiary: #f1f0ed;
+  --bg-card: #ffffff;
+  --bg-hover: #f5f5f5;
+  
+  /* Text colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6b7280;
+  --text-inverse: #ffffff;
+  
+  /* Border colors */
+  --border-light: #e5e7eb;
+  --border-medium: #d1d5db;
+  --border-dark: #9ca3af;
+  
+  /* Brand colors */
+  --color-primary: #ffed00;
+  --color-primary-hover: #e6d600;
+  --color-primary-light: rgba(255, 237, 0, 0.1);
+  --color-primary-shadow: rgba(255, 237, 0, 0.3);
+  
+  /* Hero specific */
+  --hero-bg-start: #0a0a0a;
+  --hero-bg-mid: #1a1a2e;
+  --hero-bg-end: #0f0f23;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Input/Form */
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-focus: #1a1a1a;
+  
+  /* Overlay */
+  --overlay-light: rgba(255, 255, 255, 0.8);
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+}
 
+/* ========================================
+   CSS CUSTOM PROPERTIES - DARK MODE
+   ======================================== */
 
+.dark {
+  /* Background colors */
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #252525;
+  --bg-card: #1f1f1f;
+  --bg-hover: #2a2a2a;
+  
+  /* Text colors */
+  --text-primary: #f5f5f5;
+  --text-secondary: #d1d1d1;
+  --text-muted: #9ca3af;
+  --text-inverse: #1a1a1a;
+  
+  /* Border colors */
+  --border-light: #2d2d2d;
+  --border-medium: #3d3d3d;
+  --border-dark: #4d4d4d;
+  
+  /* Brand colors (same in dark) */
+  --color-primary: #ffed00;
+  --color-primary-hover: #fff200;
+  --color-primary-light: rgba(255, 237, 0, 0.15);
+  --color-primary-shadow: rgba(255, 237, 0, 0.25);
+  
+  /* Shadows (more subtle in dark) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+  
+  /* Input/Form */
+  --input-bg: #1f1f1f;
+  --input-border: #3d3d3d;
+  --input-focus: #ffed00;
+  
+  /* Overlay */
+  --overlay-light: rgba(0, 0, 0, 0.6);
+  --overlay-dark: rgba(0, 0, 0, 0.8);
+}
 
-/* Custom background colors for catalogue */
+/* ========================================
+   GLOBAL DARK MODE UTILITIES
+   ======================================== */
+
+/* Body transitions for smooth theme switch */
+body {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cards */
+.dark-card {
+  background-color: var(--bg-card);
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+/* Inputs */
+input, textarea, select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--input-focus);
+}
+
+/* Links */
+a {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+/* ========================================
+   TAILWIND DARK MODE OVERRIDES
+   ======================================== */
+
+/* Background overrides */
+.dark .bg-white {
+  background-color: var(--bg-primary) !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-100 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark .bg-gray-200 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* Text overrides */
+.dark .text-black,
+.dark .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+.dark .text-gray-800,
+.dark .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+/* Border overrides */
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: var(--border-light) !important;
+}
+
+/* ========================================
+   EXISTING THEME VARIABLES (PRESERVED)
+   ======================================== */
+
 @theme {
   --color-background-light: #f8f7f4;
   --color-background-dark: #1a1a1a;
@@ -31,5 +205,36 @@
 
 .btn-primary:active {
   transform: scale(0.98);
+}
+
+/* ========================================
+   DASHBOARD LIGHT MODE EXCLUSION
+   Force dashboard to stay in light mode
+   ======================================== */
+
+.dashboard-light,
+.dashboard-light * {
+  /* Reset dark mode overrides for dashboard */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f7f4;
+  --bg-tertiary: #f1f0ed;
+  --bg-card: #ffffff;
+  --bg-hover: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+  --border-medium: #d1d5db;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  color-scheme: light;
+}
+
+.dashboard-light input,
+.dashboard-light textarea,
+.dashboard-light select {
+  background-color: #ffffff;
+  border-color: #d1d5db;
+  color: #1a1a1a;
 }
 

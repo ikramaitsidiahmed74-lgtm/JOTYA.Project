@@ -36,7 +36,7 @@ throw new Error('Method not implemented.');
   }
 
   menuItems: MenuItem[] = [
-    { label: 'Tableau de Bord', route: '/' },
+    { label: 'Tableau de Bord', route: '/dashboard' },
     { label: 'Mes Produits', route: '/products' },
     { label: 'Ventes', route: '/sales' },
     { label: 'Commandes', route: '/orders' },

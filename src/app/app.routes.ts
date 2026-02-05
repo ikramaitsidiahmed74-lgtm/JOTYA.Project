@@ -46,7 +46,9 @@ export const routes: Routes = [
         path: 'fournisseur',
         loadComponent: () => import('./fornisseur/fournisseur-layout.component').then(m => m.FournisseurLayoutComponent),
         children: [
-          { path: '', loadComponent: () => import('./fornisseur/dashboard/dashboard').then(m => m.Dashboard) },
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
+          { path: 'dashboard', loadComponent: () => import('./fornisseur/dashboard/dashboard').then(m => m.Dashboard) },
+          { path: 'ajouter-produit', loadComponent: () => import('./fornisseur/add-product/add-product').then(m => m.AddProductComponent) },
           { path: 'products', loadComponent: () => import('./fornisseur/products/products').then(m => m.Products) },
           { path: 'sales', loadComponent: () => import('./fornisseur/sales/sales').then(m => m.Sales) },
           { path: 'orders', loadComponent: () => import('./fornisseur/orders/orders').then(m => m.Orders) },
@@ -58,13 +60,13 @@ export const routes: Routes = [
         path: 'admin',
         loadComponent: () => import('./admin/layout/admin-layout.component').then(m => m.AdminLayoutComponent),
         children: [
-          { path: '', loadComponent: () => import('./admin/pages/dashboard/dashboard.component').then(m => m.AdminDashboardComponent) },
-          { path: 'users', loadComponent: () => import('./admin/pages/users/users.component').then(m => m.AdminUsersComponent) },
-          { path: 'validation', loadComponent: () => import('./admin/pages/validation/validation.component').then(m => m.AdminValidationComponent) },
-          { path: 'commandes', loadComponent: () => import('./admin/pages/commandes/commandes.component').then(m => m.AdminCommandesComponent) },
-          { path: 'rapports', loadComponent: () => import('./admin/pages/rapports/rapports.component').then(m => m.AdminRapportsComponent) },
-          { path: 'parametres', loadComponent: () => import('./admin/pages/parametres/parametres.component').then(m => m.AdminParametresComponent) },
-          { path: 'centr-aide', loadComponent: () => import('./admin/pages/centr-aide/centr-aide').then(m => m.AdminCentrAideComponent) },
+          { path: '', loadComponent: () => import('./admin/pages/dashboard/dashboard.component').then(m => m.AdminDashboardComponent), data: { title: "Vue d'ensemble" } },
+          { path: 'users', loadComponent: () => import('./admin/pages/users/users.component').then(m => m.AdminUsersComponent), data: { title: 'Utilisateurs' } },
+          { path: 'validation', loadComponent: () => import('./admin/pages/validation/validation.component').then(m => m.AdminValidationComponent), data: { title: 'Validation Produits' } },
+          { path: 'commandes', loadComponent: () => import('./admin/pages/commandes/commandes.component').then(m => m.AdminCommandesComponent), data: { title: 'Commandes Globales' } },
+          { path: 'rapports', loadComponent: () => import('./admin/pages/rapports/rapports.component').then(m => m.AdminRapportsComponent), data: { title: 'Rapports' } },
+          { path: 'parametres', loadComponent: () => import('./admin/pages/parametres/parametres.component').then(m => m.AdminParametresComponent), data: { title: 'Paramètres' } },
+          { path: 'centr-aide', loadComponent: () => import('./admin/pages/centr-aide/centr-aide').then(m => m.AdminCentrAideComponent), data: { title: "Centre d’aide" } },
         ]
       }
     ]
@@ -76,6 +78,7 @@ export const routes: Routes = [
   { path: 'orders', redirectTo: 'dashboard/fournisseur/orders' },
   { path: 'messages', redirectTo: 'dashboard/fournisseur/messages' },
   { path: 'settings', redirectTo: 'dashboard/fournisseur/settings' },
+  { path: 'products', redirectTo: 'dashboard/fournisseur/products' },
 
   // Connexion public
   { path: 'connexion', loadComponent: () => import('./fornisseur/connexion/connexion').then(m => m.Connexion) },

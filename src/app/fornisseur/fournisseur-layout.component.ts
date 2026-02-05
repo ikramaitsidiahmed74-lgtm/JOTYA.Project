@@ -7,7 +7,7 @@ import { Sidebar } from './sidebar/sidebar';
   standalone: true,
   imports: [RouterOutlet, Sidebar],
   template: `
-    <div class="flex min-h-screen w-full">
+    <div class="dashboard-light flex min-h-screen w-full bg-white text-gray-900">
       <app-sidebar class="w-64 shrink-0"></app-sidebar>
       <div class="flex flex-col flex-1 min-w-0">
         <main class="flex-1 overflow-y-auto bg-gray-50">

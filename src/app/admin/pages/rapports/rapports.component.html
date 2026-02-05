@@ -1,130 +1,182 @@
-<div class="space-y-6">
+<div class="bg-[#FFFBF2] p-6 space-y-6">
 
-  <!-- HEADER -->
-  <div class="flex justify-between items-center">
-    <div>
-      <h1 class="text-2xl font-semibold">Rapports & Analyses</h1>
-      <p class="text-sm text-gray-500">
-        Suivi des performances et analyses avancées de la plateforme.
-      </p>
-    </div>
+  <!-- KPI CARDS -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-    <div class="flex items-center gap-2">
-      <div class="flex border rounded-lg overflow-hidden text-sm">
-        <button class="px-3 py-1 bg-yellow-400 font-medium">Semaine</button>
-        <button class="px-3 py-1 hover:bg-gray-100">Mois</button>
-        <button class="px-3 py-1 hover:bg-gray-100">Année</button>
+    <div class="bg-white border border-gray-200 rounded-xl p-4">
+      <div class="flex justify-between items-center mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">shopping_cart</span>
+        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+          +8.6%
+        </span>
       </div>
-
-      <button
-        class="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800"
-      >
-        Exporter
-      </button>
-    </div>
-  </div>
-
-  <!-- KPIs -->
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-    <div class="bg-white p-4 rounded-xl shadow-sm">
-      <p class="text-xs text-gray-400">PANIER MOYEN</p>
-      <p class="text-xl font-semibold mt-1">1.840 MAD</p>
-      <span class="text-xs text-green-500">+8.4%</span>
+      <p class="text-xs text-gray-400 uppercase">Panier moyen</p>
+      <p class="text-xl font-semibold">1.840 MAD</p>
     </div>
 
-    <div class="bg-white p-4 rounded-xl shadow-sm">
-      <p class="text-xs text-gray-400">TAUX DE RETOUR</p>
-      <p class="text-xl font-semibold mt-1">2.4%</p>
-      <span class="text-xs text-red-500">+1.2%</span>
+    <div class="bg-white border border-gray-200 rounded-xl p-4">
+      <div class="flex justify-between items-center mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">undo</span>
+        <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full">
+          -1.2%
+        </span>
+      </div>
+      <p class="text-xs text-gray-400 uppercase">Taux de retour</p>
+      <p class="text-xl font-semibold">2.4%</p>
     </div>
 
-    <div class="bg-white p-4 rounded-xl shadow-sm">
-      <p class="text-xs text-gray-400">REVENU NET</p>
-      <p class="text-xl font-semibold mt-1">245.900 MAD</p>
-      <span class="text-xs text-green-500">+15.3%</span>
+    <div class="bg-white border border-gray-200 rounded-xl p-4">
+      <div class="flex justify-between items-center mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">payments</span>
+        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+          +15.3%
+        </span>
+      </div>
+      <p class="text-xs text-gray-400 uppercase">Revenu net</p>
+      <p class="text-xl font-semibold">245.900 MAD</p>
     </div>
 
   </div>
 
   <!-- CHART -->
-  <div class="bg-white p-5 rounded-xl shadow-sm">
-    <h3 class="font-semibold mb-1">Volume de ventes mensuel</h3>
-    <p class="text-xs text-gray-400 mb-4">
-      Analyse de croissance organique
-    </p>
+  <div class="bg-white border border-gray-200 rounded-xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <h2 class="font-semibold text-gray-900">Volume de ventes mensuel</h2>
+        <p class="text-sm text-gray-500">Analyse de croissance organique</p>
+      </div>
 
-    <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-      Chart هنا (2023 / 2024)
+      <div class="flex items-center gap-4 text-sm">
+        <div class="flex items-center gap-1">
+          <span class="w-3 h-3 bg-[#ffed00] rounded-full"></span>
+          Volume 2024
+        </div>
+        <div class="flex items-center gap-1 text-gray-400">
+          <span class="w-3 h-3 bg-gray-300 rounded-full"></span>
+          Volume 2023
+        </div>
+      </div>
     </div>
+
+    <svg viewBox="0 0 700 220" class="w-full h-56">
+
+      <!-- 2023 -->
+      <path
+        d="M20 150 C120 140 160 170 240 150 C320 120 360 140 420 160 C480 180 560 130 680 150"
+        fill="none"
+        stroke="#9CA3AF"
+        stroke-width="2"
+        stroke-dasharray="5 5"
+      />
+
+      <!-- 2024 -->
+      <path
+        d="M20 140 C120 120 160 80 240 90 C320 110 360 160 420 150 C480 40 560 30 680 120"
+        fill="none"
+        stroke="#ffed00"
+        stroke-width="4"
+      />
+
+      <!-- AREA -->
+      <path
+        d="M20 140 C120 120 160 80 240 90 C320 110 360 160 420 150 C480 40 560 30 680 120 L680 220 L20 220 Z"
+        fill="#ffed00"
+        opacity="0.15"
+      />
+
+      <!-- MONTHS -->
+      <g fill="#9CA3AF" font-size="12">
+        <text x="20" y="210">JAN</text>
+        <text x="100" y="210">FEV</text>
+        <text x="180" y="210">MAR</text>
+        <text x="260" y="210">AVR</text>
+        <text x="340" y="210">MAI</text>
+        <text x="420" y="210">JUN</text>
+        <text x="500" y="210">JUL</text>
+        <text x="580" y="210">AOUT</text>
+        <text x="660" y="210">SEP</text>
+      </g>
+
+    </svg>
   </div>
 
-  <!-- BOTTOM GRID -->
+  <!-- BOTTOM SECTIONS -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
     <!-- TOP CATEGORIES -->
-    <div class="bg-white p-5 rounded-xl shadow-sm space-y-4">
-      <h3 class="font-semibold">Top Catégories</h3>
+    <div class="bg-white border border-gray-200 rounded-xl p-6">
+      <h3 class="font-semibold mb-4">Top Catégories</h3>
 
-      <div>
-        <div class="flex justify-between text-sm mb-1">
-          <span>Vêtements de luxe</span>
-          <span class="text-yellow-500">45%</span>
+      <div class="space-y-3">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span>Vêtements de luxe</span>
+            <span class="text-[#ffed00]">45%</span>
+          </div>
+          <div class="h-2 bg-gray-100 rounded">
+            <div class="h-2 bg-[#ffed00] rounded" style="width:45%"></div>
+          </div>
         </div>
-        <div class="w-full h-2 bg-gray-100 rounded">
-          <div class="h-2 bg-yellow-400 rounded" style="width:45%"></div>
-        </div>
-      </div>
 
-      <div>
-        <div class="flex justify-between text-sm mb-1">
-          <span>Électronique</span>
-          <span class="text-yellow-500">28%</span>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span>Électronique</span>
+            <span class="text-[#ffed00]">28%</span>
+          </div>
+          <div class="h-2 bg-gray-100 rounded">
+            <div class="h-2 bg-[#ffed00] rounded" style="width:28%"></div>
+          </div>
         </div>
-        <div class="w-full h-2 bg-gray-100 rounded">
-          <div class="h-2 bg-yellow-400 rounded" style="width:28%"></div>
-        </div>
-      </div>
 
-      <div>
-        <div class="flex justify-between text-sm mb-1">
-          <span>Accessoires & Maroquinerie</span>
-          <span class="text-yellow-500">15%</span>
-        </div>
-        <div class="w-full h-2 bg-gray-100 rounded">
-          <div class="h-2 bg-yellow-400 rounded" style="width:15%"></div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span>Accessoires & Maroquinerie</span>
+            <span class="text-[#ffed00]">15%</span>
+          </div>
+          <div class="h-2 bg-gray-100 rounded">
+            <div class="h-2 bg-[#ffed00] rounded" style="width:15%"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- TOP SELLERS -->
-    <div class="bg-white p-5 rounded-xl shadow-sm space-y-4">
-      <h3 class="font-semibold">Top Vendeurs Certifiés</h3>
+    <!-- TOP VENDEURS -->
+    <div class="bg-white border border-gray-200 rounded-xl p-6">
+      <h3 class="font-semibold mb-4">Top Vendeurs Certifiés</h3>
 
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 bg-gray-200 rounded-full"></div>
-          <div>
-            <p class="text-sm font-medium">Mehdi Benjelloun</p>
-            <span class="text-xs text-gray-400">Ventes: 42</span>
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-[#ffed00] rounded-full flex items-center justify-center text-black font-bold">
+              M
+            </div>
+            <div>
+              <p class="font-medium">Mehdi Benjelloun</p>
+              <p class="text-xs text-gray-400">Ventes: 142</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-semibold">42.500 MAD</p>
+            <p class="text-xs text-green-600">+12%</p>
           </div>
         </div>
-        <span class="text-sm font-semibold">42.500 MAD</span>
-      </div>
 
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 bg-yellow-400 rounded-full flex items-center justify-center text-xs font-bold">
-            LZ
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-[#ffed00] rounded-full flex items-center justify-center text-black font-bold">
+              LZ
+            </div>
+            <div>
+              <p class="font-medium">Laila Zraidi</p>
+              <p class="text-xs text-gray-400">Ventes: 89</p>
+            </div>
           </div>
-          <div>
-            <p class="text-sm font-medium">Laila Zraidi</p>
-            <span class="text-xs text-gray-400">Ventes: 36</span>
+          <div class="text-right">
+            <p class="font-semibold">28.300 MAD</p>
+            <p class="text-xs text-green-600">+5%</p>
           </div>
         </div>
-        <span class="text-sm font-semibold">28.300 MAD</span>
       </div>
-
     </div>
 
   </div>

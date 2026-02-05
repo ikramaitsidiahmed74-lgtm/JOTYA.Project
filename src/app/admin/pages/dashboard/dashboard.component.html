@@ -1,201 +1,217 @@
-<div class="min-h-screen bg-gray-50 p-6">
-  <!-- KPI Cards -->
+<!-- Material Icons -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+  rel="stylesheet"
+/>
+
+<div class="min-h-screen bg-[#FFFBF2] p-6">
+
+  <!-- TOP BAR -->
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-2xl font-semibold text-gray-900">Dashboard Jotya</h1>
+      <p class="text-sm text-gray-500">
+        Bienvenue dans votre centre de contrôle Jotya, Produits Occasion.
+      </p>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <!-- Notification -->
+      
+
+      <!-- Avatar -->
+      <img
+        src="https://i.pravatar.cc/40"
+        class="w-9 h-9 rounded-full object-cover"
+      />
+    </div>
+  </div>
+
+  <!-- KPI CARDS -->
   <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    <div class="bg-white p-5 rounded-xl shadow-sm flex items-center gap-4">
-      <div
-        class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600"
-      >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3 3h14v4H3V3zM3 10h8v7H3v-7z"></path>
-        </svg>
+
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">payments</span>
+        <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+          +12.5%
+        </span>
       </div>
-      <div>
-        <p class="text-xs text-gray-400">CHIFFRE D’AFFAIRES</p>
-        <p class="text-xl font-semibold text-gray-900">75.400 MAD</p>
-        <span class="text-sm text-green-500">+12.5%</span>
-      </div>
+      <p class="text-xs text-gray-400 uppercase">Chiffre d'affaires</p>
+      <p class="text-xl font-semibold">75.400 MAD</p>
     </div>
 
-    <div class="bg-white p-5 rounded-xl shadow-sm flex items-center gap-4">
-      <div
-        class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600"
-      >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 2a4 4 0 100 8 4 4 0 000-8zM2 18a8 8 0 0116 0H2z"></path>
-        </svg>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">group</span>
+        <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+          +5.2%
+        </span>
       </div>
-      <div>
-        <p class="text-xs text-gray-400">UTILISATEURS ACTIFS</p>
-        <p class="text-xl font-semibold text-gray-900">1.240</p>
-      </div>
+      <p class="text-xs text-gray-400 uppercase">Utilisateurs actifs</p>
+      <p class="text-xl font-semibold">1.240</p>
     </div>
 
-    <div class="bg-white p-5 rounded-xl shadow-sm flex items-center gap-4">
-      <div
-        class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600"
-      >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M5 3h10v2H5V3zM4 7h12v8a1 1 0 01-1 1H5a1 1 0 01-1-1V7z"></path>
-        </svg>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">inventory</span>
+        <span class="text-xs text-red-600 bg-red-100 px-2 py-1 rounded-full">
+          Attention
+        </span>
       </div>
-      <div>
-        <p class="text-xs text-gray-400">PRODUITS EN ATTENTE</p>
-        <p class="text-xl font-semibold text-gray-900">42</p>
-        <span class="text-sm text-red-500">En attente</span>
-      </div>
+      <p class="text-xs text-gray-400 uppercase">En attente</p>
+      <p class="text-xl font-semibold">42 produits</p>
     </div>
 
-    <div class="bg-white p-5 rounded-xl shadow-sm flex items-center gap-4">
-      <div
-        class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600"
-      >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3 10h4v7H3v-7zM8 3h4v14H8V3zM13 6h4v11h-4V6z"></path>
-        </svg>
+    <div class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between mb-2">
+        <span class="material-symbols-outlined text-[#ffed00]">trending_up</span>
+        <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">
+          +0.4%
+        </span>
       </div>
-      <div>
-        <p class="text-xs text-gray-400">TAUX DE CONVERSION</p>
-        <p class="text-xl font-semibold text-gray-900">3.2%</p>
-      </div>
+      <p class="text-xs text-gray-400 uppercase">Taux de conversion</p>
+      <p class="text-xl font-semibold">3.2%</p>
     </div>
+
   </section>
 
-  <!-- Main Content -->
+  <!-- MAIN CONTENT -->
   <main class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-    <!-- Left: Chart and Validation list (span 2) -->
-    <section class="lg:col-span-2 space-y-6">
-      <div class="bg-white rounded-xl shadow p-6">
-        <div class="flex items-start justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-gray-900">Croissance du CA et Utilisateurs</h2>
-            <p class="text-sm text-gray-500">Performance sur les 6 derniers mois</p>
-          </div>
-          <div class="text-sm text-gray-500">Derniers 6 mois</div>
-        </div>
 
-        <div
-          class="mt-4 h-64 rounded-lg bg-gradient-to-r from-gray-100 to-white border border-dashed border-gray-200 flex items-center justify-center text-gray-400"
-        >
-          <svg
-            class="w-3/4 h-40"
-            viewBox="0 0 600 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 150 L100 120 L200 80 L300 100 L400 60 L500 90 L600 40"
-              stroke="#F59E0B"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <circle cx="100" cy="120" r="4" fill="#F59E0B" />
-            <circle cx="200" cy="80" r="4" fill="#F59E0B" />
-            <circle cx="300" cy="100" r="4" fill="#F59E0B" />
-          </svg>
+    <!-- CHART -->
+    <section class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+      <h2 class="text-lg font-semibold text-gray-900">
+        Croissance du CA et Utilisateurs
+      </h2>
+      <p class="text-sm text-gray-500 mb-4">
+        Performance sur les 6 derniers mois
+      </p>
+
+     <div class="h-64 w-full bg-white rounded-xl p-4">
+  <svg viewBox="0 0 700 220" class="w-full h-full">
+    
+    <!-- dotted line -->
+    <path
+      d="M20 140 
+         C80 120, 120 160, 180 140
+         C240 120, 280 100, 340 120
+         C400 140, 460 130, 520 150
+         C580 170, 620 140, 680 130"
+      fill="none"
+      stroke="#D1D5DB"
+      stroke-width="3"
+      stroke-dasharray="6 6"
+      stroke-linecap="round"
+    />
+
+    <!-- yellow line -->
+    <path
+      d="M20 120
+         C80 40, 120 160, 180 90
+         C240 40, 280 140, 340 110
+         C400 180, 460 60, 520 40
+         C580 140, 620 160, 680 80"
+      fill="none"
+      stroke="#FACC15"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+
+    <!-- Months -->
+    <g fill="#9CA3AF" font-size="12">
+      <text x="20" y="205">JAN</text>
+      <text x="140" y="205">FEV</text>
+      <text x="260" y="205">MAR</text>
+      <text x="380" y="205">AVR</text>
+      <text x="500" y="205">MAI</text>
+      <text x="620" y="205">JUIN</text>
+    </g>
+
+  </svg>
+</div>
+
+    </section>
+
+    <!-- VALIDATION PRODUITS -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold">Validation Produits</h3>
+        <a href="#" class="text-sm text-[#ffed00]">Voir tout</a>
+      </div>
+
+      <div class="flex items-center gap-3 mb-4">
+        <img
+          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+          class="w-12 h-12 rounded-lg object-cover"
+        />
+        <div class="flex-1">
+          <p class="text-sm font-medium">Rolex Submariner</p>
+          <p class="text-xs text-gray-500">9.500 MAD</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
+            Approuver
+          </button>
+          <button class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">
+            Refuser
+          </button>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-semibold text-gray-900">Validation Produits</h3>
-          <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full">42</span>
+      <div class="flex items-center gap-3">
+        <img
+          src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c"
+          class="w-12 h-12 rounded-lg object-cover"
+        />
+        <div class="flex-1">
+          <p class="text-sm font-medium">Sac Chanel Timeless</p>
+          <p class="text-xs text-gray-500">4.200 MAD</p>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="flex items-center gap-4">
-            <div
-              class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center text-gray-300"
-            >
-              Image
-            </div>
-            <div>
-              <p class="font-medium text-gray-900">Sac Chanel Timeless</p>
-              <p class="text-sm text-gray-500">4.200 MAD</p>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-end gap-2">
-            <button class="px-4 py-2 rounded-lg bg-green-100 text-green-700 font-medium">
-              Approuver
-            </button>
-            <button class="px-4 py-2 rounded-lg bg-red-100 text-red-700 font-medium">
-              Refuser
-            </button>
-          </div>
+        <div class="flex gap-2">
+          <button class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">
+            Approuver
+          </button>
+          <button class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">
+            Refuser
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Right: Quick Validation / Controls -->
-    <aside class="space-y-6">
-      <div class="bg-white rounded-xl shadow p-6">
-        <h4 class="text-lg font-semibold text-gray-900 mb-3">Validation Rapide</h4>
-        <div class="flex items-center gap-4">
-          <div
-            class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center text-gray-300"
-          >
-            Img
-          </div>
-          <div class="flex-1">
-            <p class="font-medium text-gray-900">Rolex Submariner</p>
-            <p class="text-sm text-gray-500">9.500 MAD</p>
-            <div class="mt-3 flex gap-2">
-              <button class="px-3 py-1 bg-green-100 text-green-700 rounded">Approuver</button>
-              <button class="px-3 py-1 bg-red-100 text-red-700 rounded">Refuser</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-xl shadow p-6">
-        <h4 class="text-lg font-semibold text-gray-900 mb-3">Actions</h4>
-        <div class="flex flex-col gap-3">
-          <button class="w-full px-4 py-2 rounded-lg bg-yellow-400 text-white font-medium">
-            Créer une exportation
-          </button>
-          <button class="w-full px-4 py-2 rounded-lg border hover:bg-gray-50">
-            Télécharger CSV
-          </button>
-        </div>
-      </div>
-    </aside>
   </main>
 
-  <!-- Bottom: Latest Orders Table -->
+  <!-- LAST ORDERS -->
   <section class="bg-white rounded-xl shadow p-6">
-    <div class="flex items-center justify-between mb-4">
-      <h3 class="text-lg font-semibold text-gray-900">Dernières Commandes</h3>
-      <p class="text-sm text-gray-500">Vue récente</p>
-    </div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-4">
+      Dernières Commandes
+    </h3>
 
-    <div class="overflow-auto">
+    <div class="overflow-x-auto">
       <table class="w-full text-sm">
         <thead class="text-left text-gray-500 border-b">
           <tr>
             <th class="py-3">Commande</th>
-            <th class="py-3">Client</th>
-            <th class="py-3">Produits</th>
-            <th class="py-3">Montant</th>
-            <th class="py-3">Statut</th>
-            <th class="py-3">Actions</th>
+            <th>Client</th>
+            <th>Produit</th>
+            <th>Montant</th>
+            <th>Statut</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
+
           <tr class="border-b">
             <td class="py-3 font-medium">#JT-8829</td>
             <td>Ahmed Mansouri</td>
             <td>Rolex Submariner</td>
             <td>9.500 MAD</td>
             <td>
-              <span
-                class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-700"
-                >Payé</span
-              >
+              <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-700">
+                Payé
+              </span>
             </td>
-            <td>
-              <button class="px-3 py-1 text-sm rounded-lg bg-gray-100">Voir</button>
-            </td>
+            <td>•••</td>
           </tr>
 
           <tr class="border-b">
@@ -204,14 +220,11 @@
             <td>Dior Saddle Bag</td>
             <td>2.800 MAD</td>
             <td>
-              <span
-                class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-700"
-                >En attente</span
-              >
+              <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-700">
+                En attente
+              </span>
             </td>
-            <td>
-              <button class="px-3 py-1 text-sm rounded-lg bg-gray-100">Voir</button>
-            </td>
+            <td>•••</td>
           </tr>
 
           <tr>
@@ -220,17 +233,16 @@
             <td>Gucci Dionysus</td>
             <td>7.200 MAD</td>
             <td>
-              <span
-                class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-700"
-                >Expédié</span
-              >
+              <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-700">
+                Expédié
+              </span>
             </td>
-            <td>
-              <button class="px-3 py-1 text-sm rounded-lg bg-gray-100">Voir</button>
-            </td>
+            <td>•••</td>
           </tr>
+
         </tbody>
       </table>
     </div>
   </section>
+
 </div>

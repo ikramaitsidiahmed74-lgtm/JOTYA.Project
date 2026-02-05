@@ -1,69 +1,61 @@
-<!-- =====================================================
-   HERO SECTION - Premium Second-Hand E-Commerce
-   Hierarchy: 1) Products → 2) Text/CTAs → 3) Logo
-===================================================== -->
-<section class="hero" [class.loaded]="isLoaded">
-
-  <!-- 3️⃣ LOGO (Appears Last - Top Left) -->
-  <div 
-    class="hero-logo" 
-    [class.visible]="showLogo"
-    [class.sticky]="isLogoSticky"
-  >
-    <img [src]="logoUrl" alt="Jotya Logo" />
+<!-- Hero Section - 3D Circular Carousel Background -->
+<section class="hero-section" 
+         #heroSection
+         (mouseenter)="onMouseEnter()" 
+         (mouseleave)="onMouseLeave()"
+         aria-label="Hero section with 3D carousel">
+  
+  <!-- 3D Carousel Background -->
+  <div class="carousel-container">
+    <div class="carousel-3d" #carousel3D>
+      <!-- Cartes disposées en cercle 3D autour de l'axe Y -->
+      <img 
+        *ngFor="let photoId of DATA; let i = index"
+        class="hero-card"
+        [src]="getImageUrl(photoId)"
+        [alt]="'Image ' + (i + 1)"
+        [ngStyle]="getCardStyle(i)"
+        loading="lazy"
+        decoding="async"
+      />
+      <!-- Video Card - positioned as the last card in the 3D carousel -->
+      <video 
+        class="hero-card hero-video-card"
+        [ngStyle]="getCardStyle(DATA.length)"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        disablePictureInPicture
+        preload="auto"
+      >
+        <source src="assets/hero vidio/Design sans titre (4) (1).mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 
-  <!-- Main Container -->
-  <div class="hero-main">
+  <!-- Gradient Overlay pour lisibilité du texte -->
+  <div class="hero-gradient"></div>
 
-    <!-- 1️⃣ MAIN FOCUS: 3D Rotating Carousel -->
-    <div class="scene">
-      <div class="a3d" [style.--n]="carouselCount">
-        <img 
-          *ngFor="let photoId of carouselData; let i = index"
-          class="card"
-          [src]="'https://images.unsplash.com/photo-' + photoId + '?w=280'"
-          [style.--i]="i"
-          alt="Product Image"
-        />
-      </div>
-    </div>
-
-    <!-- 2️⃣ SECONDARY: Text Content & CTAs -->
-    <div class="hero-content" [class.visible]="showText">
-      
-      <!-- Headline -->
-      <h1 class="hero-headline">
-        Chaque pièce mérite une 
-        <span class="highlight">seconde chance</span>
+  <!-- Contenu Hero - Titre et CTA (devant le carousel) -->
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Marketplace de seconde main</span>
+      <h1 class="hero-title">
+        Donnez une <span class="highlight">seconde vie</span> à vos objets
       </h1>
-
-      <!-- Yellow accent line -->
-      <div class="accent-line"></div>
-
-      <!-- Sub-headline -->
-      <p class="hero-subheadline">
-        Vêtements et accessoires soigneusement sélectionnés pour une nouvelle vie.
+      <p class="hero-subtitle">
+        Découvrez des milliers de produits uniques, vendus par des particuliers et des professionnels.
+        Mode, électronique, maison et plus encore.
       </p>
-
-      <!-- CTA Buttons -->
-      <div class="hero-cta-group">
-        <button 
-          class="btn-primary"
-          (click)="navigateTo('/catalogue-luxe')"
-        >
-          Découvrir les trouvailles
-        </button>
-        <button 
-          class="btn-secondary"
-          (click)="navigateTo('/guide')"
-        >
-          Comment on sélectionne
-        </button>
+      <div class="hero-buttons">
+        <a routerLink="/catalogue-luxe/vetements" class="btn-primary">
+          Explorer le catalogue
+        </a>
+        <a routerLink="/auth/vendeur-register" class="btn-secondary">
+          Devenir vendeur
+        </a>
       </div>
-
     </div>
-
   </div>
-
 </section>

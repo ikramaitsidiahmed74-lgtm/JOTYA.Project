@@ -1,10 +1,10 @@
-<div class="bg-[#faf9f4] text-[#1d1a0c] min-h-screen">
+<div class="bg-[#faf9f4] dark:bg-[#0f0f0f] text-[#1d1a0c] dark:text-gray-100 min-h-screen">
 
   <main class="fade-up max-w-[1200px] mx-auto px-6 py-10">
 
     <!-- Breadcrumb -->
     <div class="flex items-center gap-2 text-sm mb-10">
-      <a routerLink="/home" class="text-[#a19345] hover:underline">Accueil</a>
+      <a routerLink="/home" class="text-[#a19345] dark:text-[#c9b84e] hover:underline">Accueil</a>
       <span class="material-symbols-outlined text-xs">chevron_right</span>
       <a routerLink="/checkout" class="font-semibold">Panier & Paiement</a>
     </div>
@@ -31,7 +31,7 @@
               <!-- ITEM -->
               <div
                 *ngFor="let item of items; trackBy: trackByProductId"
-                class="group flex gap-6 p-4 bg-white rounded-xl border border-[#eae5cd]
+                class="group flex gap-6 p-4 bg-white dark:bg-[#1a1a1a] rounded-xl border border-[#eae5cd] dark:border-[#2d2d2d]
                        transition-all duration-500 ease-out
                        hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#ffed00]/20"
               >
@@ -49,7 +49,7 @@
                   <div class="flex justify-between">
                     <div>
                       <h3 class="font-bold text-lg">{{ item.product.name }}</h3>
-                      <p class="text-sm text-[#a19345]">
+                      <p class="text-sm text-[#a19345] dark:text-gray-400">
                         {{ item.product.brand }} • {{ item.product.condition }}
                       </p>
                     </div>
@@ -95,9 +95,9 @@
 
         <!-- EMPTY -->
         <ng-template #emptyCart>
-          <div class="p-6 bg-white border border-dashed rounded-xl text-center">
+          <div class="p-6 bg-white dark:bg-[#1a1a1a] border border-dashed dark:border-[#2d2d2d] rounded-xl text-center">
             <p class="font-semibold mb-2">Votre panier est vide.</p>
-            <p class="text-sm text-[#a19345]">
+            <p class="text-sm text-[#a19345] dark:text-gray-400">
               Ajoutez un article pour continuer vers le paiement.
             </p>
           </div>
@@ -122,15 +122,15 @@
       <!-- ================= RIGHT ================= -->
       <div class="lg:col-span-5">
 
-        <div class="summary-card bg-white rounded-2xl border border-[#eae5cd] p-8 sticky top-8">
+        <div class="summary-card bg-white dark:bg-[#1a1a1a] rounded-2xl border border-[#eae5cd] dark:border-[#2d2d2d] p-8 sticky top-8">
 
           <h2 class="text-2xl font-bold mb-6">Résumé de la commande</h2>
 
           <ng-container *ngIf="totals$ | async as totals">
 
-            <div class="space-y-4 border-b pb-6 mb-6">
+            <div class="space-y-4 border-b dark:border-[#2d2d2d] pb-6 mb-6">
               <div class="flex justify-between">
-                <span class="text-[#a19345]">
+                <span class="text-[#a19345] dark:text-gray-400">
                   Sous-total ({{ totals.itemsCount }} article{{ totals.itemsCount > 1 ? 's' : '' }})
                 </span>
                 <span class="font-semibold">
