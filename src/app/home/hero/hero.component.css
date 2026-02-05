@@ -8,7 +8,10 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f23 100%);
+  background-image: url('/assets/bghero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* ========================================
@@ -40,9 +43,9 @@
    ======================================== */
 
 .hero-card {
-  --card-width: 200px;
-  --card-height: 286px;
-  --radius: 450px;
+  --card-width: 180px;
+  --card-height: 260px;
+  --radius: 500px;
   
   position: absolute;
   width: var(--card-width);
@@ -78,6 +81,57 @@
 .hero-video-card {
   object-fit: cover;
   background: #000;
+}
+
+/* Video Wrapper for overlay and effects */
+.hero-video-wrapper {
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.hero-video-wrapper .hero-video-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Subtle overlay for text readability */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Enhanced hover effects with glow and scale */
+.hero-video-wrapper {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-video-wrapper:hover {
+  transform: rotateY(var(--angle)) translateZ(calc(var(--radius) + 20px)) scale(1.05);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(255, 237, 0, 0.25),
+    0 0 120px rgba(255, 237, 0, 0.15);
+}
+
+.hero-video-wrapper:hover .video-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 237, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
 }
 
 /* Reflection effect */

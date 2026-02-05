@@ -8,29 +8,26 @@
   <!-- 3D Carousel Background -->
   <div class="carousel-container">
     <div class="carousel-3d" #carousel3D>
-      <!-- Cartes disposées en cercle 3D autour de l'axe Y -->
-      <img 
-        *ngFor="let photoId of DATA; let i = index"
-        class="hero-card"
-        [src]="getImageUrl(photoId)"
-        [alt]="'Image ' + (i + 1)"
+      <!-- Video Cards - 12 cards (6 vidéos × 2) disposées en cercle 3D -->
+      <div 
+        *ngFor="let video of VIDEOS; let i = index"
+        class="hero-card hero-video-wrapper"
         [ngStyle]="getCardStyle(i)"
-        loading="lazy"
-        decoding="async"
-      />
-      <!-- Video Card - positioned as the last card in the 3D carousel -->
-      <video 
-        class="hero-card hero-video-card"
-        [ngStyle]="getCardStyle(DATA.length)"
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        disablePictureInPicture
-        preload="auto"
       >
-        <source src="assets/hero vidio/Design sans titre (4) (1).mp4" type="video/mp4">
-      </video>
+        <video 
+          #videoCard
+          class="hero-video-card"
+          muted 
+          loop 
+          playsinline
+          disablePictureInPicture
+          preload="none"
+        >
+          <source [src]="getVideoUrl(video)" type="video/mp4">
+        </video>
+        <!-- Subtle overlay for text readability -->
+        
+      </div>
     </div>
   </div>
 
@@ -40,14 +37,11 @@
   <!-- Contenu Hero - Titre et CTA (devant le carousel) -->
   <div class="hero-overlay">
     <div class="hero-content">
-      <span class="hero-eyebrow">Marketplace de seconde main</span>
+      
       <h1 class="hero-title">
-        Donnez une <span class="highlight">seconde vie</span> à vos objets
+        L9A<span class="highlight">EL HAMZA</span>
       </h1>
-      <p class="hero-subtitle">
-        Découvrez des milliers de produits uniques, vendus par des particuliers et des professionnels.
-        Mode, électronique, maison et plus encore.
-      </p>
+     
       <div class="hero-buttons">
         <a routerLink="/catalogue-luxe/vetements" class="btn-primary">
           Explorer le catalogue

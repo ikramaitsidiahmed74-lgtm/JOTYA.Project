@@ -3,6 +3,8 @@ import {
   AfterViewInit,
   OnDestroy,
   ViewChild,
+  ViewChildren,
+  QueryList,
   ElementRef,
   PLATFORM_ID,
   inject,
@@ -26,6 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
 export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('carousel3D') carouselRef!: ElementRef<HTMLDivElement>;
   @ViewChild('heroSection') heroSectionRef!: ElementRef<HTMLElement>;
+  @ViewChildren('videoCard') videoCards!: QueryList<ElementRef<HTMLVideoElement>>;
 
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
@@ -34,31 +37,42 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private rotationTween: gsap.core.Tween | null = null;
   private scrollTriggerInstance: ScrollTrigger | null = null;
   private currentRotation = 0;
+  private intersectionObserver: IntersectionObserver | null = null;
 
-  // Images Unsplash pour le carousel 3D
-  readonly DATA: string[] = [
-    '1540968221243-29f5d70540bf',
-    '1596135187959-562c650d98bc',
-    '1628944682084-831f35256163',
-    '1590013330451-3946e83e0392',
-    '1590421959604-741d0eec0a2e',
-    '1572613000712-eadc57acbecd',
-    '1570097192570-4b49a6736f9f',
-    '1620789550663-2b10e0080354',
-    '1617775623669-20bff4ffaa5c',
-    '1548600916-dc8492f8e845',
-    '1573824969595-a76d4365a2e6',
-    '1633936929709-59991b5fdd72'
+  // Vidéos pour le carousel 3D (6 vidéos × 2 = 12 cards)
+  readonly VIDEO_FILES: string[] = [
+    'Design sans titre (5).mp4',
+    'Design sans titre (6).mp4',
+    'Design sans titre (7).mp4',
+    'Design sans titre (8).mp4',
+    'Design sans titre (9).mp4',
+    'Design sans titre (10).mp4'
   ];
 
-  // +1 pour inclure la video card
+  // 12 cards: each video appears twice
+  readonly VIDEOS: string[] = [
+    ...this.VIDEO_FILES,
+    ...this.VIDEO_FILES
+  ];
+
+  // Images Unsplash pour le carousel 3D (optional backup)
+  readonly DATA: string[] = [];
+
+  // Total = 12 video cards
   get totalCards(): number {
-    return this.DATA.length + 1;
+    return this.VIDEOS.length;
   }
 
   // Angle entre chaque carte (360° / nombre de cartes)
   get anglePerCard(): number {
     return 360 / this.totalCards;
+  }
+
+  /**
+   * Génère l'URL de la vidéo
+   */
+  getVideoUrl(videoName: string): string {
+    return `assets/hero vidio/${videoName}`;
   }
 
   ngAfterViewInit(): void {
@@ -67,9 +81,42 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
         // Petit délai pour laisser le DOM se stabiliser
         setTimeout(() => {
           this.initCarousel3D();
+          this.initLazyLoadVideos();
         }, 100);
       });
     }
+  }
+
+  /**
+   * Initialize Intersection Observer for lazy loading videos
+   */
+  private initLazyLoadVideos(): void {
+    if (!this.isBrowser) return;
+
+    this.intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            // Load and play video when visible
+            if (video.paused) {
+              video.play().catch(() => {});
+            }
+          } else {
+            // Pause video when not visible to save resources
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    // Observe all video cards
+    this.videoCards.forEach((cardRef) => {
+      this.intersectionObserver?.observe(cardRef.nativeElement);
+    });
   }
 
   ngOnDestroy(): void {
@@ -78,6 +125,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     }
     if (this.scrollTriggerInstance) {
       this.scrollTriggerInstance.kill();
+    }
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
     }
     // Clean up all ScrollTriggers created by this component
     ScrollTrigger.getAll().forEach(st => st.kill());
