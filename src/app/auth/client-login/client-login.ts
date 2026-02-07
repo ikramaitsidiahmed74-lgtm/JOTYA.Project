@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { SupabaseService } from '../../services/supabase';
 
 @Component({
   selector: 'app-client-login',
@@ -11,21 +12,35 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class ClientLoginComponent {
   form: FormGroup;
+  feedbackMessage = '';
+  isLoading = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private supabaseService: SupabaseService
+  ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
-  submit() {
+  async submit() {
     if (this.form.invalid) return;
 
-    // هنا يمكن تدير authentication logic
-    console.log('Client Login:', this.form.value);
+    this.isLoading = true;
+    this.feedbackMessage = '';
 
-    // بعد login ناجح → redirect لأي صفحة
-    this.router.navigate(['/']); // dashboard أو home
+    const { email, password } = this.form.value;
+    const result = await this.supabaseService.signIn(email, password);
+
+    if (result.success) {
+      this.router.navigate(['/']);
+    } else {
+      this.feedbackMessage = result.error || 'Sign in failed';
+    }
+
+    this.isLoading = false;
   }
 }

@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { CartItem } from '../models/cart-item.model';
 import { PaymentMethod } from '../models/payment-method.model';
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
 import { CheckoutService } from '../services/checkout.service';
+import { SupabaseService } from '../services/supabase';
 
 @Component({
   selector: 'app-panier',
@@ -16,9 +17,7 @@ import { CheckoutService } from '../services/checkout.service';
   templateUrl: './panier.html',
   styleUrls: ['./panier.css'],
 })
-
-
-export class Panier implements OnInit {
+export class Panier implements OnInit, OnDestroy {
   readonly authenticationFee = 250;
   readonly shippingCost = 0;
 
@@ -30,19 +29,19 @@ export class Panier implements OnInit {
     { id: 'bank-transfer', label: 'Virement / Cash', icon: 'payments' },
   ];
 
- 
   cartItems$!: Observable<CartItem[]>;
   paymentMethod$!: Observable<PaymentMethod | null>;
   totals$!: Observable<{ subtotal: number; itemsCount: number; total: number }>;
 
   feedbackMessage = '';
+  private destroy$ = new Subject<void>();
 
   constructor(
     private readonly cartService: CartService,
     private readonly checkoutService: CheckoutService,
-    private readonly router: Router
-  )
-   {
+    private readonly router: Router,
+    private readonly supabaseService: SupabaseService
+  ) {
     this.cartItems$ = this.cartService.items$;
     this.paymentMethod$ = this.checkoutService.paymentMethod$;
     this.totals$ = this.cartItems$.pipe(
@@ -55,11 +54,49 @@ export class Panier implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    // Seed demo data to showcase the UI when the cart is empty.
-    if (this.cartService.isEmpty()) {
-      this.addDemoProducts();
+  async ngOnInit(): Promise<void> {
+    // Load cart from Supabase if user is logged in
+    const user = await this.supabaseService.getAuthenticatedUser();
+    if (user) {
+      const { items } = await this.supabaseService.loadCart();
+      // saved items may be either an array of CartItem ({ product, quantity })
+      // or an array of Product objects depending on what was persisted.
+      (items || []).forEach((item: any) => {
+        if (!item) return;
+        if (item.product) {
+          // stored as CartItem
+          this.cartService.addItem(item.product as Product, item.quantity || 1);
+        } else {
+          // stored as Product
+          this.cartService.addItem(item as Product, 1);
+        }
+      });
+    } else {
+      // Seed demo data if no authenticated user
+      if (this.cartService.isEmpty()) {
+        this.addDemoProducts();
+      }
     }
+
+    // Auto-save cart to Supabase when it changes. Avoid async subscribe handlers.
+    this.cartItems$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((items) => {
+        if (!items || items.length === 0) return;
+        // fire-and-forget with basic error handling
+        this.supabaseService.getAuthenticatedUser().then((u) => {
+          if (u) {
+            this.supabaseService.saveCart(items).catch((err) => {
+              console.warn('Failed to auto-save cart', err);
+            });
+          }
+        }).catch((err) => console.warn('Failed to get authenticated user', err));
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   increaseQuantity(item: CartItem): void {
@@ -78,7 +115,7 @@ export class Panier implements OnInit {
     this.checkoutService.setPaymentMethod(method);
   }
 
-  confirmOrder(): void {
+  async confirmOrder(): Promise<void> {
     const items = this.cartService.getSnapshot();
     const paymentMethod = this.checkoutService.getSnapshot();
 
@@ -92,7 +129,12 @@ export class Panier implements OnInit {
       return;
     }
 
-    // Proceed to the checkout page. Order submission happens in CheckoutComponent (MVP).
+    // Save cart to Supabase before checkout
+    const user = await this.supabaseService.getAuthenticatedUser();
+    if (user) {
+      await this.supabaseService.saveCart(items);
+    }
+
     void this.router.navigateByUrl('/checkout');
   }
 
