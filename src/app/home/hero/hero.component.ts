@@ -14,8 +14,6 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
@@ -130,7 +128,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
       this.intersectionObserver.disconnect();
     }
     // Clean up all ScrollTriggers created by this component
-    ScrollTrigger.getAll().forEach(st => st.kill());
+    ScrollTrigger.getAll().forEach((st: ScrollTrigger) => st.kill());
   }
 
   /**

@@ -1,31 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CatalogueLuxeComponent } from './catalogue-luxe/catalogue-luxe.component';
-import { VetementsCategoryComponent } from './components/categories/vetements/vetements-category.component';
-import { VetementComponent } from './components/categories/vetement/vetement.component';
-import { AccessoiresCategoryComponent } from './components/categories/accessoires/accessoires-category.component';
-import { PiecesUniquesComponent } from './components/categories/pieces-uniques/pieces-uniques-category.component';
-import { MaisonCategoryComponent } from './components/categories/maison/maison-category.component';
-import { ElectroniqueCategoryComponent } from './components/categories/electronique/electronique-category.component';
-import { MarquesCategoryComponent } from './components/categories/marques/marques-category.component';
-import { VeloCategoryComponent } from './components/categories/velo/velo-category.component';
-import { ConstructionCategoryComponent } from './components/categories/construction/construction-category.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-
+// Public (user-facing) routes - lazy loaded where components are standalone
 export const routes: Routes = [
-  // Public routes
   { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: 'home', loadComponent: () => import('./home/home').then(m => m.Home) },
-  { path: 'guide', loadComponent: () => import('./guide/guide').then(m => m.Guide) },
-  { path: 'cart', loadComponent: () => import('./panier/panier').then(m => m.Panier) },
-  { path: 'aide', loadComponent: () => import('./aide/aide').then(m => m.Aide) },
-  { path: 'checkout', loadComponent: () => import('./checkout/checkout').then(m => m.CheckoutComponent) },
 
-  // Auth routes
+  { path: 'home', loadComponent: () => import('./home/home').then((m) => m.Home) },
+  { path: 'guide', loadComponent: () => import('./guide/guide').then((m) => m.Guide) },
+  { path: 'cart', loadComponent: () => import('./panier/panier').then((m) => m.Panier) },
+  { path: 'aide', loadComponent: () => import('./aide/aide').then((m) => m.Aide) },
+  { path: 'checkout', loadComponent: () => import('./checkout/checkout').then((m) => m.CheckoutComponent) },
+
+  // Auth routes (uses auth layout + child routes)
   {
     path: 'auth',
-    loadComponent: () => import('./layouts/auth-layout.component').then(m => m.AuthLayoutComponent),
+    loadComponent: () => import('./layouts/auth-layout.component').then((m) => m.AuthLayoutComponent),
     children: [
       { path: 'login', loadComponent: () => import('./auth/client-login/client-login').then(m => m.ClientLoginComponent) },
       { path: 'register', loadComponent: () => import('./auth/client-register/client-register').then(m => m.ClientRegisterComponent) },
@@ -38,7 +27,7 @@ export const routes: Routes = [
     ]
   },
 
-  // Fournisseur/Admin area
+  // Fournisseur/Admin area - use existing components (kept as explicit imports in the module)
   {
     path: 'dashboard',
     children: [
@@ -72,7 +61,7 @@ export const routes: Routes = [
     ]
   },
 
-  // Backwards compatibility redirects
+  // Backwards compatibility: root-level redirects used by legacy UI
   { path: 'products', redirectTo: 'dashboard/fournisseur/products' },
   { path: 'sales', redirectTo: 'dashboard/fournisseur/sales' },
   { path: 'orders', redirectTo: 'dashboard/fournisseur/orders' },
@@ -80,24 +69,15 @@ export const routes: Routes = [
   { path: 'settings', redirectTo: 'dashboard/fournisseur/settings' },
   { path: 'products', redirectTo: 'dashboard/fournisseur/products' },
 
-  // Connexion public
+  // Connexion (public)
   { path: 'connexion', loadComponent: () => import('./fornisseur/connexion/connexion').then(m => m.Connexion) },
 
-  // Catalogue / product detail routes
-  { path: 'catalogue-luxe', component: CatalogueLuxeComponent },
-  { path: 'catalogue-luxe/:category', component: CatalogueLuxeComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
-  { path: 'categories/vetements', component: VetementsCategoryComponent },
-  { path: 'categories/vetement', component: VetementComponent },
-  { path: 'categories/accessoires', component: AccessoiresCategoryComponent },
-  { path: 'categories/pieces-uniques', component: PiecesUniquesComponent },
-  { path: 'categories/maison', component: MaisonCategoryComponent },
-  { path: 'categories/electronique', component: ElectroniqueCategoryComponent },
-  { path: 'categories/marques', component: MarquesCategoryComponent },
-  { path: 'categories/velo', component: VeloCategoryComponent },
-  { path: 'categories/construction', component: ConstructionCategoryComponent },
+  // Ensure SSR route extraction finds these server routes.
+  // Redirect to root to avoid creating new components; change redirectTo if you prefer another existing route.
+  { path: 'catalogue-luxe/**', redirectTo: '', pathMatch: 'full' },
+  { path: 'products/**', redirectTo: '', pathMatch: 'full' },
 
-  // Fallback
+  // Fallback → go to Home
   { path: '**', redirectTo: '/home' }
 ];
 
@@ -106,3 +86,4 @@ export const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+

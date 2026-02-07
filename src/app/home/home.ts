@@ -303,7 +303,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     clearInterval(this.coverInterval);
     // Clean up all ScrollTrigger instances
     if (this.isBrowser) {
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      ScrollTrigger.getAll().forEach((st: ScrollTrigger) => st.kill());
     }
   }
 }
