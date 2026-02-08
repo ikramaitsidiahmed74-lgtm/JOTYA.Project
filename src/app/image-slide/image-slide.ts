@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-image-slide',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './image-slide.html',
   styleUrl: './image-slide.scss',
 })
@@ -16,9 +17,14 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
   private trailValue = 0;
   private interval = 4000;
   private intervalId: any = null;
+  private tl: gsap.core.Timeline | null = null;
+  private gsapContext: any = null;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.isBrowser = isPlatformBrowser(platformId);
+  constructor(
+    private platformId: Object,
+    private el: ElementRef
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
   ngOnInit(): void {}
@@ -26,12 +32,13 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
-    this.slider = document.querySelector('.slider');
-    const trailContainer = document.querySelector('.trail');
+    this.slider = this.el.nativeElement.querySelector('.slider');
+    const trailContainer = this.el.nativeElement.querySelector('.trail');
     if (trailContainer) {
       this.trails = trailContainer.querySelectorAll('div');
     }
 
+    this.initGsapAnimation();
     this.setupEventListeners();
     this.startAutoSlide();
   }
@@ -40,6 +47,17 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
+    if (this.gsapContext && this.gsapContext.revert) {
+      this.gsapContext.revert();
+    }
+    if (this.tl) {
+      this.tl.kill();
+    }
+  }
+
+  private initGsapAnimation(): void {
+    this.gsapContext = gsap.context(() => {}, this.el.nativeElement);
+    this.animateSlide(this.trailValue);
   }
 
   private startAutoSlide(): void {
@@ -53,6 +71,7 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
     
     condition === 'increase' ? this.initiateINC() : this.initiateDEC();
     this.move(this.value, this.trailValue);
+    this.animateSlide(this.trailValue);
     this.intervalId = setInterval(() => this.slide('increase'), this.interval);
   }
 
@@ -79,38 +98,55 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private trailUpdate(): void {
-    if (this.value === 0) {
-      this.trailValue = 0;
-    } else if (this.value === 20) {
-      this.trailValue = 1;
-    } else if (this.value === 40) {
-      this.trailValue = 2;
-    } else if (this.value === 60) {
-      this.trailValue = 3;
-    } else {
-      this.trailValue = 4;
+  private animateSlide(index: number): void {
+    if (this.gsapContext && this.gsapContext.revert) {
+      this.gsapContext.revert();
     }
+
+    const slides: NodeListOf<HTMLElement> = this.el.nativeElement.querySelectorAll('.box');
+    const slide = slides && slides[index] ? slides[index] : null;
+    if (!slide) {
+      return;
+    }
+
+    this.gsapContext = gsap.context(() => {
+      if (this.tl) {
+        this.tl.kill();
+        this.tl = null;
+      }
+
+      this.tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'power2.inOut' } });
+      const bg = slide.querySelector('.bg') as HTMLElement;
+      const p = slide.querySelector('p') as HTMLElement;
+      const h1 = slide.querySelector('h1') as HTMLElement;
+      const button = slide.querySelector('button') as HTMLElement;
+
+      if (bg) this.tl.from(bg, { x: '-100%', opacity: 0 });
+      if (p) this.tl.from(p, { opacity: 0 }, '-=0.3');
+      if (h1) this.tl.from(h1, { opacity: 0, y: '30px' }, '-=0.3');
+      if (button) this.tl.from(button, { opacity: 0, y: '-40px' }, '-=0.8');
+    }, slide);
+  }
+
+  private trailUpdate(): void {
+    this.trailValue = Math.floor(this.value / 20);
   }
 
   private setupEventListeners(): void {
     if (!this.isBrowser) return;
 
-    // Navigation buttons
-    document.querySelectorAll('svg.next, svg.prev').forEach(cur => {
+    this.el.nativeElement.querySelectorAll('svg.next, svg.prev').forEach((cur: Element) => {
       cur.addEventListener('click', () => {
         cur.classList.contains('next') ? this.slide('increase') : this.slide('decrease');
       });
     });
 
-    // Trail clicks
     if (this.trails) {
       this.trails.forEach(cur => {
         cur.addEventListener('click', (ev) => this.clickCheck(ev));
       });
     }
 
-    // Touch events
     this.setupTouchEvents();
   }
 
@@ -139,6 +175,7 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
 
     this.trailUpdate();
     this.move(this.value, this.trailValue);
+    this.animateSlide(this.trailValue);
     this.intervalId = setInterval(() => this.slide('increase'), this.interval);
   }
 

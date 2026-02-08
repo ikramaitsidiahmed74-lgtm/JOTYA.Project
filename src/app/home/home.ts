@@ -3,16 +3,15 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { HeroComponent } from './hero/hero.component';
+import { ImageSlide } from '../image-slide/image-slide';
+import { ProductService, Product } from '../services/product.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeroComponent],
+  imports: [CommonModule, RouterModule, HeroComponent, ImageSlide],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -20,105 +19,42 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
 
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
+  private productService = inject(ProductService);
+  private router = inject(Router);
   private isBrowser = isPlatformBrowser(this.platformId);
 
-  // Pause auto scroll on hover
+  // Pause auto scroll on hover (used in template)
   pauseScroll = false;
   pauseScroll2 = false;
 
   // Hero animation state
   heroAnimated = false;
 
-  // 3D Carousel Data - Images for rotating carousel
-  carouselImages = [
-    '/assets/V1.jpg',
-    '/assets/V5.PNG',
-    '/assets/V10.PNG',
-    '/assets/V9.PNG',
-    '/assets/V12.jpg',
-    '/assets/V13.jpg',
-    '/assets/V14.jpg',
-    '/assets/V18.PNG',
-    '/assets/V19.PNG',
-    '/assets/V20.PNG',
-    '/assets/V21.PNG',
-    '/assets/V22.PNG'
-  ];
-
-  constructor(private router: Router) {}
-
-  goRegisterVendeur() {
-    this.router.navigate(['/auth/vendeur-register']);
-  }
-
   // ===================== DATA =====================
-  categories = [
-    {
-      name: 'Vêtements',
-      products: [
-        { id: 1, name: 'jacket Cuire', price: 79, image: '/assets/V1.jpg' },
-        { id: 2, name: 'Robe Courte', price: 99, image: '/assets/V5.PNG' },
-        { id: 3, name: 'Mini Djellaba', price: 60, image: '/assets/V10.PNG' },
-        { id: 4, name: 'Pantalon femme', price: 30, image: '/assets/V9.PNG' },
-      ],
-    },
-    {
-      name: 'Accessoires',
-      products: [
-        { id: 5, name: 'Sac Cuire', price: 79, image: '/assets/V12.jpg' },
-        { id: 6, name: 'Collie', price: 349, image: '/assets/V13.jpg' },
-        { id: 7, name: 'Chasseurs Talonts', price: 80, image: '/assets/V14.jpg' },
-      ],
-    },
-    {
-      name: 'Maison',
-      products: [
-        { id: 8, name: 'Zarbia', price: 299, image: '/assets/V18.PNG' },
-        { id: 9, name: 'Objets décoratifs vintage', price: 167, image: '/assets/V19.PNG' },
-        { id: 10, name: 'KHALAT', price: 50, image: '/assets/V20.PNG' },
-      ],
-    },
-    {
-      name: 'Électroniques',
-      products: [
-        { id: 11, name: 'Camera HD', price: 500, image: '/assets/V21.PNG' },
-        { id: 12, name: 'PC gamer', price: 4000, image: '/assets/V22.PNG' },
-      ],
-    },
-    {
-      name: 'Jeux',
-      products: [
-        { id: 13, name: 'Piano électrique', price: 389, image: '/assets/V22.PNG' },
-      ],
-    },
-  ];
-
-  // ===================== GETTERS =====================
-  get vetementAccessoireProducts() {
-    return this.categories
-      .filter(c => c.name === 'Vêtements' || c.name === 'Accessoires')
-      .flatMap(c => c.products);
+  // Produits vêtements & accessoires du ProductService
+  get vetementAccessoireProducts(): Product[] {
+    const vetements = this.productService.getProductsByCategory('vetements').slice(0, 5);
+    const accessoires = this.productService.getProductsByCategory('accessoires').slice(0, 3);
+    return [...vetements, ...accessoires];
   }
 
-  get vetementAccessoireLoop() {
+  get vetementAccessoireLoop(): Product[] {
     return [...this.vetementAccessoireProducts, ...this.vetementAccessoireProducts];
   }
 
-  get maisonElectroJeuxProducts() {
-    return this.categories
-      .filter(c =>
-        c.name === 'Maison' ||
-        c.name === 'Électroniques' ||
-        c.name === 'Jeux'
-      )
-      .flatMap(c => c.products);
+  // Produits maison, électronique & jeux du ProductService
+  get maisonElectroJeuxProducts(): Product[] {
+    const maison = this.productService.getProductsByCategory('maison').slice(0, 4);
+    const electronique = this.productService.getProductsByCategory('electronique').slice(0, 3);
+    return [...maison, ...electronique];
   }
 
-  get maisonElectroJeuxLoop() {
+  get maisonElectroJeuxLoop(): Product[] {
     return [...this.maisonElectroJeuxProducts, ...this.maisonElectroJeuxProducts];
   }
 
-  goToProduct(product: any) {
+  goToProduct(product: Product): void {
+    console.log('Navigating to product:', product.id, product.name);
     this.router.navigate(['/products', product.id]);
   }
 
@@ -131,9 +67,18 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     'Support 24/7',
   ];
 
-  private coverInterval!: any;
+  private coverInterval: ReturnType<typeof setInterval> | undefined;
 
-  ngOnInit() {
+  goRegisterVendeur(): void {
+    this.router.navigate(['/auth/vendeur-register']);
+  }
+
+  ngOnInit(): void {
+    // Register ScrollTrigger plugin only in browser
+    if (this.isBrowser) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     // Trigger hero animation after a short delay
     setTimeout(() => {
       this.heroAnimated = true;
@@ -145,22 +90,25 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.isBrowser) {
-      this.ngZone.runOutsideAngular(() => {
-        // Petit délai pour laisser le DOM se stabiliser
-        setTimeout(() => {
-          this.initScrollAnimations();
-        }, 200);
-      });
-    }
+    if (!this.isBrowser) return;
+
+    this.ngZone.runOutsideAngular(() => {
+      // Petit délai pour laisser le DOM se stabiliser
+      setTimeout(() => {
+        this.initScrollAnimations();
+      }, 200);
+    });
   }
 
   /**
    * Initialise les animations scroll-trigger pour toutes les sections
    */
   private initScrollAnimations(): void {
+    if (!this.isBrowser) return;
+
     // Animation pour les cards promotionnelles
-    gsap.utils.toArray('.promo-card').forEach((card: any) => {
+    const promoCards = gsap.utils.toArray<HTMLElement>('.promo-card');
+    promoCards.forEach((card) => {
       gsap.fromTo(card,
         { opacity: 0, y: 60, scale: 0.95 },
         {
@@ -177,9 +125,10 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     });
 
     // Animation pour les sections de produits
-    gsap.utils.toArray('.products-section').forEach((section: any) => {
-      const heading = section.querySelector('.section-heading');
-      const scrollContainer = section.querySelector('.scroll-container');
+    const productSections = gsap.utils.toArray<HTMLElement>('.products-section');
+    productSections.forEach((section) => {
+      const heading = section.querySelector<HTMLElement>('.section-heading');
+      const scrollContainer = section.querySelector<HTMLElement>('.scroll-container');
 
       if (heading) {
         gsap.fromTo(heading,
@@ -216,10 +165,10 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     });
 
     // Animation pour la section vendeur
-    const vendeurSection = document.querySelector('.vendeur-section');
+    const vendeurSection = document.querySelector<HTMLElement>('.vendeur-section');
     if (vendeurSection) {
-      const leftContent = vendeurSection.querySelector('.vendeur-left');
-      const rightContent = vendeurSection.querySelector('.vendeur-right');
+      const leftContent = vendeurSection.querySelector<HTMLElement>('.vendeur-left');
+      const rightContent = vendeurSection.querySelector<HTMLElement>('.vendeur-right');
 
       if (leftContent) {
         gsap.fromTo(leftContent,
@@ -256,7 +205,8 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
 
     // Animation pour les cards "Pourquoi Jotya"
-    gsap.utils.toArray('.why-card').forEach((card: any, index: number) => {
+    const whyCards = gsap.utils.toArray<HTMLElement>('.why-card');
+    whyCards.forEach((card, index: number) => {
       gsap.fromTo(card,
         { opacity: 0, y: 50, scale: 0.9 },
         {
@@ -274,7 +224,8 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     });
 
     // Animation pour les titres de section
-    gsap.utils.toArray('.section-title').forEach((title: any) => {
+    const sectionTitles = gsap.utils.toArray<HTMLElement>('.section-title');
+    sectionTitles.forEach((title) => {
       gsap.fromTo(title,
         { opacity: 0, y: 30 },
         {
@@ -291,16 +242,20 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  rotateCoverflow() {
+  rotateCoverflow(): void {
     // 🔥 الطريقة الصحيحة مع Angular
-    this.expertiseCards = [
-      ...this.expertiseCards.slice(1),
-      this.expertiseCards[0],
-    ];
+    if (this.expertiseCards.length > 0) {
+      this.expertiseCards = [
+        ...this.expertiseCards.slice(1),
+        this.expertiseCards[0],
+      ];
+    }
   }
 
-  ngOnDestroy() {
-    clearInterval(this.coverInterval);
+  ngOnDestroy(): void {
+    if (this.coverInterval) {
+      clearInterval(this.coverInterval);
+    }
     // Clean up all ScrollTrigger instances
     if (this.isBrowser) {
       ScrollTrigger.getAll().forEach(st => st.kill());
