@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
+import { ToastComponent } from './shared/notification/toast.component';
+import { ConfirmComponent } from './shared/confirm/confirm.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,8 @@ import { Footer } from './footer/footer';
     CommonModule,
     Header,
     Footer,
+    ToastComponent,
+    ConfirmComponent,
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],

@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   standalone: true,
   imports: [CommonModule, RouterModule, HeroComponent, ImageSlide],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
 export class Home implements OnInit, OnDestroy, AfterViewInit {
 

@@ -1,7 +1,7 @@
-<div class="bg-background-light dark:bg-background-dark text-black dark:text-white">
+<div class="bg-background-light  text-black ">
 
   <!-- ================= HERO ================= -->
-  <section class="min-h-[90vh] flex items-center justify-center text-center px-6">
+  <section class="min-h-[70vh] flex items-center justify-center text-center px-6">
     <div>
       <span class="text-[#ffed00] text-xs tracking-[0.35em] uppercase">
         Vendeur Partenaire
@@ -16,11 +16,16 @@
         Vendez vos produits en toute confiance grâce à un écosystème sécurisé,
         vérifié et pensé pour les vendeurs sérieux.
       </p>
+
+      <a routerLink="/auth/vendeur-register"
+         class="inline-block mt-8 bg-[#ffed00] hover:bg-[#e6d600] text-black font-semibold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-[0_8px_25px_rgba(255,237,0,0.35)] hover:-translate-y-0.5">
+        Lancer votre boutique
+      </a>
     </div>
   </section>
 
   <!-- ================= PROCESS ================= -->
-  <section class="py-24 px-6 max-w-6xl mx-auto">
+  <section class="py-16 px-6 max-w-6xl mx-auto">
     <h2 class="text-center text-xl font-semibold mb-16">
       Le Processus en 3 Étapes
       <span class="block w-10 h-[2px] bg-[#ffed00] mx-auto mt-3"></span>
@@ -69,7 +74,7 @@
   </section>
 
   <!-- ================= COMMISSION ================= -->
-  <section class="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+  <section class="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
     <div>
       <span class="text-[#ffed00] text-xs tracking-widest">TRANSPARENCE TOTALE</span>
       <h2 class="text-3xl font-bold mt-4">
@@ -109,34 +114,40 @@
   </section>
 
   <!-- ================= PAIEMENTS ================= -->
-  <section class="py-24 px-6 max-w-6xl mx-auto">
+  <section class="py-16 px-6 max-w-6xl mx-auto">
     <h2 class="text-center text-xl font-semibold mb-16">
       Paiements Sécurisés & Garantis
       <span class="block w-10 h-[2px] bg-[#ffed00] mx-auto mt-3"></span>
     </h2>
 
-    <div class="grid md:grid-cols-3 gap-12 text-center">
-      <div>
-        <span class="material-symbols-outlined text-[#ffed00] text-5xl">shopping_cart</span>
-        <h4 class="mt-4 font-semibold">Acheteur paie</h4>
-        <p class="text-gray-400 text-sm mt-2">Les fonds sont sécurisés par JOTYA.</p>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-white dark:bg-[#0f0f0f] p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-16 h-16 rounded-2xl bg-[#ffed00]/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-[#ffed00]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#ffed00] text-4xl">shopping_cart</span>
+        </div>
+        <h4 class="font-semibold">Acheteur paie</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">Les fonds sont sécurisés par JOTYA.</p>
       </div>
-      <div>
-        <span class="material-symbols-outlined text-[#ffed00] text-5xl">inventory_2</span>
-        <h4 class="mt-4 font-semibold">Produit livré</h4>
-        <p class="text-gray-400 text-sm mt-2">Livraison confirmée.</p>
+      <div class="bg-white dark:bg-[#0f0f0f] p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-16 h-16 rounded-2xl bg-[#ffed00]/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-[#ffed00]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#ffed00] text-4xl">inventory_2</span>
+        </div>
+        <h4 class="font-semibold">Produit livré</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">Livraison confirmée.</p>
       </div>
-      <div>
-        <span class="material-symbols-outlined text-[#ffed00] text-5xl">savings</span>
-        <h4 class="mt-4 font-semibold">Vendeur payé</h4>
-        <p class="text-gray-400 text-sm mt-2">Virement rapide garanti.</p>
+      <div class="bg-white dark:bg-[#0f0f0f] p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-16 h-16 rounded-2xl bg-[#ffed00]/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-[#ffed00]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#ffed00] text-4xl">savings</span>
+        </div>
+        <h4 class="font-semibold">Vendeur payé</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">Virement rapide garanti.</p>
       </div>
     </div>
   </section>
 
   <!-- ================= PAROLES PARTENAIRES ================= -->
-  <section class="py-28 px-6 overflow-hidden">
-  <h2 class="text-center text-xl font-semibold mb-16">
+  <section class="py-16 px-6 overflow-hidden">
+  <h2 class="text-center text-xl font-semibold mb-12">
     Paroles de Partenaires
     <span class="block w-10 h-[2px] bg-[#ffed00] mx-auto mt-3"></span>
   </h2>
@@ -145,146 +156,213 @@
     <div class="carousel">
       <!-- Card 1 -->
       <div class="partner-card">
-        <img src="/assets/partners/p1.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Une plateforme sérieuse qui protège vraiment les vendeurs. Les paiements sont clairs et je reçois mon argent sans retard”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Hassan El Fassi</p>
+            <p class="text-xs text-gray-500">vendeur d'électronique</p>
+            <p class="text-xs text-gray-400">Marrakech</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Une plateforme sérieuse qui protège vraiment les vendeurs. Les paiements sont clairs et je reçois mon argent sans retard"
         </p>
-        <p class="mt-4 font-semibold text-sm">Hassan El Fassi</p>
-        <p class="text-xs text-gray-500">vendeur d’électronique</p>
-        <p class="text-xs text-gray-500">Marrakech</p>
       </div>
 
       <!-- Card 2 -->
       <div class="partner-card">
-        <img src="/assets/partners/p2.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Ce que j’aime le plus, c’est la confiance entre acheteur et vendeur. Les clients sont rassurés et ça facilite les ventes.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Yasmine Benani</p>
+            <p class="text-xs text-gray-500">produits maison</p>
+            <p class="text-xs text-gray-400">Casablanca</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Ce que j'aime le plus, c'est la confiance entre acheteur et vendeur. Les clients sont rassurés et ça facilite les ventes."
         </p>
-        <p class="mt-4 font-semibold text-sm">Yasmine Benani</p>
-        <p class="text-xs text-gray-500">produits maison</p>
-        <p class="text-xs text-gray-500">Casablanca</p>
       </div>
 
       <!-- Card 3 -->
       <div class="partner-card">
-        <img src="/assets/partners/p3.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “La certification fait toute la différence.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Mehdi Mansouri</p>
+            <p class="text-xs text-gray-500">Vendeur des Istruments de music</p>
+            <p class="text-xs text-gray-400">Rabat</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "La certification fait toute la différence."
         </p>
-        <p class="mt-4 font-semibold text-sm">Mehdi Mansouri</p>
-        <p class="text-xs text-gray-500">Vendeur des Istruments de music</p>
-        <p class="text-xs text-gray-500">Rabat</p>
       </div>
 
       <!-- Card 4 -->
       <div class="partner-card">
-        <img src="/assets/partners/p4.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “J’ai commencé avec quelques produits seulement, aujourd’hui je vends chaque semaine. L’expérience est simple et sécurisée.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Sara Louizi</p>
+            <p class="text-xs text-gray-500">vendeuse mode & accessoires</p>
+            <p class="text-xs text-gray-400">Tanger</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "J'ai commencé avec quelques produits seulement, aujourd'hui je vends chaque semaine. L'expérience est simple et sécurisée."
         </p>
-        <p class="mt-4 font-semibold text-sm">Sara Louizi</p>
-        <p class="text-xs text-gray-500">vendeuse mode & accessoires</p>
-        <p class="text-xs text-gray-500">Tanger</p>
       </div>
 
       <!-- Card 5 -->
       <div class="partner-card">
-        <img src="/assets/partners/p5.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Enfin une solution moderne pour vendre d’occasion au Maroc sans complications.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Omar Ziani</p>
+            <p class="text-xs text-gray-500">vendeur indépendant</p>
+            <p class="text-xs text-gray-400">Agadir</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Enfin une solution moderne pour vendre d'occasion au Maroc sans complications."
         </p>
-        <p class="mt-4 font-semibold text-sm">Omar Ziani</p>
-        <p class="text-xs text-gray-500">vendeur indépendant</p>
-        <p class="text-xs text-gray-500">Agadir</p>
       </div>
 
       <!-- Card 6 -->
       <div class="partner-card">
-        <img src="/assets/partners/p6.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Le processus est clair du début à la fin. Je poste mes articles, la plateforme gère la sécurité, et je me concentre sur mes ventes.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Nadia El Idrissi</p>
+            <p class="text-xs text-gray-500">articles lifestyle</p>
+            <p class="text-xs text-gray-400">Fès</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Le processus est clair du début à la fin. Je poste mes articles, la plateforme gère la sécurité, et je me concentre sur mes ventes."
         </p>
-        <p class="mt-4 font-semibold text-sm">Nadia El Idrissi</p>
-        <p class="text-xs text-gray-500">articles lifestyle</p>
-        <p class="text-xs text-gray-500">Fès</p>
       </div>
 
-      <!-- Répéter les cartes pour scroll infini -->
+      <!-- Duplicate for infinite scroll -->
       <div class="partner-card">
-        <img src="/assets/partners/p1.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Une plateforme sérieuse qui protège vraiment les vendeurs. Les paiements sont clairs et je reçois mon argent sans retard”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Hassan El Fassi</p>
+            <p class="text-xs text-gray-500">vendeur d'électronique</p>
+            <p class="text-xs text-gray-400">Marrakech</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Une plateforme sérieuse qui protège vraiment les vendeurs. Les paiements sont clairs et je reçois mon argent sans retard"
         </p>
-        <p class="mt-4 font-semibold text-sm">Hassan El Fassi</p>
-        <p class="text-xs text-gray-500">vendeur d’électronique</p>
-        <p class="text-xs text-gray-500">Marrakech</p>
       </div>
 
-      <!-- Card 2 -->
       <div class="partner-card">
-        <img src="/assets/partners/p2.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Ce que j’aime le plus, c’est la confiance entre acheteur et vendeur. Les clients sont rassurés et ça facilite les ventes.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Yasmine Benani</p>
+            <p class="text-xs text-gray-500">produits maison</p>
+            <p class="text-xs text-gray-400">Casablanca</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Ce que j'aime le plus, c'est la confiance entre acheteur et vendeur. Les clients sont rassurés et ça facilite les ventes."
         </p>
-        <p class="mt-4 font-semibold text-sm">Yasmine Benani</p>
-        <p class="text-xs text-gray-500">produits maison</p>
-        <p class="text-xs text-gray-500">Casablanca</p>
       </div>
 
-      <!-- Card 3 -->
       <div class="partner-card">
-        <img src="/assets/partners/p3.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “La certification fait toute la différence.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Mehdi Mansouri</p>
+            <p class="text-xs text-gray-500">Vendeur des Istruments de music</p>
+            <p class="text-xs text-gray-400">Rabat</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "La certification fait toute la différence."
         </p>
-        <p class="mt-4 font-semibold text-sm">Mehdi Mansouri</p>
-        <p class="text-xs text-gray-500">Vendeur des Istruments de music</p>
-        <p class="text-xs text-gray-500">Rabat</p>
       </div>
 
-      <!-- Card 4 -->
       <div class="partner-card">
-        <img src="/assets/partners/p4.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “J’ai commencé avec quelques produits seulement, aujourd’hui je vends chaque semaine. L’expérience est simple et sécurisée.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Sara Louizi</p>
+            <p class="text-xs text-gray-500">vendeuse mode & accessoires</p>
+            <p class="text-xs text-gray-400">Tanger</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "J'ai commencé avec quelques produits seulement, aujourd'hui je vends chaque semaine. L'expérience est simple et sécurisée."
         </p>
-        <p class="mt-4 font-semibold text-sm">Sara Louizi</p>
-        <p class="text-xs text-gray-500">vendeuse mode & accessoires</p>
-        <p class="text-xs text-gray-500">Tanger</p>
       </div>
 
-      <!-- Card 5 -->
       <div class="partner-card">
-        <img src="/assets/partners/p5.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Enfin une solution moderne pour vendre d’occasion au Maroc sans complications.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Omar Ziani</p>
+            <p class="text-xs text-gray-500">vendeur indépendant</p>
+            <p class="text-xs text-gray-400">Agadir</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Enfin une solution moderne pour vendre d'occasion au Maroc sans complications."
         </p>
-        <p class="mt-4 font-semibold text-sm">Omar Ziani</p>
-        <p class="text-xs text-gray-500">vendeur indépendant</p>
-        <p class="text-xs text-gray-500">Agadir</p>
       </div>
 
-      <!-- Card 6 -->
       <div class="partner-card">
-        <img src="/assets/partners/p6.jpg" class="w-12 h-12 rounded-full object-cover mb-4" />
-        <div class="text-[#ffed00] mb-3">★★★★★</div>
-        <p class="text-gray-400 text-sm">
-          “Le processus est clair du début à la fin. Je poste mes articles, la plateforme gère la sécurité, et je me concentre sur mes ventes.”
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-[#ffed00]/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[#ffed00] text-2xl">person</span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">Nadia El Idrissi</p>
+            <p class="text-xs text-gray-500">articles lifestyle</p>
+            <p class="text-xs text-gray-400">Fès</p>
+          </div>
+        </div>
+        <div class="text-[#ffed00] text-sm mb-3 tracking-wide">★★★★★</div>
+        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed italic">
+          "Le processus est clair du début à la fin. Je poste mes articles, la plateforme gère la sécurité, et je me concentre sur mes ventes."
         </p>
-        <p class="mt-4 font-semibold text-sm">Nadia El Idrissi</p>
-        <p class="text-xs text-gray-500">articles lifestyle</p>
-        <p class="text-xs text-gray-500">Fès</p>
       </div>
     </div>
   </div>
@@ -292,37 +370,41 @@
 
 
   <!-- ================= CONFIDENTIALITE ================= -->
-  <section class="py-24 px-6 max-w-6xl mx-auto">
-    <h2 class="text-center text-xl font-semibold mb-16">
+  <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-center text-xl font-semibold mb-12">
       Confidentialité & Sécurité
       <span class="block w-10 h-[2px] bg-[#ffed00] mx-auto mt-3"></span>
     </h2>
 
-    <div class="grid md:grid-cols-2 gap-12">
-      <div class="flex gap-5">
-        <span class="material-symbols-outlined text-[#ffed00] text-4xl">lock</span>
-        <div>
-          <h3 class="font-semibold">Confidentialité totale</h3>
-          <p class="text-gray-400 text-sm mt-2">Données personnelles et financières protégées.</p>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Card Confidentialité -->
+      <div class="bg-white dark:bg-[#0f0f0f] p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-14 h-14 rounded-xl bg-[#ffed00]/10 flex items-center justify-center mb-5 group-hover:bg-[#ffed00]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#ffed00] text-3xl">lock</span>
         </div>
+        <h3 class="font-semibold text-lg mb-2">Confidentialité totale</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Données personnelles et financières protégées.</p>
       </div>
-      <div class="flex gap-5">
-        <span class="material-symbols-outlined text-[#ffed00] text-4xl">shield_lock</span>
-        <div>
-          <h3 class="font-semibold">Sécurité de pointe</h3>
-          <p class="text-gray-400 text-sm mt-2">Protocoles et infrastructure avancés.</p>
+
+      <!-- Card Sécurité -->
+      <div class="bg-white dark:bg-[#0f0f0f] p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+        <div class="w-14 h-14 rounded-xl bg-[#ffed00]/10 flex items-center justify-center mb-5 group-hover:bg-[#ffed00]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#ffed00] text-3xl">shield_lock</span>
         </div>
+        <h3 class="font-semibold text-lg mb-2">Sécurité de pointe</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Protocoles et infrastructure avancés.</p>
       </div>
     </div>
   </section>
 
   <!-- ================= CTA ================= -->
-  <section class="bg-[#ffed00] text-black py-20 rounded-t-3xl text-center px-6">
-    <h2 class="text-3xl font-bold">Prêt à devenir un vendeur d’élite ?</h2>
-    <p class="mt-4 text-black/70 text-sm">Lancez votre boutique dès aujourd’hui.</p>
-    <button class="mt-8 bg-black text-white px-10 py-4 rounded-full font-semibold">
+  <section class="bg-[#ffed00] text-black py-16 rounded-t-3xl text-center px-6">
+    <h2 class="text-3xl font-bold">Prêt à devenir un vendeur d'élite ?</h2>
+    <p class="mt-4 text-black/70 text-sm">Lancez votre boutique dès aujourd'hui.</p>
+    <a routerLink="/auth/vendeur-register"
+       class="inline-block mt-8 bg-[#ffed00] text-black border border-black px-10 py-4 rounded-full font-semibold hover:bg-black hover:text-white hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5">
       LANCER MA BOUTIQUE
-    </button>
+    </a>
   </section>
 
 </div>

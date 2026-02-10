@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { catchError, tap, delay, map } from 'rxjs/operators';
 import { CATEGORY_ICON_SVGS } from '../shared/icons/category-icons';
 
 export type ProductState = 'Neuf avec étiquette' | 'Excellent état' | 'Très bon état';
@@ -30,6 +33,8 @@ interface CategoryImageConfig {
   defaultPrice: number;
   categoryName: string;
   productPrices?: { [imageName: string]: number }; // Prix fixes par produit
+  productNames?: { [imageName: string]: string }; // Noms fixes par produit
+  priceRange?: { min: number; max: number };
 }
 
 @Injectable({
@@ -42,21 +47,21 @@ export class ProductService {
     vetements: {
       folder: 'assets/vetements',
       images: [
+        'V5.PNG',
+        'V10.PNG',
+        'V9.PNG',
+        'V1.jpg',
         '07878532805-e2.jpg',
         'd9a97503-da9f-4e98-b957-3bc5ccf819e0.jpeg',
         'JUPE1.PNG',
-        'V1.jpg',
-        'V10.PNG',
         'V11.PNG',
         'v17.PNG',
         'V2.jpg',
         'V3.jpg',
         'V4.PNG',
-        'V5.PNG',
         'V6.PNG',
         'V7.PNG',
         'V8.PNG',
-        'V9.PNG',
         'vet jacket.PNG',
         'vet pantalon.PNG',
         'vete jk.PNG',
@@ -69,8 +74,42 @@ export class ProductService {
         'VT28.PNG',
         'VT35.PNG'
       ],
-      defaultPrice: 199,
-      categoryName: 'Vêtements'
+      defaultPrice: 89,
+      categoryName: 'Vêtements',
+      productPrices: {
+        'V5.PNG': 99,
+        'V10.PNG': 60,
+        'V9.PNG': 30,
+        'V1.jpg': 79,
+        '07878532805-e2.jpg': 45,
+        'd9a97503-da9f-4e98-b957-3bc5ccf819e0.jpeg': 55,
+        'JUPE1.PNG': 65,
+        'V11.PNG': 120,
+        'v17.PNG': 95,
+        'V2.jpg': 75,
+        'V3.jpg': 85,
+        'V4.PNG': 110,
+        'V6.PNG': 40,
+        'V7.PNG': 70,
+        'V8.PNG': 130,
+        'vet jacket.PNG': 145,
+        'vet pantalon.PNG': 50,
+        'vete jk.PNG': 140,
+        'vetemt ik.PNG': 105,
+        'vetik.PNG': 35,
+        'VT2.PNG': 88,
+        'VT21.PNG': 115,
+        'VT22.PNG': 125,
+        'VT23.PNG': 135,
+        'VT28.PNG': 150,
+        'VT35.PNG': 100
+      },
+      productNames: {
+        'V5.PNG': 'Robe Courte',
+        'V10.PNG': 'Mini Djellaba',
+        'V9.PNG': 'Pantalon Femme',
+        'V1.jpg': 'Jacket Cuire'
+      }
     },
     electronique: {
       folder: 'assets/electro',
@@ -118,25 +157,102 @@ export class ProductService {
         'ZARBIA6.PNG'
       ],
       defaultPrice: 299,
+      priceRange: { min: 100, max: 300 },
       categoryName: 'Maison'
     },
     accessoires: {
-      folder: 'assets/accessoires',
-      images: [],
+      folder: 'assets',
+      images: [
+        'V12.jpg',
+        'V13.jpg',
+        'V14.jpg'
+      ],
       defaultPrice: 149,
-      categoryName: 'Accessoires'
+      categoryName: 'Accessoires',
+      productPrices: {
+        'V12.jpg': 79,
+        'V13.jpg': 349,
+        'V14.jpg': 80
+      },
+      productNames: {
+        'V12.jpg': 'Sac Cuire',
+        'V13.jpg': 'Collie',
+        'V14.jpg': 'Chasseurs Talonts'
+      }
     },
     'pieces-uniques': {
-      folder: 'assets/pieces-uniques',
-      images: [],
-      defaultPrice: 249,
-      categoryName: 'Pièces Uniques'
+      folder: 'assets/Les piéce unique',
+      images: [
+        'acs\'.PNG',
+        'acs112.PNG',
+        'ACS3.PNG',
+        'ACS4.PNG',
+        'ACS5.PNG',
+        'acs6.PNG',
+        'ACSSISOIRE 1.PNG',
+        'ASDD.PNG',
+        'Capture.PNG',
+        'DICOREA.PNG',
+        'DIR1.PNG',
+        'ghazla.PNG',
+        'golf sok.PNG',
+        'HS33.PNG',
+        'V13.jpg'
+      ],
+      defaultPrice: 1200,
+      categoryName: 'Pièces Uniques',
+      productPrices: {
+        'acs\'.PNG': 750,
+        'acs112.PNG': 1100,
+        'ACS3.PNG': 890,
+        'ACS4.PNG': 1450,
+        'ACS5.PNG': 2100,
+        'acs6.PNG': 680,
+        'ACSSISOIRE 1.PNG': 1800,
+        'ASDD.PNG': 2350,
+        'Capture.PNG': 550,
+        'DICOREA.PNG': 1950,
+        'DIR1.PNG': 1300,
+        'ghazla.PNG': 2200,
+        'golf sok.PNG': 950,
+        'HS33.PNG': 1650,
+        'V13.jpg': 2450
+      }
     },
     marques: {
-      folder: 'assets/marques',
-      images: [],
-      defaultPrice: 599,
-      categoryName: 'Marques'
+      folder: 'assets/les marque rare',
+      images: [
+        'HS44.PNG',
+        'ik vetem.PNG',
+        'ikvet.PNG',
+        'JAQUIT.PNG',
+        'marque.PNG',
+        'marquee.PNG',
+        'MONTO2.PNG',
+        'mtr.PNG',
+        'PONTALON marque.PNG',
+        'sac.PNG',
+        'V12.jpg',
+        'V4.PNG',
+        'vetik.PNG'
+      ],
+      defaultPrice: 450,
+      categoryName: 'Marques',
+      productPrices: {
+        'HS44.PNG': 320,
+        'ik vetem.PNG': 450,
+        'ikvet.PNG': 580,
+        'JAQUIT.PNG': 690,
+        'marque.PNG': 520,
+        'marquee.PNG': 280,
+        'MONTO2.PNG': 650,
+        'mtr.PNG': 700,
+        'PONTALON marque.PNG': 390,
+        'sac.PNG': 550,
+        'V12.jpg': 240,
+        'V4.PNG': 480,
+        'vetik.PNG': 360
+      }
     },
     velo: {
       folder: 'assets/velo',
@@ -181,18 +297,6 @@ export class ProductService {
         'panneux s 1.PNG': 380,
         'PINCE COUPE.PNG': 290
       }
-    },
-    chaussures: {
-      folder: 'assets/chaussures',
-      images: [],
-      defaultPrice: 249,
-      categoryName: 'Chaussures'
-    },
-    lunettes: {
-      folder: 'assets/lunettes',
-      images: [],
-      defaultPrice: 179,
-      categoryName: 'Lunettes'
     }
   };
 
@@ -206,20 +310,38 @@ export class ProductService {
     { id: 'vetements', label: 'Vêtements', iconSvg: CATEGORY_ICON_SVGS['vetements'], icon: '👔' },
     { id: 'accessoires', label: 'Accessoires', iconSvg: CATEGORY_ICON_SVGS['accessoires'], icon: '👜' },
     { id: 'electronique', label: 'Électronique', iconSvg: CATEGORY_ICON_SVGS['electronique'], icon: '📱' },
-    { id: 'chaussures', label: 'Chaussures', iconSvg: CATEGORY_ICON_SVGS['chaussures'], icon: '👟' },
-    { id: 'lunettes', label: 'Lunettes', iconSvg: CATEGORY_ICON_SVGS['lunettes'], icon: '🕶️' },
-    { id: 'pieces-uniques', label: 'Pièces Uniques', icon: '✨' },
-    { id: 'maison', label: 'Maison', icon: '🏠' },
-    { id: 'marques', label: 'Marques', icon: '⭐' },
-    { id: 'velo', label: 'Vélo', icon: '🚲' },
-    { id: 'construction', label: 'Construction', icon: '🔨' }
+    { id: 'pieces-uniques', label: 'Pièces Uniques', iconSvg: CATEGORY_ICON_SVGS['pieces-uniques'], icon: '✨' },
+    { id: 'maison', label: 'Maison', iconSvg: CATEGORY_ICON_SVGS['maison'], icon: '🏠' },
+    { id: 'marques', label: 'Marques', iconSvg: CATEGORY_ICON_SVGS['marques'], icon: '⭐' },
+    { id: 'velo', label: 'Vélo', iconSvg: CATEGORY_ICON_SVGS['velo'], icon: '🚲' },
+    { id: 'construction', label: 'Construction', iconSvg: CATEGORY_ICON_SVGS['construction'], icon: '🔨' }
   ];
 
   private products: Product[] = [];
+  private readonly apiUrl = '/api/products';
 
-  constructor() {
+  // BehaviorSubject to expose pending (to validate) products for admin
+  private _pendingProducts = new BehaviorSubject<Product[]>([]);
+  pendingProducts$ = this._pendingProducts.asObservable();
+  
+  // BehaviorSubject for all products (reactive store)
+  private _products = new BehaviorSubject<Product[]>(this.products);
+  products$ = this._products.asObservable();
+
+  constructor(private http: HttpClient) {
     this.generateAllProducts();
     this.updateCategoryCounts();
+    // initialize pending list based on generated products
+    this.syncPendingFromLocal();
+  }
+
+  private syncPendingFromLocal(): void {
+    const pending = this.products.filter(p => !p.verified);
+    this._pendingProducts.next(pending);
+  }
+
+  private syncProductsToStore(): void {
+    this._products.next(this.products.slice());
   }
 
   resolveCategoryId(categoryId: string): string {
@@ -229,12 +351,6 @@ export class ProductService {
     }
     if (normalized === 'accessoire') {
       return 'accessoires';
-    }
-    if (normalized === 'chaussure') {
-      return 'chaussures';
-    }
-    if (normalized === 'lunette') {
-      return 'lunettes';
     }
     return normalized;
   }
@@ -265,14 +381,16 @@ export class ProductService {
     startId: number
   ): Product[] {
     return config.images.map((imageName, index) => {
-      // Utiliser le prix fixe si défini, sinon utiliser defaultPrice sans variation
-      const productPrice = config.productPrices && config.productPrices[imageName] 
-        ? config.productPrices[imageName] 
-        : config.defaultPrice;
+      const productPrice = this.determineProductPrice(config, imageName);
+      
+      // Utiliser le nom fixe si défini, sinon générer automatiquement
+      const productName = config.productNames && config.productNames[imageName]
+        ? config.productNames[imageName]
+        : this.generateProductName(imageName, categoryId);
       
       return {
         id: startId + index,
-        name: this.generateProductName(imageName, categoryId),
+        name: productName,
         category: categoryId,
         price: productPrice,
         state: this.getRandomState(),
@@ -330,6 +448,22 @@ export class ProductService {
     const variation = basePrice * 0.5; // ±50%
     const price = basePrice + (Math.random() * variation * 2 - variation);
     return Math.round(price / 10) * 10; // Arrondir à la dizaine
+  }
+
+  private determineProductPrice(config: CategoryImageConfig, imageName: string): number {
+    if (config.productPrices && config.productPrices[imageName]) {
+      return config.productPrices[imageName];
+    }
+    if (config.priceRange) {
+      return this.generatePriceInRange(config.priceRange.min, config.priceRange.max);
+    }
+    return config.defaultPrice;
+  }
+
+  private generatePriceInRange(min: number, max: number): number {
+    const range = Math.abs(max - min);
+    const price = min + Math.random() * range;
+    return Math.round(price / 10) * 10;
   }
 
   /**
@@ -414,6 +548,99 @@ export class ProductService {
    */
   getProductById(id: number): Product | undefined {
     return this.products.find(product => product.id === id);
+  }
+
+  /**
+   * Fetch pending products for validation (supports server if available)
+   */
+  fetchPendingProducts(params?: { page?: number; pageSize?: number; q?: string; [key: string]: any }): Observable<{ items: Product[]; total: number }> {
+    // If a backend exists at apiUrl, prefer it. Otherwise return local generated pending products.
+    if (this.http) {
+      const httpParams: any = Object.assign({}, params);
+      return this.http.get<any>(`${this.apiUrl}/pending`, { params: httpParams }).pipe(
+        map(resp => {
+          // support APIs that return either an array or a { items, total } shape
+          if (Array.isArray(resp)) {
+            return { items: resp as Product[], total: resp.length };
+          }
+          // assume { items, total }
+          return { items: resp.items || [], total: resp.total || (resp.items ? resp.items.length : 0) };
+        }),
+        tap(res => this._pendingProducts.next(res.items)),
+        catchError(err => {
+          // fallback to local
+          this.syncPendingFromLocal();
+          const fallback = this._pendingProducts.value.slice();
+          return of({ items: fallback, total: fallback.length });
+        })
+      );
+    }
+
+    // fallback: local filtering + pagination
+    const pending = this.products.filter(p => !p.verified);
+    const q = (params && params.q) ? (params.q as string).toLowerCase().trim() : '';
+    const filtered = q ? pending.filter(p => (p.name || '').toLowerCase().includes(q) || ((p as any).seller || '').toLowerCase().includes(q)) : pending;
+    const page = params && params.page ? Number(params.page) : 1;
+    const pageSize = params && params.pageSize ? Number(params.pageSize) : 6;
+    const start = (page - 1) * pageSize;
+    const items = filtered.slice(start, start + pageSize);
+    // update subject
+    this._pendingProducts.next(items);
+    return of({ items, total: filtered.length }).pipe(delay(0));
+  }
+
+  /**
+   * Approve a product (call API if available) and update local state
+   */
+  approveProduct(id: number): Observable<void> {
+    if (this.http) {
+      return this.http.post<void>(`${this.apiUrl}/${id}/approve`, {}).pipe(
+        tap(() => this.markProductVerified(id)),
+        catchError(err => throwError(() => err))
+      );
+    }
+    // Local fallback: mark verified and update subject
+    this.markProductVerified(id);
+    this.syncProductsToStore();
+    return of(void 0).pipe(delay(200));
+  }
+
+  /**
+   * Refuse a product (call API if available) and update local state
+   */
+  refuseProduct(id: number): Observable<void> {
+    if (this.http) {
+      return this.http.post<void>(`${this.apiUrl}/${id}/refuse`, {}).pipe(
+        tap(() => this.removeProductFromList(id)),
+        catchError(err => throwError(() => err))
+      );
+    }
+    // Local fallback: remove from local list
+    this.removeProductFromList(id);
+    this.syncProductsToStore();
+    return of(void 0).pipe(delay(200));
+  }
+
+  private markProductVerified(id: number) {
+    const prod = this.products.find(p => p.id === id);
+    if (prod) {
+      prod.verified = true;
+    }
+    // update pending list
+    this._pendingProducts.next(this._pendingProducts.value.filter(p => p.id !== id));
+    // update full products store
+    this._products.next(this.products.slice());
+  }
+
+  removeProductFromList(id: number) {
+    const index = this.products.findIndex(p => p.id === id);
+    if (index > -1) {
+      this.products.splice(index, 1);
+      this.updateCategoryCounts();
+      // update both stores
+      this._pendingProducts.next(this._pendingProducts.value.filter(p => p.id !== id));
+      this._products.next(this.products.slice());
+    }
   }
 
   /**

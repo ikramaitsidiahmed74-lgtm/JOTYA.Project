@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ThemeService {
+  // Dark mode disabled - always light mode
   private isDarkMode = new BehaviorSubject<boolean>(false);
   isDarkMode$ = this.isDarkMode.asObservable();
   private isBrowser: boolean;
@@ -14,33 +15,17 @@ export class ThemeService {
     this.isBrowser = isPlatformBrowser(platformId);
     
     if (this.isBrowser) {
-      // Check localStorage only in browser
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        const isDark = savedTheme === 'dark';
-        this.isDarkMode.next(isDark);
-        this.applyTheme(isDark);
-      }
+      // Force light mode
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }
 
   toggleTheme(): void {
-    const newTheme = !this.isDarkMode.value;
-    this.isDarkMode.next(newTheme);
-    this.applyTheme(newTheme);
-    if (this.isBrowser) {
-      localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-    }
+    // Dark mode disabled - do nothing
   }
 
   private applyTheme(isDark: boolean): void {
-    if (!this.isBrowser) return;
-    
-    const htmlElement = document.documentElement;
-    if (isDark) {
-      htmlElement.classList.add('dark');
-    } else {
-      htmlElement.classList.remove('dark');
-    }
+    // Dark mode disabled
   }
 }

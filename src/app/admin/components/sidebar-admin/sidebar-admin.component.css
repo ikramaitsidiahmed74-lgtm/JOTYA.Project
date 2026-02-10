@@ -1,0 +1,21 @@
+/* Styles pour le composant sidebar-admin */
+
+aside {
+  color: white; /* Applique la couleur blanche à tout le texte */
+}
+
+aside .material-symbols-outlined {
+  color: white; /* Applique la couleur blanche aux icônes */
+}
+
+aside a span {
+  color: white; /* Applique la couleur blanche au texte devant chaque icône */
+}
+
+aside a:active span, aside a:active .material-symbols-outlined {
+  color: #ffed00; /* Change la couleur en jaune au clic */
+}
+
+aside a.router-link-active span, aside a.router-link-active .material-symbols-outlined {
+  color: #ffed00; /* Change la couleur en jaune pour l'élément actif */
+}

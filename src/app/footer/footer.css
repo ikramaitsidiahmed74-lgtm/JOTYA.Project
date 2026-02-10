@@ -10,3 +10,13 @@
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
+/* Footer links styling */
+footer ul li a {
+  color: #ffffff !important;
+  transition: color 0.2s ease;
+}
+
+footer ul li a:hover {
+  color: #ffed00 !important;
+}

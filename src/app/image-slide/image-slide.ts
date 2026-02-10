@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { inject } from '@angular/core';
 import { gsap } from 'gsap';
 
 @Component({
@@ -7,10 +8,11 @@ import { gsap } from 'gsap';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './image-slide.html',
-  styleUrl: './image-slide.scss',
+  styleUrls: ['./image-slide.scss'],
 })
 export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
-  private isBrowser: boolean;
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
   private slider: HTMLElement | null = null;
   private trails: NodeListOf<Element> | null = null;
   private value = 0;
@@ -21,11 +23,8 @@ export class ImageSlide implements OnInit, AfterViewInit, OnDestroy {
   private gsapContext: any = null;
 
   constructor(
-    private platformId: Object,
     private el: ElementRef
-  ) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
+  ) {}
 
   ngOnInit(): void {}
 

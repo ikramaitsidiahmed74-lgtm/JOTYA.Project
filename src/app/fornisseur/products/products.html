@@ -47,11 +47,14 @@
           </span>
         </td>
 
-        <td
-          (click)="openEdit(product)"
-          class="px-4 py-3 text-right text-[#ffed00] font-semibold cursor-pointer"
-        >
-          Modifier
+        <td class="px-4 py-3 text-right">
+          <div class="inline-flex items-center gap-3 justify-end">
+            <button (click)="openEdit(product)" class="text-[#ffed00] font-semibold text-sm">Modifier</button>
+            <button (click)="deleteProduct(product)" [disabled]="loadingDelete[product.id]" class="text-red-500 font-semibold text-sm">
+              <span *ngIf="loadingDelete[product.id]">Supp.</span>
+              <span *ngIf="!loadingDelete[product.id]">Supprimer</span>
+            </button>
+          </div>
         </td>
       </tr>
     </tbody>

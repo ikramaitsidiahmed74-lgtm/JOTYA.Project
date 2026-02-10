@@ -21,6 +21,9 @@ export const routes: Routes = [
   { path: 'cart', loadComponent: () => import('./panier/panier').then(m => m.Panier) },
   { path: 'aide', loadComponent: () => import('./aide/aide').then(m => m.Aide) },
   { path: 'checkout', loadComponent: () => import('./checkout/checkout').then(m => m.CheckoutComponent) },
+  
+  // Admin login (public)
+  { path: 'login', loadComponent: () => import('./auth/admin-login/login.component').then(m => m.LoginComponent) },
 
   // Auth routes
   {
@@ -58,6 +61,7 @@ export const routes: Routes = [
       },
       {
         path: 'admin',
+        canActivate: [() => import('./guards/admin.guard').then(m => m.adminGuard)],
         loadComponent: () => import('./admin/layout/admin-layout.component').then(m => m.AdminLayoutComponent),
         children: [
           { path: '', loadComponent: () => import('./admin/pages/dashboard/dashboard.component').then(m => m.AdminDashboardComponent), data: { title: "Vue d'ensemble" } },

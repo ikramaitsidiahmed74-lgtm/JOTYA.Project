@@ -6,6 +6,8 @@ import { ProductService, Product } from '../../services/product.service';
 import { SimilarProductsCarouselComponent } from './similar-products-carousel/similar-products-carousel.component';
 import { CartService } from '../../services/cart.service';
 import { Product as CartProduct } from '../../models/product.model';
+import { Header } from '../../header/header';
+import { Footer } from '../../footer/footer';
 
 // Interface étendue pour l'affichage
 interface ProductDisplay {
@@ -34,7 +36,7 @@ interface ProductDisplay {
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, SimilarProductsCarouselComponent],
+  imports: [CommonModule, FormsModule, RouterModule, SimilarProductsCarouselComponent, Header, Footer],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
@@ -49,6 +51,11 @@ export class ProductDetailComponent implements OnInit {
   quantity: number = 1;
   activeTab: 'specs' | 'reviews' | 'delivery' = 'specs';
   loading: boolean = false;
+  
+  // 3D Effect state
+  is3DActive: boolean = false;
+  rotationY: number = 0;
+  private animationId: number | null = null;
 
   ngOnInit(): void {
     this.loading = true;
@@ -168,5 +175,45 @@ export class ProductDetailComponent implements OnInit {
     this.router.navigate(['/products', productId]);
     // Scroll vers le haut de la page
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 3D Effect Methods
+  toggle3DEffect(): void {
+    if (this.is3DActive) {
+      this.deactivate3D();
+    } else {
+      this.activate3D();
+    }
+  }
+
+  private activate3D(): void {
+    this.is3DActive = true;
+    this.rotationY = 0;
+    document.body.style.overflow = 'hidden';
+  }
+
+  deactivate3D(): void {
+    this.is3DActive = false;
+    this.rotationY = 0;
+    document.body.style.overflow = '';
+  }
+
+  private startRotation(): void {
+    // Not used anymore
+  }
+
+  private stopRotation(): void {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
+      this.animationId = null;
+    }
+  }
+
+  goBack(): void {
+    window.history.back();
+  }
+
+  get imageTransform(): string {
+    return 'none';
   }
 }

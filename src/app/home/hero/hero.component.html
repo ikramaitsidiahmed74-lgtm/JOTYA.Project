@@ -8,38 +8,35 @@
   <!-- 3D Carousel Background -->
   <div class="carousel-container">
     <div class="carousel-3d" #carousel3D>
-      <!-- Video Cards - 12 cards (6 vidéos × 2) disposées en cercle 3D -->
+      <!-- Video Cards - 12 cards disposées en cercle 3D -->
       <div 
         *ngFor="let video of VIDEOS; let i = index"
         class="hero-card hero-video-wrapper"
         [ngStyle]="getCardStyle(i)"
       >
         <video 
-          #videoCard
+          #videoElement
           class="hero-video-card"
+          [attr.data-src]="getVideoUrl(video)"
           muted 
           loop 
           playsinline
-          disablePictureInPicture
           preload="none"
-        >
-          <source [src]="getVideoUrl(video)" type="video/mp4">
-        </video>
-        <!-- Subtle overlay for text readability -->
-        
+          [poster]="getVideoPoster(video)"
+        ></video>
       </div>
     </div>
   </div>
 
   <!-- Gradient Overlay pour lisibilité du texte -->
-  <div class="hero-gradient"></div>
+   
 
   <!-- Contenu Hero - Titre et CTA (devant le carousel) -->
   <div class="hero-overlay">
     <div class="hero-content">
       
       <h1 class="hero-title">
-        L9A<span class="highlight">EL HAMZA</span>
+        L9A&nbsp;<span class="highlight">EL HAMZA</span>
       </h1>
      
       <div class="hero-buttons">

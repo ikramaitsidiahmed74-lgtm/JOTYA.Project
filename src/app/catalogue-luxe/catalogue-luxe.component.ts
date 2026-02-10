@@ -183,25 +183,79 @@ export class CatalogueLuxeComponent implements OnInit, OnDestroy {
   applySorting(): void {
     let sorted = [...this.filteredProducts];
 
-    switch (this.sortBy) {
-      case 'prix-asc':
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case 'prix-desc':
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      case 'rating':
-        sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-        break;
-      case 'nouveautes':
-      default:
-        // Ordre par défaut (id décroissant = nouveautés)
-        sorted.sort((a, b) => b.id - a.id);
-        break;
+    // Si "Tout le Catalogue" (pas de catégorie) et tri par nouveautés, mélanger pour avoir de la variété
+    if (!this.selectedCategory && this.sortBy === 'nouveautes') {
+      sorted = this.getVariedProducts(sorted);
+    } else {
+      switch (this.sortBy) {
+        case 'prix-asc':
+          sorted.sort((a, b) => a.price - b.price);
+          break;
+        case 'prix-desc':
+          sorted.sort((a, b) => b.price - a.price);
+          break;
+        case 'rating':
+          sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+          break;
+        case 'nouveautes':
+        default:
+          // Ordre par défaut (id décroissant = nouveautés)
+          sorted.sort((a, b) => b.id - a.id);
+          break;
+      }
     }
 
     this.filteredProducts = sorted;
     this.updatePagination();
+  }
+
+  /**
+   * Retourne des produits variés de différentes catégories, mélangés aléatoirement
+   */
+  private getVariedProducts(products: Product[]): Product[] {
+    // Grouper par catégorie
+    const byCategory = new Map<string, Product[]>();
+    for (const product of products) {
+      const cat = this.productService.resolveCategoryId(product.category);
+      if (!byCategory.has(cat)) {
+        byCategory.set(cat, []);
+      }
+      byCategory.get(cat)!.push(product);
+    }
+
+    // Mélanger chaque groupe
+    byCategory.forEach((prods) => {
+      for (let i = prods.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [prods[i], prods[j]] = [prods[j], prods[i]];
+      }
+    });
+
+    // Construire la liste finale en prenant des produits de chaque catégorie à tour de rôle
+    const result: Product[] = [];
+    const categories = Array.from(byCategory.keys());
+    
+    // Mélanger l'ordre des catégories
+    for (let i = categories.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [categories[i], categories[j]] = [categories[j], categories[i]];
+    }
+
+    let index = 0;
+    while (result.length < products.length) {
+      let added = false;
+      for (const cat of categories) {
+        const catProducts = byCategory.get(cat)!;
+        if (index < catProducts.length) {
+          result.push(catProducts[index]);
+          added = true;
+        }
+      }
+      if (!added) break;
+      index++;
+    }
+
+    return result;
   }
 
   /**

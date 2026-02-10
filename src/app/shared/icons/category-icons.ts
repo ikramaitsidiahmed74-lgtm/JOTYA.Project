@@ -37,6 +37,42 @@ export const CATEGORY_ICON_SVGS: Record<string, string> = {
   <path d="M7 9l0.8-2h8.4L17 9" />
 </svg>
 `,
+  maison: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+  <path d="M3 10.5L12 4l9 6.5" />
+  <path d="M5 9.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5" />
+  <rect x="9" y="14" width="6" height="6" />
+</svg>
+`,
+  'pieces-uniques': `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+  <polygon points="12,2 15,8.5 22,9.3 17,14 18.2,21 12,17.5 5.8,21 7,14 2,9.3 9,8.5" />
+</svg>
+`,
+  marques: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+  <path d="M12 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3L12 14l-4.8 2.6.9-5.3-3.8-3.7 5.3-.8L12 2z" />
+  <circle cx="12" cy="12" r="2.5" />
+</svg>
+`,
+  velo: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+  <circle cx="5.5" cy="16" r="3" />
+  <circle cx="18.5" cy="16" r="3" />
+  <path d="M5.5 16l4-7h5l2 4" />
+  <path d="M14.5 13l4 3" />
+  <path d="M9.5 9l-1-3h3" />
+</svg>
+`,
+  construction: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+  <path d="M10 4L8 8h8l-2-4h-4z" />
+  <path d="M6 8h12v3a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8z" />
+  <path d="M10 13v7" />
+  <path d="M14 13v7" />
+  <path d="M8 20h8" />
+</svg>
+`,
   default: `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
   <rect x="4" y="4" width="16" height="16" rx="3" />

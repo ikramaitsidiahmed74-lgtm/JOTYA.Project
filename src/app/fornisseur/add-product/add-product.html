@@ -25,11 +25,13 @@
       Ajoutez jusqu’à 10 photos – Fond neutre recommandé
     </p>
 
-    <button
-      class="mt-2 px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50"
-    >
+    <button class="mt-2 px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50" (click)="fileInput.click()">
       Parcourir les fichiers
     </button>
+    <input #fileInput type="file" accept="image/*" style="display:none" (change)="onFileSelected($event)" />
+    <div *ngIf="imagePreview" class="mt-4">
+      <img [src]="imagePreview" alt="Prévisualisation" class="max-w-xs max-h-48 rounded-lg border" />
+    </div>
   </div>
 
   <!-- Form Grid -->

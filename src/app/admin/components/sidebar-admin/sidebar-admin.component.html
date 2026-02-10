@@ -1,26 +1,21 @@
-<aside class="fixed top-0 left-0 w-64 h-screen bg-black text-white z-50 flex flex-col overflow-y-auto">
-
+<aside
+  class="fixed top-0 left-0 w-64 h-screen bg-black text-white z-50 flex flex-col overflow-y-auto"
+>
   <!-- TOP -->
   <div class="p-8">
     <!-- LOGO -->
     <div class="flex items-center mb-8">
-      <img
-        src="assets/logo s w.png"
-        alt="JOTYA Logo"
-        class="w-40 h-auto object-contain"
-      />
+      <img src="assets/logo s w.png" alt="JOTYA Logo" class="w-40 h-auto object-contain" />
     </div>
 
     <!-- NAVIGATION -->
     <nav class="flex flex-col gap-2 text-sm">
-
       <!-- Vue d'ensemble -->
       <a
         routerLink="/dashboard/admin"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
-               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <span class="material-symbols-outlined">dashboard</span>
         <span>Vue d'ensemble</span>
@@ -30,8 +25,7 @@
       <a
         routerLink="/dashboard/admin/users"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
-        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
-               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <span class="material-symbols-outlined">group</span>
         <span>Utilisateurs</span>
@@ -41,8 +35,7 @@
       <a
         routerLink="/dashboard/admin/validation"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
-        class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg
-               text-slate-400 hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <div class="flex items-center gap-4">
           <span class="material-symbols-outlined">fact_check</span>
@@ -58,8 +51,7 @@
       <a
         routerLink="/dashboard/admin/commandes"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
-        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
-               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <span class="material-symbols-outlined">shopping_cart</span>
         <span>Commandes Globales</span>
@@ -69,8 +61,7 @@
       <a
         routerLink="/dashboard/admin/rapports"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
-        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
-               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <span class="material-symbols-outlined">bar_chart</span>
         <span>Rapports</span>
@@ -80,8 +71,7 @@
       <a
         routerLink="/dashboard/admin/parametres"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
-        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
-               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <span class="material-symbols-outlined">settings</span>
         <span>Paramètres</span>
@@ -89,15 +79,13 @@
 
       <!-- Centre d'aide -->
       <a
-        routerLink="/dashboard/admin/centr-aide"
+        routerLink="/dashboard/admin/centre-aide"
         routerLinkActive="bg-gray-800 !text-[#ffed00]"
-        class="flex items-center gap-4 px-3 py-3 rounded-lg text-slate-400
-               hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
+        class="flex items-center gap-4 px-3 py-3 rounded-lg text-white hover:text-[#ffed00] hover:bg-[#ffed00]/10 transition"
       >
         <span class="material-symbols-outlined">help</span>
         <span>Centre d'aide</span>
       </a>
-
     </nav>
   </div>
 
@@ -106,11 +94,7 @@
     <div class="flex items-center gap-3">
       <!-- IMAGE PROFILE -->
       <div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
-        <img
-          src="assets/Latech.jpg"
-          alt="Admin"
-          class="w-full h-full object-cover"
-        />
+        <img src="assets/Latech.jpg" alt="Admin" class="w-full h-full object-cover" />
       </div>
 
       <!-- INFOS -->
@@ -120,6 +104,6 @@
       </div>
     </div>
   </div>
-
-
 </aside>
+
+<!-- CONFLICTS CHECK: scanned — no git conflict markers (<<<<<< / ====== / >>>>>>) found. -->

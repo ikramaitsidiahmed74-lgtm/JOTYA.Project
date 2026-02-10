@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable, map } from 'rxjs';
@@ -11,6 +11,7 @@ import { ThemeService } from '../services/theme';
   imports: [RouterLink, CommonModule],
   templateUrl: './header.html',
   styleUrls: ['./header.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
   /* ================= FIXED HEADER ================= */
@@ -21,10 +22,12 @@ export class Header {
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+    this.cdr.markForCheck();
   }
 
   closeMenu(): void {
     this.menuOpen = false;
+    this.cdr.markForCheck();
   }
 
   /* ================= CART COUNT ================= */
@@ -33,11 +36,13 @@ export class Header {
   /* ================= THEME TOGGLE ================= */
   toggleTheme(): void {
     this.themeService.toggleTheme();
+    this.cdr.markForCheck();
   }
 
   constructor(
     private readonly cartService: CartService,
-    public readonly themeService: ThemeService
+    public readonly themeService: ThemeService,
+    private readonly cdr: ChangeDetectorRef
   ) {
     this.cartItemsCount$ = this.cartService.items$.pipe(
       map(items => this.cartService.getItemsCount(items))

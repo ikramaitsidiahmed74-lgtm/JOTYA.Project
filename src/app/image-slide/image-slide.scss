@@ -1,28 +1,55 @@
-// Colors
-$b1cd: #500033;
-$b1cl: #FF0077;
-$b2cd: #000050;
-$b2cl: #0033FF;
-$b3cd: #00501D;
-$b3cl: #00FF44;
-$b4cd: #554D00;
-$b4cl: #FF4E00;
-$b5cd: #300050;
-$b5cl: #8000FF;
+// Colors - JOTYA Uniform Theme
+$primary-yellow: #ffed00;
+$primary-yellow-soft: #f5d547;
+$primary-dark: #1a1a1a;
+$bg-uniform: #e9e9e9;
 $black: #000;
 $white: #fff;
-$grey: #B5B4B4;
+$grey: #4b5563;
+$text-dark: #1a1a1a;
 
 /* ////////// Mixin  */
 
-/* // Generate different colors for slides */
+/* // Uniform solid background for all slides */
 @mixin color_render($darkColor, $lightColor) {
-    background-color: $darkColor;
+    background-color: $bg-uniform;
+    
     .illustration .inner {
-        background-color: $lightColor;
-        &::after, &::before { background-color: rgba($lightColor, .4); }
+        background-color: $primary-yellow;
+        box-shadow: 0 10px 30px rgba(255, 237, 0, 0.3);
+        &::after, &::before { background-color: rgba($primary-yellow, .35); }
     }
-    button { background-color: $lightColor; }
+    
+    button { 
+        background-color: $primary-yellow; 
+        color: $primary-dark;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(255, 237, 0, 0.4);
+        
+        &:hover {
+            background-color: $primary-yellow-soft;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 237, 0, 0.5);
+        }
+    }
+    
+    .details {
+        h1 {
+            color: $primary-dark;
+        }
+        
+        p {
+            color: $grey;
+        }
+    }
+    
+    .bg {
+        background-color: rgba($primary-dark, 0.06);
+        
+        &::before {
+            background-color: rgba($primary-dark, 0.04);
+        }
+    }
 }
 
 *,
@@ -50,6 +77,53 @@ body {
     padding: 8rem;
     @media only screen and (max-width: 1000px) {
         padding: 0;
+    }
+}
+
+.image-slide-section {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background-color: $bg-uniform;
+    overflow: hidden;
+    padding: 0;
+    
+    .section-title {
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: $primary-yellow;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        padding: 4rem 2rem 2rem;
+        margin: 0;
+        position: relative;
+        z-index: 100;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        
+        @media only screen and (max-width: 800px) {
+            font-size: 2rem;
+            letter-spacing: 0.2em;
+            padding: 3rem 1.5rem 1.5rem;
+        }
+        
+        @media only screen and (max-width: 650px) {
+            font-size: 1.6rem;
+            letter-spacing: 0.15em;
+            padding: 2rem 1rem 1rem;
+        }
+    }
+}
+
+.image-slide-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    width: 100%;
+    max-width: none;
+
+    @media only screen and (max-width: 1000px) {
+        border-radius: 0;
     }
 }
 
@@ -94,7 +168,7 @@ body {
         
         .bg {
             padding: 2rem;
-            background-color: rgba($black, .2);
+            background-color: rgba($primary-yellow, .12);
             width: 55%;
             transform: skewX(7deg);
             position: absolute;
@@ -170,7 +244,7 @@ body {
 
             button {
                 padding: 1rem 3rem;
-                color: $white;
+                color: $primary-dark;
                 border-radius: 2rem;
                 outline: none;
                 border: none;
@@ -187,11 +261,11 @@ body {
         }
     }
 
-    .box1 { @include color_render($b1cd, $b1cl); }
-    .box2 { @include color_render($b2cd, $b2cl); }
-    .box3 { @include color_render($b3cd, $b3cl); }
-    .box4 { @include color_render($b4cd, $b4cl); }
-    .box5 { @include color_render($b5cd, $b5cl); }
+    .box1 { @include color_render($primary-dark, $primary-yellow); }
+    .box2 { @include color_render($primary-dark, $primary-yellow); }
+    .box3 { @include color_render($primary-dark, $primary-yellow); }
+    .box4 { @include color_render($primary-dark, $primary-yellow); }
+    .box5 { @include color_render($primary-dark, $primary-yellow); }
 
     .illustration {
         grid-column: 2 / -1;
@@ -210,13 +284,23 @@ body {
             height: 25rem;
             width: 18rem;
             border-radius: 3rem;
-            background-color: $b1cl;
+            background-color: $primary-yellow;
             position: relative;
             transform: skewX(-10deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             @media only screen and (max-width: 800px) {
                 height: 20rem;
                 width: 15rem;
+            }
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: inherit;
             }
 
             &::after,
@@ -228,6 +312,7 @@ body {
                 border-radius: 3rem;
                 top: 0;
                 left: 0;
+                background-color: rgba($primary-yellow, .35);
             }
 
             &::after {transform: translate(4rem, -1rem);}
@@ -247,8 +332,12 @@ body {
 .next {
     width: 4rem;
     cursor: pointer;
-    opacity: .2;
+    opacity: .4;
     transition: all .3s ease;
+    
+    path {
+        fill: $primary-dark;
+    }
 
     @media only screen and (max-width: 650px) {
        display: none;
@@ -286,10 +375,11 @@ body {
 
     div {
         padding: 2rem;
-        border-top: 3px solid #fff;
+        border-top: 3px solid $primary-dark;
         cursor: pointer;
-        opacity: .3;
+        opacity: .25;
         transition: all 0.3s ease;
+        color: $primary-dark;
 
         &:hover {opacity: .6;}
 

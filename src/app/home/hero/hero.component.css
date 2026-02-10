@@ -8,10 +8,11 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
-  background-image: url('/assets/bghero.png');
+  background-image: url('/assets/EL HAMZA .png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #e9e9e9;
 }
 
 /* ========================================
@@ -35,7 +36,10 @@
   width: 200px;
   height: 286px;
   transform-style: preserve-3d;
-  /* GSAP animera rotateY */
+  will-change: transform;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* ========================================
@@ -59,82 +63,48 @@
   border-radius: 16px;
   backface-visibility: hidden;
   
-  /* Position sur le cercle 3D */
+  /* Position sur le cercle 3D - GPU accelerated */
   transform: rotateY(var(--angle)) translateZ(var(--radius));
+  will-change: transform, opacity;
   
-  /* Ombre et effets */
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(255, 237, 0, 0.08);
+  /* Ombre simple et légère */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   
-  /* Transition pour les effets de hover */
-  transition: box-shadow 0.4s ease, filter 0.4s ease;
+  /* Containment for performance */
+  contain: layout style paint;
 }
 
 .hero-card:hover {
-  box-shadow: 
-    0 25px 70px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(255, 237, 0, 0.15);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
 }
 
 /* Video Card Specific Styles */
 .hero-video-card {
-  object-fit: cover;
-  background: #000;
-}
-
-/* Video Wrapper for overlay and effects */
-.hero-video-wrapper {
-  overflow: hidden;
-  transform-style: preserve-3d;
-}
-
-.hero-video-wrapper .hero-video-card {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 16px;
+  background: #111;
+  /* GPU acceleration pour les vidéos */
+  transform: translateZ(0);
+  /* Optimisation: seulement transform, pas contents */
+  will-change: transform;
+  /* Réduire la qualité de rendu pour améliorer les performances */
+  image-rendering: -webkit-optimize-contrast;
 }
 
-/* Subtle overlay for text readability */
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.2) 50%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  border-radius: 16px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Enhanced hover effects with glow and scale */
+/* Video Wrapper for overlay and effects */
 .hero-video-wrapper {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  /* Containment for better performance */
+  contain: layout style paint;
 }
 
-.hero-video-wrapper:hover {
-  transform: rotateY(var(--angle)) translateZ(calc(var(--radius) + 20px)) scale(1.05);
-  box-shadow: 
-    0 30px 80px rgba(0, 0, 0, 0.7),
-    0 0 80px rgba(255, 237, 0, 0.25),
-    0 0 120px rgba(255, 237, 0, 0.15);
-}
-
-.hero-video-wrapper:hover .video-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 237, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
-}
-
-/* Reflection effect */
+/* Reflection effect - disabled for performance */
+/* 
 .hero-card::after {
   content: '';
   position: absolute;
@@ -151,6 +121,7 @@
   pointer-events: none;
   border-radius: 16px 16px 0 0;
 }
+*/
 
 /* ========================================
    GRADIENT OVERLAY
