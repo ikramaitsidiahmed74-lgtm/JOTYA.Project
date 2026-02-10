@@ -1,0 +1,57 @@
+/* Success Toast Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.success-toast {
+  position: fixed !important;
+  top: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 99999 !important;
+  background-color: rgb(240 253 244) !important;
+  border: 2px solid rgb(74 222 128) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+  padding: 1rem 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  min-width: 280px !important;
+  max-width: 28rem !important;
+  animation: slideIn 0.3s ease-out !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .success-toast {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    min-width: auto;
+    max-width: none;
+  }
+}
+
+.success-toast.animate-fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}

@@ -1,5 +1,5 @@
-<div class="bg-[#faf9f4] dark:bg-[#0f0f0f] text-[#1d1a0c] dark:text-gray-100 min-h-screen">
-<main class="max-w-[1200px] mx-auto px-4 sm:px-10 py-12">
+<div class="bg-[#faf9f4] text-[#1d1a0c] min-h-screen">
+<main class="max-w-6xl mx-auto px-4 sm:px-10 py-12">
    <div class="flex items-center gap-2 mb-8 text-sm">
           <a class="text-[#a19345] dark:text-[#c9b84e] hover:underline" href="#">Accueil</a>
           <span class="material-symbols-outlined text-xs">chevron_right</span>
@@ -19,7 +19,7 @@
         class="bg-white dark:bg-[#2c2813] p-8 rounded-xl shadow-sm border border-[#eae5cd] dark:border-[#3a351a]"
       >
         <h3 class="text-2xl font-bold mb-8">Envoyez-nous un message</h3>
-        <form class="space-y-6">
+        <form class="space-y-6" (ngSubmit)="submitMessage(); $event.preventDefault()">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- TextField Nom -->
             <div class="flex flex-col gap-2">
@@ -37,6 +37,8 @@
                 >Adresse Email</label
               >
               <input
+                [(ngModel)]="email"
+                name="email"
                 class="form-input w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 text-base"
                 placeholder="exemple@mail.com"
                 type="email"
@@ -60,24 +62,38 @@
             </select>
           </div>
           <!-- TextField Message -->
-          <div class="flex flex-col gap-2">
-            <label class="text-sm font-semibold uppercase tracking-wider text-[#a19345]"
-              >Message</label
-            >
-            <textarea
-              class="form-textarea w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:border-primary focus:ring-1 focus:ring-primary min-h-[160px] p-4 text-base"
-              placeholder="Comment pouvons-nous vous aider ?"
-            ></textarea>
-          </div>
-          <button
-            class="w-full bg-[#ffed00] hover:bg-[#ffed00]/90 text-black font-bold py-4 rounded-lg transition-all transform hover:scale-[1.01] flex items-center justify-center gap-2"
-          >
-            Envoyer le message
-            <span class="material-symbols-outlined">send</span>
-          </button>
-          <p class="text-center text-sm text-[#a19345] italic">
-            Nous répondons généralement en moins de 24h.
-          </p>
+          <!-- TextField Message --> 
+<div class="flex flex-col gap-2">
+  <label class="text-sm font-semibold uppercase tracking-wider text-[#a19345]">
+    Message
+  </label>
+  <textarea
+    [(ngModel)]="message"
+    name="message"
+    class="form-textarea w-full rounded-lg border-[#eae5cd] dark:border-[#3a351a] bg-transparent focus:border-primary focus:ring-1 focus:ring-primary min-h-40 p-4 text-base"
+    placeholder="Comment pouvons-nous vous aider ?"
+  ></textarea>
+</div>
+
+<button
+  type="submit"
+  class="w-full bg-[#ffed00] hover:bg-[#ffed00]/90 text-black font-bold py-4 rounded-lg transition-all transform hover:scale-[1.01] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+  [disabled]="isLoading"
+>
+  <span *ngIf="isLoading">Envoi en cours...</span>
+  <span *ngIf="!isLoading">Envoyer le message</span>
+  <span class="material-symbols-outlined" *ngIf="!isLoading">send</span>
+</button>
+
+<!-- Error message (red) -->
+<p class="text-center text-sm text-red-600 italic" *ngIf="!showSuccessToast && feedbackMessage">
+  {{ feedbackMessage }}
+</p>
+<!-- Default message (gold) -->
+<p class="text-center text-sm text-[#a19345] italic" *ngIf="!showSuccessToast && !feedbackMessage">
+  Nous répondons généralement en moins de 24h.
+</p>
+
         </form>
       </div>
     </div>
@@ -178,4 +194,18 @@
     </div>
   </div>
 </main>
+</div>
+
+<!-- Success Toast Notification - Outside all containers for proper fixed positioning -->
+<div
+  *ngIf="showSuccessToast"
+  class="success-toast"
+>
+  <div class="shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+    <span class="text-white text-lg font-bold">✓</span>
+  </div>
+  <div class="flex-1">
+    <p class="font-semibold text-green-800">Message envoyé avec succès !</p>
+    <p class="text-sm text-green-700">🎉🎉 Nous vous répondrons bientôt.</p>
+  </div>
 </div>
