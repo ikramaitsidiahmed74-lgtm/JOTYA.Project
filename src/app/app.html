@@ -4,7 +4,7 @@
   <app-header *ngIf="!isDashboardRoute()"></app-header>
 
   <!-- PAGE CONTENT -->
-  <main class="flex-1">
+  <main class="flex-1" [style.padding-top]="!isDashboardRoute() ? '90px' : '0'">
     <router-outlet></router-outlet>
   </main>
 

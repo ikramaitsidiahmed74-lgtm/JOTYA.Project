@@ -30,6 +30,10 @@ export class AuthService {
   
   // Token storage key
   private readonly TOKEN_KEY = 'jotya_admin_token';
+
+  // Admin credentials (for local/testing auth when no backend is available)
+  private readonly ADMIN_EMAIL = 'jotya@store.com';
+  private readonly ADMIN_PASSWORD = 'jotya123';
   
   // Current user state (reactive)
   private currentUserSubject = new BehaviorSubject<User | null>(this.getCurrentUserFromToken());
@@ -77,21 +81,61 @@ export class AuthService {
 
   /**
    * Login user with email and password
+   * Falls back to local admin auth when no backend is available
    */
   login(credentials: LoginRequest): Observable<AuthResponse> {
+    // Local admin authentication (no backend needed)
+    if (credentials.email === this.ADMIN_EMAIL && credentials.password === this.ADMIN_PASSWORD) {
+      return this.loginLocalAdmin();
+    }
+
+    // For non-admin credentials, try API
     return this.http.post<AuthResponse>(`${this.API_URL}/login`, credentials).pipe(
       tap(response => {
-        // Store token
         this.setToken(response.token);
-        
-        // Update current user
         this.currentUserSubject.next(response.user);
       }),
       catchError(error => {
         console.error('Login failed:', error);
-        return throwError(() => error);
+        return throwError(() => ({ status: 401, message: 'Email ou mot de passe incorrect' }));
       })
     );
+  }
+
+  /**
+   * Local admin login - generates a JWT-like token for testing
+   */
+  private loginLocalAdmin(): Observable<AuthResponse> {
+    const now = Math.floor(Date.now() / 1000);
+    const payload: JwtPayload = {
+      sub: 1,
+      email: this.ADMIN_EMAIL,
+      role: 'ADMIN',
+      exp: now + (24 * 60 * 60), // 24 hours
+      iat: now
+    };
+
+    // Create a simple base64 token (header.payload.signature)
+    const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
+    const body = btoa(JSON.stringify(payload));
+    const signature = btoa('local-dev-signature');
+    const token = `${header}.${body}.${signature}`;
+
+    const user: User = {
+      id: 1,
+      name: 'Admin JOTYA',
+      email: this.ADMIN_EMAIL,
+      role: 'ADMIN',
+      status: 'ACTIF'
+    };
+
+    const response: AuthResponse = { token, user };
+
+    // Store token and update state
+    this.setToken(token);
+    this.currentUserSubject.next(user);
+
+    return of(response);
   }
 
   /**

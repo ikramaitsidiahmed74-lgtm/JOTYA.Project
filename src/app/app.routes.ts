@@ -12,6 +12,7 @@ import { MarquesCategoryComponent } from './components/categories/marques/marque
 import { VeloCategoryComponent } from './components/categories/velo/velo-category.component';
 import { ConstructionCategoryComponent } from './components/categories/construction/construction-category.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   // Public routes
@@ -61,7 +62,7 @@ export const routes: Routes = [
       },
       {
         path: 'admin',
-        canActivate: [() => import('./guards/admin.guard').then(m => m.adminGuard)],
+        canActivate: [adminGuard],
         loadComponent: () => import('./admin/layout/admin-layout.component').then(m => m.AdminLayoutComponent),
         children: [
           { path: '', loadComponent: () => import('./admin/pages/dashboard/dashboard.component').then(m => m.AdminDashboardComponent), data: { title: "Vue d'ensemble" } },

@@ -17,12 +17,12 @@
         <video 
           #videoElement
           class="hero-video-card"
-          [attr.data-src]="getVideoUrl(video)"
+          [src]="getVideoUrl(video)"
           muted 
+          autoplay
           loop 
           playsinline
-          preload="none"
-          [poster]="getVideoPoster(video)"
+          preload="auto"
         ></video>
       </div>
     </div>

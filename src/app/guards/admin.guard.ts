@@ -10,14 +10,9 @@ import { AuthService } from '../services/auth.service';
  * 2. User has ADMIN role
  * 
  * If not authenticated: redirect to /login
- * If not admin: redirect to /forbidden (or home)
+ * If not admin: redirect to home
  * 
- * Usage in routes:
- * {
- *   path: 'admin',
- *   canActivate: [adminGuard],
- *   ...
- * }
+ * Returns UrlTree for reliable synchronous redirection (works with SSR)
  */
 export const adminGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
@@ -26,23 +21,16 @@ export const adminGuard: CanActivateFn = (route, state) => {
   // Check if user is authenticated
   if (!authService.isAuthenticated()) {
     console.warn('Unauthorized access attempt to admin area');
-    
-    // Redirect to login with return URL
-    router.navigate(['/login'], {
+    // Return UrlTree for synchronous redirect (more reliable than router.navigate)
+    return router.createUrlTree(['/login'], {
       queryParams: { returnUrl: state.url }
     });
-    
-    return false;
   }
 
   // Check if user has admin role
   if (!authService.isAdmin()) {
     console.warn('Non-admin user attempted to access admin area');
-    
-    // Redirect to forbidden page or home
-    router.navigate(['/']);
-    
-    return false;
+    return router.createUrlTree(['/']);
   }
 
   // User is authenticated and is admin

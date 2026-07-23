@@ -13,6 +13,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: #e9e9e9;
+  /* Isolate compositing to this section */
+  isolation: isolate;
+  contain: layout style;
 }
 
 /* ========================================
@@ -37,9 +40,6 @@
   height: 286px;
   transform-style: preserve-3d;
   will-change: transform;
-  /* GPU acceleration */
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 /* ========================================
@@ -63,9 +63,8 @@
   border-radius: 16px;
   backface-visibility: hidden;
   
-  /* Position sur le cercle 3D - GPU accelerated */
+  /* Position sur le cercle 3D */
   transform: rotateY(var(--angle)) translateZ(var(--radius));
-  will-change: transform, opacity;
   
   /* Ombre simple et légère */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -87,20 +86,11 @@
   object-fit: cover;
   border-radius: 16px;
   background: #111;
-  /* GPU acceleration pour les vidéos */
-  transform: translateZ(0);
-  /* Optimisation: seulement transform, pas contents */
-  will-change: transform;
-  /* Réduire la qualité de rendu pour améliorer les performances */
-  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Video Wrapper for overlay and effects */
 .hero-video-wrapper {
   overflow: hidden;
-  transform-style: preserve-3d;
-  /* Containment for better performance */
-  contain: layout style paint;
 }
 
 /* Reflection effect - disabled for performance */
@@ -238,19 +228,20 @@
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: black;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid black;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  border-color: #ffed00;
-  color: #ffed00;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 237, 0, 0.2);
+  color: black;
+  background: #ffed00;
+  border-color: black;
+  transform: none;
+  box-shadow: none;
 }
 
 /* ========================================

@@ -95,8 +95,8 @@ import { finalize } from 'rxjs/operators';
           <!-- Demo Credentials (for testing) -->
           <div class="mt-6 p-3 bg-gray-100 rounded-lg text-xs text-gray-600">
             <p class="font-semibold mb-1">Démo:</p>
-            <p>Email: admin@jotya.ma</p>
-            <p>Password: admin123</p>
+            <p>Email: jotya&#64;store.com</p>
+            <p>Password: jotya123</p>
           </div>
         </div>
 

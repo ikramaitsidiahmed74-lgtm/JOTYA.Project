@@ -15,7 +15,7 @@ import { ThemeService } from '../services/theme';
 })
 export class Header {
   /* ================= FIXED HEADER ================= */
-  @Input() fixed = false;
+  @Input() fixed = true;
 
   /* ================= MENU TOGGLE ================= */
   menuOpen = false;

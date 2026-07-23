@@ -31,8 +31,8 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private isBrowser = isPlatformBrowser(this.platformId);
   
   private rotationTween: gsap.core.Tween | null = null;
-  private videoObserver: IntersectionObserver | null = null;
-  private loadedVideos = new Set<HTMLVideoElement>();
+  private heroObserver: IntersectionObserver | null = null;
+  private isHeroVisible = true;
 
   // Vidéos pour le carousel 3D (6 vidéos × 2 = 12 cards)
   readonly VIDEO_FILES: string[] = [
@@ -77,21 +77,13 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     return `assets/hero vidio/${videoName}`;
   }
 
-  /**
-   * Génère le poster (première frame) pour la vidéo
-   */
-  getVideoPoster(videoName: string): string {
-    // Utilise une image placeholder noire
-    return 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><rect fill="%23111"/></svg>';
-  }
-
   ngAfterViewInit(): void {
     if (this.isBrowser) {
       this.ngZone.runOutsideAngular(() => {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           this.initCarousel3D();
-          this.initVideoLazyLoading();
-        }, 100);
+          this.initHeroVisibilityObserver();
+        });
       });
     }
   }
@@ -100,49 +92,53 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     if (this.rotationTween) {
       this.rotationTween.kill();
     }
-    if (this.videoObserver) {
-      this.videoObserver.disconnect();
+    if (this.heroObserver) {
+      this.heroObserver.disconnect();
     }
-  }
-
-  /**
-   * Initialise le lazy loading des vidéos
-   */
-  private initVideoLazyLoading(): void {
-    // Charger seulement les 4 premières vidéos immédiatement
-    const videos = this.videoElements.toArray();
-    const initialLoadCount = Math.min(4, videos.length);
-    
-    // Charger les vidéos initiales avec un délai progressif
-    for (let i = 0; i < initialLoadCount; i++) {
-      setTimeout(() => {
-        this.loadAndPlayVideo(videos[i].nativeElement);
-      }, i * 300); // 300ms de délai entre chaque vidéo
-    }
-
-    // Charger les autres vidéos progressivement après
-    for (let i = initialLoadCount; i < videos.length; i++) {
-      setTimeout(() => {
-        this.loadAndPlayVideo(videos[i].nativeElement);
-      }, 2000 + (i - initialLoadCount) * 500); // Commence après 2s, puis 500ms entre chaque
-    }
-  }
-
-  /**
-   * Charge et joue une vidéo
-   */
-  private loadAndPlayVideo(video: HTMLVideoElement): void {
-    if (this.loadedVideos.has(video)) return;
-    
-    const dataSrc = video.getAttribute('data-src');
-    if (dataSrc) {
-      video.src = dataSrc;
-      video.load();
-      video.play().catch(() => {
-        // Ignore les erreurs de lecture (peut arriver si l'utilisateur n'a pas interagi)
+    // Pause all videos on destroy (browser only)
+    if (this.isBrowser) {
+      this.videoElements?.forEach(v => {
+        const el = v.nativeElement;
+        if (el && typeof el.pause === 'function') {
+          el.pause();
+          el.removeAttribute('src');
+          el.load();
+        }
       });
-      this.loadedVideos.add(video);
     }
+  }
+
+  /**
+   * Observe hero section visibility to pause/resume animations & videos when off-screen
+   */
+  private initHeroVisibilityObserver(): void {
+    if (!this.heroSectionRef?.nativeElement) return;
+
+    this.heroObserver = new IntersectionObserver(
+      (entries) => {
+        const isVisible = entries[0].isIntersecting;
+        if (isVisible === this.isHeroVisible) return;
+
+        this.isHeroVisible = isVisible;
+
+        if (isVisible) {
+          // Resume GSAP animation
+          this.rotationTween?.resume();
+          // Resume all videos
+          this.videoElements?.forEach(v => {
+            v.nativeElement.play().catch(() => {});
+          });
+        } else {
+          // Pause GSAP animation when hero is off-screen
+          this.rotationTween?.pause();
+          // Pause all videos to free GPU/CPU
+          this.videoElements?.forEach(v => v.nativeElement.pause());
+        }
+      },
+      { threshold: 0, rootMargin: '100px' }
+    );
+
+    this.heroObserver.observe(this.heroSectionRef.nativeElement);
   }
 
   /**
@@ -193,12 +189,13 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
       }
     );
 
-    // Rotation continue
+    // Rotation continue with force3D for GPU compositing
     this.rotationTween = gsap.to(carousel, {
       rotateY: '+=360',
       duration: 40,
       repeat: -1,
-      ease: 'none'
+      ease: 'none',
+      force3D: true
     });
   }
 }

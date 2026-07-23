@@ -1,4 +1,74 @@
 /* ========================================
+   FOOTER-STYLE SECTIONS
+   ======================================== */
+
+/* Style pour les sections avec le même style que le footer */
+.footer-style-section {
+  background: linear-gradient(to right, #000000, #161400, #000000) !important;
+  color: #ffffff !important;
+}
+
+.footer-style-section h2 {
+  color: #ffffff !important;
+}
+
+.footer-style-section .section-underline {
+  background-color: #ffed00 !important;
+}
+
+/* Cards dans les sections avec style footer */
+.footer-style-section .process-card,
+.footer-style-section .commission-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 237, 0, 0.2) !important;
+  backdrop-filter: blur(10px);
+}
+
+.footer-style-section .process-card:hover,
+.footer-style-section .commission-card:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 237, 0, 0.4) !important;
+  box-shadow: 0 8px 30px rgba(255, 237, 0, 0.15);
+}
+
+/* Textes dans les cards */
+.footer-style-section .process-card h3,
+.footer-style-section .commission-card h3,
+.footer-style-section .process-card p,
+.footer-style-section .commission-card p {
+  color: #ffffff !important;
+}
+
+/* Numéros de step */
+.footer-style-section .step-number {
+  color: #ffed00 !important;
+}
+
+/* Icônes */
+.footer-style-section .step-icon {
+  color: #ffed00 !important;
+}
+
+/* Prix dans la section commission */
+.footer-style-section .price-text {
+  color: #ffffff !important;
+}
+
+.footer-style-section .price-highlight {
+  color: #ffed00 !important;
+}
+
+.footer-style-section .price-negative {
+  color: #ff6b6b !important;
+}
+
+/* Commission card styling */
+.footer-style-section .commission-card .price-display {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 237, 0, 0.1) !important;
+}
+
+/* ========================================
    PARTNER TESTIMONIALS CAROUSEL
    ======================================== */
 
